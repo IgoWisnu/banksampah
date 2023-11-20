@@ -20,17 +20,22 @@
         }
 
         public function login(){
-            $data['success'] = $this->session->flashdata('success');
-            $data['error'] = $this->session->flashdata('error');
-            $this->load->view('banksampah/login', $data);
+            $this->load->view('banksampah/login');
         }
 
         public function mail(){
-           $mailCode = $this->m_auth->add();
+            $rules = $this->m_auth->validation();
+            $this->form_validation->set_rules($rules);
+            
+            if($this->form_validation->run() == FALSE){
+                $this->load->view('banksampah/v_register');
+            } else{
+                $mailCode = $this->m_auth->add();
+                $email = $mailCode['email'];
+                $kode_verif = $mailCode['kode_verif'];
+                $this->m_auth->mail($kode_verif, $email);
+            }
 
-           $email = $mailCode['email'];
-           $kode_verif = $mailCode['kode_verif'];
-           $this->m_auth->mail($kode_verif, $email);
         }
 
         public function cekLogin(){

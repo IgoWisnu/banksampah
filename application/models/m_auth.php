@@ -20,6 +20,52 @@
             
         }
 
+        public function validation(){
+            return[
+                [
+                    'field' => 'username',
+                    'label' => 'Username',
+                    'rules' => 'required|min_length[3]|max_length[32]|is_unique[user.username]',
+                ],
+                [
+                    'field' => 'email',
+                    'label' => 'Email',
+                    'rules' => 'required|valid_email|is_unique[user.email]',
+                ],
+                [
+                    'field' => 'nama_lengkap',
+                    'label' => 'NamaLengkap',
+                    'rules' => 'required',
+                ],
+                [
+                    'field' => 'tanggal_lahir',
+                    'label' => 'TanggalLahir',
+                    'rules' => 'required',
+                ],
+                [
+                    'field' => 'alamat',
+                    'label' => 'Alamat',
+                    'rules' => 'required',
+                ],
+                [
+                    'field' => 'notelp',
+                    'label' => 'Notelp',
+                    'rules' => 'required',
+                ],
+                [
+                    'field' => 'password',
+                    'label' => 'password',
+                    'rules' => 'required|min_length[3]',
+                ],
+                [
+                    'field' => 'verify_password',
+                    'label' => 'VerifyPassword',
+                    'rules' => 'required|min_length[3]',
+                ],
+                
+            ];
+        }
+
         public function verify($token) {
             $this->db->where('kode_verif', $token)
                      ->update('user', ['isVerif' => 1]);

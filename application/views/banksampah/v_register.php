@@ -54,7 +54,7 @@
         input[type="email"],
         input[type="password"],
         input[type="date"] {
-            width: calc(100% - 22px);
+            width: calc(100% - 10px);
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
@@ -121,38 +121,47 @@
                 <div>
                     <label for="username">Username:</label><br>
                     <input type="text" id="username" name="username">
+                    <small class="text-danger my-0 py-0"><?= form_error('username') ?></small>
                 </div>
                 <div>
                     <label for="email">Email:</label><br>
                     <input type="email" id="email" name="email">
+                    <small class="text-danger my-0 py-0"><?= form_error('email') ?></small>
                 </div>
                 <div>
                     <label for="nama_lengkap">Full Name:</label><br>
                     <input type="text" id="nama_lengkap" name="nama_lengkap">
+                    <small class="text-danger my-0 py-0"><?= form_error('nama_lengkap') ?></small>
                 </div>
                 <div>
                     <label for="tempat_lahir">Tempat lahir:</label><br>
                     <input type="text" id="tempat_lahir" name="tempat_lahir">
+                    <small class="text-danger my-0 py-0"><?= form_error('tempat_lahir') ?></small>
                 </div>
                 <div>
                     <label for="tanggal_lahir">Tanggal lahir:</label><br>
                     <input type="date" id="tanggal_lahir" name="tanggal_lahir">
+                    <small class="text-danger my-0 py-0"><?= form_error('tanggal_lahir') ?></small>
                 </div>
                 <div>
                     <label for="alamat">Alamat:</label><br>
                     <input type="text" id="alamat" name="alamat">
+                    <small class="text-danger my-0 py-0"><?= form_error('alamat') ?></small>
                 </div>
                 <div>
                     <label for="notelp">No telp:</label><br>
                     <input type="text" id="tanggal_lahir" name="notelp">
+                    <small class="text-danger my-0 py-0"><?= form_error('notelp') ?></small>
                 </div>
                 <div>
                     <label for="password">Password:</label><br>
                     <input type="password" id="password" name="password">
+                    <small class="text-danger my-0 py-0"><?= form_error('password') ?></small>
                 </div>
                 <div>
                     <label for="verify_password">Verify Password:</label><br>
                     <input type="password" id="verify_password" name="verify_password">
+                    <small class="text-danger my-0 py-0"><?= form_error('verify_password') ?></small>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="agreementCheck">
