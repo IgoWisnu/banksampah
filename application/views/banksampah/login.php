@@ -142,7 +142,7 @@
                     <div class="row">
                         <div class="BelumPunyaAkunSignup">
                             <div>Belum Punya Akun?</div>
-                            <a href="" class="link">SignUp</a>
+                            <a href="Auth/goRegister" class="link">SignUp</a>
                         </div>
                     </div>
                 </form>

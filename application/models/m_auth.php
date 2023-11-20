@@ -8,8 +8,7 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    //Load Composer's autoloader
-    require 'vendor/autoload.php';
+    
 
     class m_auth extends CI_Model {
     
@@ -102,7 +101,7 @@
 
         public function mail($token, $email){
              //link
-             $verificationLink = "localhost/mailtest/banksampah/auth/verify?token={$token}"; // Replace with your actual verification link
+             $verificationLink = "localhost/banksampah/auth/verify?token={$token}"; // Replace with your actual verification link
              $message = "Click the link below to verify your email:<br><a href='{$verificationLink}'>Verify Email</a>";
  
              //config

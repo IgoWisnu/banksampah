@@ -42,7 +42,7 @@
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $where = "username='$username' AND password='$password'";
+            $where = "username='$username' AND password='$password' AND IsVerif=1";
             $this->db->where($where);
             $data = $this->db->get('user');
 
