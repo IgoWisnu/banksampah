@@ -14,7 +14,7 @@
     }
 
     .Panel{
-        width: 370px;
+        width: 340px;
         height: 550px; 
         background: white;
         border-top-left-radius: 30px; 
@@ -117,7 +117,7 @@
                         Selamat Datang <br> Kembali
                     </div>
                     <div class="SilahkanMasukanUsernameDanPasswordKamu w-75">
-                        Silahkan Masukkan Username dan <br> Password Kamu!
+                        Silahkan Masukkan Username <br> dan Password Kamu!
                     </div>
                 </div>
     
