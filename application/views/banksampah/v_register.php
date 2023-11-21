@@ -142,61 +142,61 @@
         <div class="c_sign-up-frame">
             <form action="<?=base_url('auth/mail') ?>" method="post">
                 <div>
-                <label for="username" style="padding-left: 10px;">Username:</label><br>
-                <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('username') ?></small>
+                	<label for="username" style="padding-left: 10px;">Username:</label><br>
+                	<input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('username') ?></small>
                 </div>
                 <div>
-                <label for="email" style="padding-left: 10px;">Email:</label><br>
-                <input type="email" id="email" class="form-control" name="email" placeholder="Enter your email address" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('email') ?></small>
+                	<label for="email" style="padding-left: 10px;">Email:</label><br>
+                	<input type="email" id="email" class="form-control" name="email" placeholder="Enter your email address" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('email') ?></small>
                 </div>
                 <div>
-                <label for="nama_lengkap" style="padding-left: 10px;">Full Name:</label><br>
-                <input type="text" id="nama_lengkap" class="form-control" name="nama_lengkap" placeholder="Enter your full name" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('nama_lengkap') ?></small>
+                	<label for="nama_lengkap" style="padding-left: 10px;">Full Name:</label><br>
+               	 	<input type="text" id="nama_lengkap" class="form-control" name="nama_lengkap" placeholder="Enter your full name" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('nama_lengkap') ?></small>
                 </div>
                 <div>
-                <label for="tempat_lahir" style="padding-left: 10px;">Tempat lahir:</label><br>
-                <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Enter your place of birth" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('tempat_lahir') ?></small>
+                	<label for="tempat_lahir" style="padding-left: 10px;">Tempat lahir:</label><br>
+                	<input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Enter your place of birth" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('tempat_lahir') ?></small>
                 </div>
                 <div>
-                <label for="tanggal_lahir" style="padding-left: 10px;">Tanggal lahir:</label><br>
-                <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" placeholder="Enter your date of birth" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('tanggal_lahir') ?></small>
+                	<label for="tanggal_lahir" style="padding-left: 10px;">Tanggal lahir:</label><br>
+                	<input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" placeholder="Enter your date of birth" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('tanggal_lahir') ?></small>
                 </div>
                 <div>
-                <label for="alamat" style="padding-left: 10px;">Alamat:</label><br>
-                <input type="text" id="alamat" class="form-control" name="alamat" placeholder="Enter your address" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('alamat') ?></small>
+                	<label for="alamat" style="padding-left: 10px;">Alamat:</label><br>
+                	<input type="text" id="alamat" class="form-control" name="alamat" placeholder="Enter your address" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('alamat') ?></small>
                 </div>
                 <div>
-                <label for="notelp" style="padding-left: 10px;">No telp:</label><br>
-                <input type="text" id="tanggal_lahir" class="form-control" name="notelp" placeholder="Enter your phone number" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('notelp') ?></small>
+                	<label for="notelp" style="padding-left: 10px;">No telp:</label><br>
+                	<input type="text" id="tanggal_lahir" class="form-control" name="notelp" placeholder="Enter your phone number" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('notelp') ?></small>
                 </div>
                 <div>
-                <label for="password" style="padding-left: 10px;">Password:</label><br>
-                <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('password') ?></small>
+                	<label for="password" style="padding-left: 10px;">Password:</label><br>
+                	<input type="password" id="password" class="form-control" name="password" placeholder="Enter your password" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('password') ?></small>
                 </div>
                 <div>
-                <label for="verify_password" style="padding-left: 10px;">Verify Password:</label><br>
-                <input type="password" id="verify_password" class="form-control" name="verify_password" placeholder="Re-enter your password" style="border-radius: 15px;">
-                <small class="text-danger my-0 py-0"><?= form_error('verify_password') ?></small>
+                	<label for="verify_password" style="padding-left: 10px;">Verify Password:</label><br>
+                	<input type="password" id="verify_password" class="form-control" name="verify_password" placeholder="Re-enter your password" style="border-radius: 15px;">
+                	<small class="text-danger my-0 py-0"><?= form_error('verify_password') ?></small>
                 </div>
                 <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="agreementCheck">
-                <label class="form-check-label" for="agreementCheck">
+                	<input class="form-check-input" type="checkbox" id="agreementCheck">
+                	<label class="form-check-label" for="agreementCheck">
                     Saya menyetujui semua ketentuan yang berlaku
                 </label>
                 </div>
                 <div class="button-container">
-                <button class="c_sign-up-btn" type="submit">Daftar</button>
+                	<button class="c_sign-up-btn" type="submit">Daftar</button>
                 </div>
             </form>
-            </div>
+        </div>
     </div>
 </body>
 </html>
