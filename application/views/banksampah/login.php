@@ -10,33 +10,32 @@
   <style>
     .Container{
         background: #557C55;
+        height: 1000px;
     }
 
     .Panel{
-        width: 390px;
-        margin-top: 120px;
+        width: 370px;
+        height: 550px; 
         background: white;
         border-top-left-radius: 30px; 
         border-top-right-radius: 30px;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
     }
 
     .SelamatDatangKembali{
-        top: 50px; 
+        top: 30px; 
         text-align: center;
         position: relative;
         color: white; 
         font-size: 40px; 
         font-weight: 700; 
-        word-wrap: normal;
+        word-wrap: break-word;
     }
 
     .SilahkanMasukanUsernameDanPasswordKamu{
-        top: 115px;
+        top: 80px;
+        margin-bottom: 100px;
         color: white;
         text-align: center;
         position: relative;
@@ -56,7 +55,7 @@
     }
 
     .Username{
-        top: 90px; 
+        top: 70px; 
         position: relative; 
         color: #333333; 
         font-size: 14px; 
@@ -64,7 +63,7 @@
     }
 
     .Password{
-        top: 120px; 
+        top: 100px; 
         position: relative; 
         color: #333333; 
         font-size: 14px;  
@@ -76,30 +75,27 @@
         border-color: black;
         padding: 11px;
         border-radius: 5mm;
-        width: 336px;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     .btn{
         border-radius: 5mm;
-        top: 250px;
-        background-color: #557C55;
+        top: 180px;
         position: relative;
+        background-color: #557C55;
+    }
+
+    .btn:hover{
+        background-color: #557C55;
     }
 
     .tbLogin{
-        background-color: #557C55;
         color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 20px;
+        font-weight: 700;
+        font-size: 5mm;
     }
 
     .BelumPunyaAkunSignup{
-        top: 300px; 
+        top: 210px; 
         position: relative; 
         text-align: center;
     }
@@ -107,47 +103,55 @@
     .link{
         text-decoration: none;
     }
-
   </style>
 
   <body>
-        <div class="Container">
         <?php
-        
-        ?>
-            <div class="SelamatDatangKembali">Selamat Datang Kembali</div>
-            <div class="SilahkanMasukanUsernameDanPasswordKamu">Silahkan Masukkan Username dan Password Kamu!</div>
 
-            <div class="Panel col">
-                <div class="tLogin">Login</div>
-                <form action="<?=base_url('auth/cekLogin') ?>" method="post">
-                    <div class="">
-                        <div class="Username w-75">Username
-                            <input type="text" class="form-control" name="username">
-                        </div>
-                    </div>
-                
-                    <div class="">
-                        <div class="Password w-75">Password
-                            <input type="password" class="form-control " name="password">
-                        </div>
-                    </div>
+        ?>
+        <form action="<?=base_url('auth/cekLogin') ?>" method="post">
+            <div class="Container col justify-content-center">
     
-                    <div class="">
-                        <div class="btn">
-                            <input type="submit" class="tbLogin">
-                        </div>
+                <div class="row justify-content-center">
+                    <div class="SelamatDatangKembali">
+                        Selamat Datang <br> Kembali
                     </div>
+                    <div class="SilahkanMasukanUsernameDanPasswordKamu w-75">
+                        Silahkan Masukkan Username dan <br> Password Kamu!
+                    </div>
+                </div>
+    
+                <div class="row justify-content-center">
+                    <div class="Panel">
+                        <div class="tLogin">Login</div>
+        
+                        <div class="row justify-content-center">
+                            <div class="Username w-75">Username
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                        </div>
                     
-                    <div class="row">
-                        <div class="BelumPunyaAkunSignup">
-                            <div>Belum Punya Akun?</div>
-                            <a href="Auth/goRegister" class="link">SignUp</a>
+                        <div class="row justify-content-center">
+                            <div class="Password w-75">Password
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
+        
+                        <div class="row justify-content-center">
+                            <div class="btn w-50">
+                                <div type="submit" class="tbLogin">Login</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="BelumPunyaAkunSignup">
+                                <div>Belum Punya Akun?</div>
+                                <a href="auth/goRegister" class="link">SignUp</a>
+                            </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        </form>
   </body>
 </html>
