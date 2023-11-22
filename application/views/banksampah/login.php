@@ -14,7 +14,7 @@
     }
 
     .Panel{
-        width: 340px;
+        width: 370px;
         height: 550px; 
         background: white;
         border-top-left-radius: 30px; 
