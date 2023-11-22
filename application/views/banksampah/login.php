@@ -138,11 +138,8 @@
                         </div>
         
                         <div class="row justify-content-center">
-                            <div class="">
-                                <input type="submit" class="tbLogin btn w-50 " name=""></input>
-                            </div>
+                            <input type="submit" class="tbLogin btn w-50 " value="Login"></input>
                         </div>
-                        
                         <div class="row">
                             <div class="BelumPunyaAkunSignup">
                                 <div>Belum Punya Akun?</div>
