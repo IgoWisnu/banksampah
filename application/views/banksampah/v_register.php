@@ -1,192 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>SignUp</title>
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            background-color: #557C55;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .Container {
+            text-align: center;
+        }
+
+        .Signup {
+            font-family: Arial;
+            font-size: 30px; 
+            font-weight: 700; 
+            margin-top: 30px; 
+            color: white;
+        }
+
+        .Signuptext {
+            font-family: Arial;
+            font-size: 13px; 
+            font-weight: 600; 
+            word-wrap: break-word;
+            color: white;
+        }
+
+        .c_sign-up-frame {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .c_sign-up-btn {
+            background-color: #557C55;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .form-check {
+            margin-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-check-input {
+            margin-right: 10px;
+        }
+
+        label {
+            color: #557C55;
+        }
+
+        .button-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .c_sign-up-link {
+            color: #0066FF;
+            font-size: 13px;
+            text-decoration: underline; 
+            font-weight: bold;
+            cursor: pointer; 
+        }
+        
+        .punyaakun { 
+            font-size: 12px;
+        }
+
+        .form-check-label {
+            font-size: 10px; 
+        }
+    </style>
 </head>
-  
-<style>
-    .Container{
-        background: #557C55;
-        height: 1400px;
-    }
-
-    .Panel{
-        width: 370px;
-        height: 1100px; 
-        background: white;
-        border-radius: 30px; 
-    }
-
-    .SelamKenal{
-        top: 30px; 
-        text-align: center;
-        position: relative;
-        color: white; 
-        font-size: 40px; 
-        font-weight: 700; 
-        word-wrap: break-word;
-    }
-
-    .SilahkanIsiDataDiriUntukMenggunakanBankSampah{
-        top: 50px;
-        margin-bottom: 85px;
-        color: white;
-        text-align: center;
-        position: relative;
-        font-size: 15px; 
-        font-weight: 600; 
-        word-wrap: break-word;
-    }
-
-    .AtauSudahPunyaAkun{
-        margin-top: -30px;
-        margin-bottom: 15px;
-        color: white;
-        text-align: center;
-        position: relative;
-        font-size: 15px; 
-        font-weight: 600; 
-        word-wrap: break-word;
-    }
-
-    .tSignUp{
-        top: 35px;
-        margin-bottom: 70px;
-        text-align: center;
-        position: relative;
-        color: #333333; 
-        font-size: 40px; 
-        font-weight: 700; 
-        word-wrap: break-word;
-    }
-
-    .form{
-        font-size:   90%;
-        font-weight: 500;
-    }
-
-    .form-control{
-        border-width: 2px;
-        border-color: black;
-        padding: 11px;
-        border-radius: 5mm;
-    }
-    
-    .btn{
-        border-radius: 5mm;
-        top: 25px;
-        position: relative;
-        background-color: #557C55;
-    }
-
-    .btn:hover{
-        background-color: #557C55;
-    }
-
-    .tbSignUp{
-        color: white;
-        font-weight: 700;
-        font-size: 5mm;
-    }
-
-    .link{
-        text-decoration: none;
-    }
-
-</style>
-
-  <body>
-        <form action="<?=base_url('auth/cekLogin') ?>" method="post">
-            <div class="Container col justify-content-center">
-    
-                <div class="row justify-content-center">
-                    <div class="SelamKenal">
-                        Salam Kenal
-                    </div>
-                    <div class="SilahkanIsiDataDiriUntukMenggunakanBankSampah w-75">
-                        Silahkan Isi Data Diri Untuk Menggunakan Bank Sampah
-                    </div>
-                    <div class="AtauSudahPunyaAkun">
-                        Atau Sudah Punya Akun?<a class="link" href="auth/login">Login</a>
-                    </div>
-                    
+<body>
+    <div class="Container">
+        <div class="Signup">Sign Up</div>
+        <div class="Signuptext">Silahkan isi data diri untuk menggunakan bank sampah</div>
+        <p class="punyaakun">
+            Already have an account? <a href="#" class="c_sign-up-link">Login</a>
+        </p>
+        <div class="c_sign-up-frame">
+            <form action="<?=base_url('auth/mail') ?>" method="post">
+                <div>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username">
+                    <small class="text-danger my-0 py-0"><?= form_error('username') ?></small>
                 </div>
-    
-                <div class="row justify-content-center">
-                    <div class="Panel">
-                        <div class="tSignUp">SignUp</div>
-                        
-                        <div class="form row justify-content-center"> 
-                            <div class="w-75 pb-2">Username:
-                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username">
-                                <small class="text-danger"><?= form_error('username') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">Email:
-                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter your email address">
-                                <small class="text-danger"><?= form_error('email') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">Nama Lengkap:
-                                <input type="text" id="nama_lengkap" class="form-control" name="nama_lengkap" placeholder="Enter your full name">
-                                <small class="text-danger"><?= form_error('nama_lengkap') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">Tempat Lahir:
-                                <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Enter your place of birth">
-                                <small class="text-danger"><?= form_error('tempat_lahir') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">Tanggal Lahir:
-                                <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" placeholder="Enter your date of birth">
-                                <small class="text-danger"><?= form_error('tanggal_lahir') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">Alamat:
-                                <input type="text" id="alamat" class="form-control" name="alamat" placeholder="Enter your address">
-                                <small class="text-danger"><?= form_error('alamat') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75 pb-2">No Telp:
-                                <input type="text" id="tanggal_lahir" class="form-control" name="notelp" placeholder="Enter your phone number">
-                                <small class="text-danger"><?= form_error('notelp') ?></small>
-                                </div>
-                            </div>
-                        <div class="form row justify-content-center">
-                            <div class=" w-75 pb-2">Password:
-                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password">
-                                <small class="text-danger"><?= form_error('password') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="w-75">Verify Password:
-                                <input type="password" id="verify_password" class="form-control" name="verify_password" placeholder="Re-enter your password">
-                                <small class="text-danger"><?= form_error('verify_password') ?></small>
-                            </div>
-                        </div>
-                        <div class="form row justify-content-center">
-                            <div class="form-check ps-5 pe-5 pt-5">
-                                <input class="form-check-input" type="checkbox" id="agreementCheck">
-                                Saya menyetujui semua ketentuan yang berlaku
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="btn w-50">
-                                <div type="submit" class="tbSignUp">SignUp</div>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email">
+                    <small class="text-danger my-0 py-0"><?= form_error('email') ?></small>
                 </div>
-            </div>
-        </form>
-    </body>
+                <div>
+                    <label for="nama_lengkap">Full Name:</label><br>
+                    <input type="text" id="nama_lengkap" name="nama_lengkap">
+                    <small class="text-danger my-0 py-0"><?= form_error('nama_lengkap') ?></small>
+                </div>
+                <div>
+                    <label for="tempat_lahir">Tempat lahir:</label><br>
+                    <input type="text" id="tempat_lahir" name="tempat_lahir">
+                    <small class="text-danger my-0 py-0"><?= form_error('tempat_lahir') ?></small>
+                </div>
+                <div>
+                    <label for="tanggal_lahir">Tanggal lahir:</label><br>
+                    <input type="date" id="tanggal_lahir" name="tanggal_lahir">
+                    <small class="text-danger my-0 py-0"><?= form_error('tanggal_lahir') ?></small>
+                </div>
+                <div>
+                    <label for="alamat">Alamat:</label><br>
+                    <input type="text" id="alamat" name="alamat">
+                    <small class="text-danger my-0 py-0"><?= form_error('alamat') ?></small>
+                </div>
+                <div>
+                    <label for="notelp">No telp:</label><br>
+                    <input type="text" id="tanggal_lahir" name="notelp">
+                    <small class="text-danger my-0 py-0"><?= form_error('notelp') ?></small>
+                </div>
+                <div>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password">
+                    <small class="text-danger my-0 py-0"><?= form_error('password') ?></small>
+                </div>
+                <div>
+                    <label for="verify_password">Verify Password:</label><br>
+                    <input type="password" id="verify_password" name="verify_password">
+                    <small class="text-danger my-0 py-0"><?= form_error('verify_password') ?></small>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agreementCheck">
+                    <label class="form-check-label" for="agreementCheck">
+                        Saya menyetujui semua ketentuan yang berlaku
+                    </label>
+                </div>
+                <div class="button-container">
+                    <button class="c_sign-up-btn" type="submit">Daftar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
 </html>
