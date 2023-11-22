@@ -109,9 +109,8 @@
         <?php
 
         ?>
-        <form action="<?=base_url('auth/cekLogin') ?>" method="post">
             <div class="Container col justify-content-center">
-    
+                
                 <div class="row justify-content-center">
                     <div class="SelamatDatangKembali">
                         Selamat Datang <br> Kembali
@@ -120,7 +119,8 @@
                         Silahkan Masukkan Username <br> dan Password Kamu!
                     </div>
                 </div>
-    
+
+            <form action="<?=base_url('auth/cekLogin') ?>" method="post">
                 <div class="row justify-content-center">
                     <div class="Panel">
                         <div class="tLogin">Login</div>
@@ -138,8 +138,8 @@
                         </div>
         
                         <div class="row justify-content-center">
-                            <div class="btn w-50">
-                                <div type="submit" class="tbLogin">Login</div>
+                            <div class="">
+                                <input type="submit" class="tbLogin btn w-50 " name=""></input>
                             </div>
                         </div>
                         
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
-        </form>
   </body>
 </html>
