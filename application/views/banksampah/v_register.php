@@ -99,7 +99,7 @@
 </style>
 
   <body>
-        <form action="<?=base_url('auth/cekLogin') ?>" method="post">
+        <form action="<?=base_url('auth/mail') ?>" method="post">
             <div class="Container col justify-content-center">
     
                 <div class="row justify-content-center">
@@ -110,11 +110,11 @@
                         Silahkan Isi Data Diri Untuk Menggunakan Bank Sampah
                     </div>
                     <div class="AtauSudahPunyaAkun">
-                        Atau Sudah Punya Akun?<a class="link" href="auth/login">Login</a>
+                        Atau Sudah Punya Akun?<a class="link" href="<?=base_url('auth') ?>">Login</a>
                     </div>
                     
                 </div>
-    
+         
                 <div class="row justify-content-center">
                     <div class="Panel">
                         <div class="tSignUp">SignUp</div>
@@ -180,9 +180,8 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="btn w-50">
-                                <div type="submit" class="tbSignUp">SignUp</div>
-                            </div>
+                            
+                            <input type="submit" class="tbSignUp btn w-50" value="SignUp"></input>
                         </div>
                     </div>
                 </div>
