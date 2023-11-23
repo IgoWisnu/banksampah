@@ -127,13 +127,15 @@
         
                         <div class="row justify-content-center">
                             <div class="Username w-75">Username
-                                <input type="text" class="form-control" name="username">
+                                <input type="text" class="form-control" name="username" placeholder="Masukkan Username">
+                                <small class="text-danger"><?= form_error('username') ?></small>
                             </div>
                         </div>
                     
                         <div class="row justify-content-center">
                             <div class="Password w-75">Password
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
+                                <small class="text-danger"><?= form_error('password') ?></small>
                             </div>
                         </div>
         
