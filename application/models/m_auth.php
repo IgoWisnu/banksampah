@@ -100,10 +100,56 @@
         }
 
         public function mail($token, $email){
+
              //link
              $verificationLink = "localhost/banksampah/auth/verify?token={$token}"; // Replace with your actual verification link
-             $message = "Click the link below to verify your email:<br><a href='{$verificationLink}'>Verify Email</a>";
- 
+             $message = "
+             <html>
+             <head>
+               <title>Email Verification</title>
+               <style>
+                 body {
+                   font-family: 'Arial', sans-serif;
+                   background-color: #f4f4f4;
+                   color: #333;
+                 }
+                 .container {
+                   max-width: 600px;
+                   margin: 0 auto;
+                   padding: 20px;
+                   background-color: #fff;
+                   border-radius: 5px;
+                   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                 }
+                 h1 {
+                   color: #557C55;
+                 }
+                 p {
+                   margin-bottom: 20px;
+                 }
+                 .verification-link {
+                   display: inline-block;
+                   padding: 10px 20px;
+                   background-color: #557C55;
+                   color: #fff;
+                   text-decoration: none;
+                   border-radius: 3px;
+                 }
+               </style>
+             </head>
+             <body>
+               <div class='container'>
+                 <h1>Email Verification</h1>
+                 <p>Dear user,</p>
+                 <p>Please click the following link to verify your email address:</p>
+                 <a href='$verificationLink' class='verification-link'>Verify Email</a>
+               </div>
+             </body>
+             </html>
+             ";
+
+
+
              //config
              $config['useragent'] = "Codeigniter";
              $config['mailpath'] = "usr/bin/sendmail";
