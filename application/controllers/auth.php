@@ -33,7 +33,9 @@
                 $mailCode = $this->m_auth->add();
                 $email = $mailCode['email'];
                 $kode_verif = $mailCode['kode_verif'];
-                $this->m_auth->mail($kode_verif, $email);
+                $data['verif'] = $this->m_auth->mail($kode_verif, $email);
+
+                $this->load->view('banksampah/Verifikasi', $data);
             }
 
         }
@@ -54,6 +56,7 @@
                     'role' => $data[0]['role']
                 );
                 $this->session->set_userdata($sess);
+                $this->session->set_flashdata('alert','login berhasil!');
                 redirect('banksampah');
             }else{
                 echo 'login failed';
@@ -68,11 +71,11 @@
         public function verify() {
             $token = $this->input->get('token');
             $verifyCheck = $this->m_auth->verify($token);
-            if ($verifyCheck == true){
-                $this->session->set_flashdata('success', 'Verification successful!');
+            if ($verifyCheck){
+                $this->session->set_flashdata('alert','Verifikasi berhasil'); 
                 redirect('auth/login');
             } else{
-                $this->session->set_flashdata('failed', 'Verification failed!');
+                $this->session->set_flashdata('alert','Verifikasi gagal');
                 redirect('auth/login');
             }
         }
