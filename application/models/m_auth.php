@@ -174,9 +174,9 @@
  
              //check
              if($this->email->send()){
-                 echo "email terkirim ke $email";
+                 Return "email terkirim ke $email";
              } else{
-                 echo "email gagal terkirim";
+                 Return "email gagal terkirim";
              }
         }
         

@@ -58,14 +58,9 @@
 
   <body>
         <div class="Container col">
-
             <div class="row t1 justify-content-center">
                 <div class="Verifikasi">
                     Verifikasi
-                </div>
-                <div class="t2 w-75">
-                    Kami sudah mengirimkan <br>
-                link verifikasi ke email kamu :)
                 </div>
             </div>
 
@@ -73,6 +68,11 @@
                 <div class="Panel">                    
                     <div class="img1 row justify-content-center">
                         <img class="w-50" src="/img/EmailSended.svg" alt="">
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="t2 w-75 mt-3">
+                            <?=$verif ?>
+                        </div>
                     </div>
                     
                     <div class="resend row justify-content-center">
