@@ -10,12 +10,12 @@
   <style>
     
   .background{
-    height: 1237px; 
+    height: 1000px; 
     background: #557C55;
   }
 
   .wrap{
-    height: 903px; 
+    height: 800px; 
     top: 185px; 
     position: absolute; 
     background: white; 
@@ -24,7 +24,7 @@
   }
 
   .box{
-    height: 120px; 
+    height: 180px; 
     top: 140px; 
     position: absolute; 
     background: white; 
@@ -49,26 +49,41 @@
     position: relative;
   }
 
+  .card{
+    border-radius: 20px;
+    height: 100px;
+  }
+
   .t1{
-    top: 20px;
+    top: 45px;
     position: relative;
     font-size: 13px;
     font-weight: 400;
   }
 
   .t2{
-    top: 130px;
+    margin-left: 50px;
+    top: 160px;
+    position: relative;
+    font-weight: 750;
+    font-size: 20px;
+  }
+
+  .t3{
+    margin-left: 50px;
+    top: 205px;
     position: relative;
     font-weight: 750;
     font-size: 20px;
   }
   
   .LayBtn{
-    top: 30px;
+    top: 60px;
     position: relative;
   }
 
   .btn1{
+    height: 50px;
     color: white;
     background-color: #2868E5;
     border-radius: 30px;
@@ -76,14 +91,22 @@
   }
 
   .btn2{
+    height: 50px;
     color: white;
     background-color: #01C59E;
     border-radius: 30px;
     font-weight: 500;
   }
 
-  .card{
-    text-decoration: none;
+  .btn3{
+    top: -20px;
+    position: relative;
+    height: 100px;
+    background-color: #F5FAE9;
+    border-radius: 15px;
+    text-align: start;
+    font-weight: 700;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
   }
 
   @media screen and (max-width: 300px){
@@ -112,13 +135,15 @@
     }
   }
 
+  @media screen and (min-width: 500px) {
+    .wrap{
+      width: 500px;
+    }
+  }
+
   @media screen and (min-width: 360px) {
     .box{
       width: 260px;
-    }
-
-    .wrap{
-      width: 400px;
     }
   }
 
@@ -134,7 +159,13 @@
 
             <div class="t2">Menu</div>
             <div class="cards row justify-content-center">
-              <a href="" class="card col-10" src=""> bjvjhvjvhv </a>
+              <input class="btn3 btn col-9 mb-4" type="submit" value="List Sampah">
+              <input class="btn3 btn col-9" type="submit" value="Cara Mengunakan Bank Sampah">
+            </div>
+
+            <div class="t3">Berita Terkini</div>
+            <div class="cards row justify-content-center">
+
 
             </div>
 
