@@ -25,7 +25,7 @@
 
 .box{
     height: 180px; 
-    top: 140px; 
+    top: 120px; 
     position: absolute; 
     background: white; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
@@ -107,24 +107,23 @@
     top: 230px;
     position: relative;
     border-radius: 20px;
-    height: 100px;
+    height: 150px;
 }
 
 @media screen and (max-width: 315px){
     .box{
-    height: 190px;
+      height: 190px;
     }
 
 }
 
 @media screen and (max-width: 300px) {
     .username{
-    
-    font-size: 13px;
+      font-size: 13px;
     }
 
     .gacor{
-    font-size: 13px;
+      font-size: 13px;
     }
     
 }
@@ -133,28 +132,35 @@
     .wrap{
     width: 500px;
     }
+
 }
 
 @media screen and (min-width: 360px) {
-    .box{
-    width: 260px;
-    }
+  .box{
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 400) {
+  .box{
+    width: 240px;
+  }
 }
 
 @media screen and (max-width: 490) {
-    .t2{
-        
-    }
-    .t3{
-        
-    }
+  .t2{
+      
+  }
+  .t3{
+      
+  }
 }
 
 </style>
 
   <body>
 
-    <div class="background">
+    <div class="background container-fluid">
 
       <div class="col">
         <div class="row justify-content-center">
