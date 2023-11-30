@@ -133,11 +133,13 @@
           <div class="wrap">
 
             <div class="t2">Menu</div>
-            <div class="cards row justify-content-center">
-              <a href="" class="card col-10" src=""> bjvjhvjvhv </a>
-
-            </div>
-
+            <?php foreach($artikel as $key): ?>
+              <div class="cards row justify-content-center">
+                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="card col-10 my-2" src="">
+                    <?=$key['judul'] ?>
+                </a>
+              </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
