@@ -13,7 +13,7 @@
             $this->db->where('id', $id);
             $query = $this->db->get('artikel')->result_array();;
 
-            return $query[0];
+            return $query[0] ;
         }
     
     }
