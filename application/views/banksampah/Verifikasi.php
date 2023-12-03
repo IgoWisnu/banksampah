@@ -67,7 +67,7 @@
             <div class="row justify-content-center">
                 <div class="Panel">                    
                     <div class="img1 row justify-content-center">
-                        <img class="w-50 bg-dark" src="img/email.png" alt="">
+                        <img class="w-50 bg-dark" src="<?=base_url()?>img/email.png" alt="">
                     </div>
                     <div class="row justify-content-center">
                         <div class="t2 w-75 mt-3">
