@@ -170,7 +170,8 @@
             <div class="layCard row d-flex justify-content-start border-0 ms-5">
               <?php foreach($artikel as $key): ?>
                 <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="c1 card col-3 me-2">
-                  <img src="" alt="">
+                  <img src="<?=base_url()?>img/email.png" alt="">
+                  <p class="text-small"><?=$key['judul'] ?></p>
                 </a>
               <?php endforeach; ?>
             </div>
