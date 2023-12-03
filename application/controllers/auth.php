@@ -10,8 +10,7 @@
             parent::__construct();
             $this->load->model('m_auth');
             
-        }
-        
+        }        
 
         public function index()
         {
@@ -51,8 +50,8 @@
             if ($data->num_rows() == 1) {
                 $data = $data->result_array();
                 $sess = array(
+                    'id' => $data[0]['id'],
                     'username' => $data[0]['username'],
-                    'password' => $data[0]['password'],
                     'role' => $data[0]['role']
                 );
                 $this->session->set_userdata($sess);
