@@ -6,7 +6,7 @@
     
         public function index()
         {
-            $this->load->view('banksampah/homepage');   
+            redirect('home/loadArtikel');
         }
 
         public function berita(){

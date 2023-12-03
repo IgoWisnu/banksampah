@@ -10,8 +10,7 @@
             parent::__construct();
             $this->load->model('m_auth');
             
-        }
-        
+        }        
 
         public function index()
         {
