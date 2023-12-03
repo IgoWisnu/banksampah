@@ -166,17 +166,13 @@
               </div></a>
             </div>
 
-            <div class="t3 ms-5">Berita Terkini</div>
-            <div class="layCard row d-flex justify-content-center border-0">
-                <a href="" class="c1 card col-3 me-2">
+            <div class="t3 ms-5">Artikel Terkini</div>
+            <div class="layCard row d-flex justify-content-start border-0 ms-5">
+              <?php foreach($artikel as $key): ?>
+                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="c1 card col-3 me-2">
                   <img src="" alt="">
                 </a>
-                <a href="" class="c1 card col-3 me-2">
-                  <img src="" alt="">
-                </a>
-                <a href="" class="c1 card col-3 me-2">
-                  <img src="" alt="">
-                </a>
+              <?php endforeach; ?>
             </div>
 
           </div>
@@ -188,8 +184,8 @@
 
           <div class="row">
             <div class="LayText d-flex justify-content-between">
-              <div class="username">Username</div>
-              <div class="gacor">Rp100.000</div>
+              <div class="username"><?=$username ?></div>
+              <div class="gacor"><?=$saldo?></div>
             </div>
           </div>
           
