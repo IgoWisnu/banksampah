@@ -35,33 +35,33 @@
 .username{
     top: 10px;
     position: relative;
-    font-weight: 700;
+    font-weight: 650;
 }
 
 .gacor{
     top: 10px;
     position: relative;
-    font-weight: 1000;
+    font-weight: 650;
 }
 
 .t1{
     top: 50px;
     position: relative;
     font-size: 80%;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .t2{
     top: 160px;
     position: relative;
-    font-weight: 750;
+    font-weight: 600;
     font-size: 20px;
 }
 
 .t3{
     top: 205px;
     position: relative;
-    font-weight: 750;
+    font-weight: 600;
     font-size: 20px;
 }
 
@@ -78,8 +78,6 @@
     font-weight: 500;
 }
 
-
-
 .btn2{
     height: 50px;
     color: white;
@@ -94,36 +92,44 @@
 }
 
 .btn3{
-    position: relative;
-    height: 100px;
-    background-color: #F5FAE9;
-    border-radius: 15px;
-    text-align: start;
-    font-weight: 700;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+  position: relative;
+  height: 100px;
+  background-color: #F5FAE9;
+  border-radius: 15px;
+  text-align: start;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
 }
 
 .c1{
-    top: 230px;
-    position: relative;
-    border-radius: 20px;
-    height: 150px;
+  top: 230px;
+  position: relative;
+  border-radius: 20px;
+  height: 170px;
+}
+
+.tBtn{
+  font-weight: 300;
 }
 
 @media screen and (max-width: 315px){
     .box{
       height: 190px;
     }
+    .btn3{
+      height: 150px;
+    }
 
 }
 
 @media screen and (max-width: 300px) {
     .username{
-      font-size: 13px;
+    
+    font-size: 13px;
     }
 
     .gacor{
-      font-size: 13px;
+    font-size: 13px;
     }
     
 }
@@ -132,54 +138,47 @@
     .wrap{
     width: 500px;
     }
-
 }
 
 @media screen and (min-width: 360px) {
-  .box{
+    .box{
     width: 300px;
-  }
-}
-
-@media screen and (max-width: 400) {
-  .box{
-    width: 240px;
-  }
-}
-
-@media screen and (max-width: 490) {
-  .t2{
-      
-  }
-  .t3{
-      
-  }
+    }
 }
 
 </style>
 
   <body>
 
-    <div class="background container-fluid">
+    <div class="background">
 
       <div class="col">
         <div class="row justify-content-center">
           <div class="wrap">
+
             <div class="t2 ms-5">Menu</div>
             <div class="layBtn3 row justify-content-center">
-              <?php foreach($artikel as $key): ?>
-                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="btn3 btn col-9 mb-4 text-center">
-                  <?=$key['judul'] ?>
-                </a>
-              <?php endforeach; ?>
+              <a href="" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
+                Sampah apa saja yang bisa ditukar?
+              </div></a>
+              <a href="" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
+                Bagaimana cara penggunaan aplikasi?
+              </div></a>
             </div>
 
             <div class="t3 ms-5">Berita Terkini</div>
             <div class="layCard row d-flex justify-content-center border-0">
-                <a href="" type="submit" class="c1 card col-3 me-2"></a>
-                <a href="" type="submit" class="c1 card col-3 me-2"></a>
-                <a href="" type="submit" class="c1 card col-3 me-2"></a>
+                <a href="" class="c1 card col-3 me-2">
+                  <img src="" alt="">
+                </a>
+                <a href="" class="c1 card col-3 me-2">
+                  <img src="" alt="">
+                </a>
+                <a href="" class="c1 card col-3 me-2">
+                  <img src="" alt="">
+                </a>
             </div>
+
           </div>
         </div>
       </div>
