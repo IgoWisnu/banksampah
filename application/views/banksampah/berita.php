@@ -79,17 +79,6 @@
             }
 
             
-            @media screen and (max-width: 700px) {
-                .imagebe img{
-                width: 700px;
-                height: 700px;
-                margin: auto;
-                border-radius: 10px;
-                }
-            }
-            
-
-            
         </style>
 
         <body>
