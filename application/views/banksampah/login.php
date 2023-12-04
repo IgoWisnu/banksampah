@@ -99,7 +99,6 @@
 
     .BelumPunyaAkun{
         font-size: 15px;
-        margin-left: 15px;
         top: 210px; 
         position: relative;
     }
@@ -110,12 +109,13 @@
         height: 45px;
         position: relative;
         width: 1px;
+        margin-right: -5px;
+        margin-left: -5px;
         background: black;
     }
 
     .InginJadiImigran{
         font-size: 15px;
-        margin-right: 15px;
         top: 210px; 
         position: relative;
     }
@@ -179,8 +179,8 @@
                                 <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
                             </div>
                             <div class="stick"></div>
-                            <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
-                                <a href="auth/goRegister" class="link row justify-content-center">Guest</a>
+                            <div class="InginJadiImigran row justify-content-center">Masuk Sebagai Guest?<br>
+                                <a href="<?=base_url('auth/guestAccess') ?>" class="link row justify-content-center">Guest</a>
                             </div>
                         </div>
                     </div>

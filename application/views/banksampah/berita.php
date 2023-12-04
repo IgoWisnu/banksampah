@@ -10,20 +10,20 @@
         <style>
 
             .Container {
-                background: #557C55;
-                height: 1000px;
-                position: fixed;
+                background: #00926E;
+                height: 1000;
+                position: relative;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                overflow: hidden;
+
             }
 
 
             .Panel{
                 width: 380px;
-                height: 700px; 
+                height: 100vh; 
                 background: white;
                 margin-top: -100px;
                 border-top-left-radius: 30px; 
@@ -57,9 +57,8 @@
 
             .imagebe img {
                 width: 100%;
-                max-height: 100%;
-                display: block;
-                margin: auto;
+                height: 100%;
+
                 border-radius: 10px;
             }
 
@@ -68,8 +67,8 @@
                 text-decoration: none;
             }
 
-            .back-button {
-            background-color: #557C55;
+            .back-link {
+            background-color: #00926E;
             color: white;
             margin-left: 20px;
             margin-top: 20px;
@@ -79,35 +78,15 @@
             cursor: pointer;
             }
 
-            @media (min-width: 768px) {
-            .Container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #557C55;
-                background: url('img/Waste\ recycling\ Vectors\ &\ Illustrations\ for\ Free\ Download\ _\ Freepik\ 1@2x.png') center center fixed;
-                background-size: cover;
-            }
-
-            .Panel1 {
-                width: 0%;
-                height: 0%;
-                  
-            }
-
-            .Panel {
-                width: 50%;
-                height: auto;
-                margin-top: -260px;
-                border-radius: 30px;
-                overflow-y: auto;
-                max-height: 95vh;   
-            }
             
-            
-        
-        }
-            
+            @media screen and (max-width: 700px) {
+                .imagebe img{
+                width: 700px;
+                height: 700px;
+                margin: auto;
+                border-radius: 10px;
+                }
+            }
             
 
             
@@ -127,14 +106,12 @@
 
                         <div class="row justify-content-center">
                             <div class="Panel">
-                                <button class="back-button">Kembali</button>
-
-                                
+                                <a href="<?=base_url('home')?>" type="button" class="back-link">Kembali</a>
                                 <div class="tjudul">
                                     <?=$artikel['judul'] ?>
                                 </div>
                                 <div class="imagebe">
-                                    <img src="img/<?=$artikel['gambar'] ?>" alt="Image Description">
+                                    <img src="<?=base_url()?>img/<?=$artikel['gambar'] ?>" alt="Image Description">
                                 </div>
                                 <div class="tberita">
                                     <?=$artikel['deskripsi'] ?>

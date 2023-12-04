@@ -44,7 +44,7 @@
                 'username' => 'guest',
                 'role' => 'user'
             );
-            $this->session->userdata($sess);
+            $this->session->set_userdata($sess);
             redirect('home');
         }
 
