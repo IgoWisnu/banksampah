@@ -313,7 +313,7 @@
             beritaTableContainer.style.display = "none";
         };
         
-
+ 
     </script>
 
 </body>
