@@ -194,7 +194,7 @@
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">0</h3>
+                                <h3 class="fs-2"><?php echo $artikelCount; ?></h3>
                                 <p class="fs-5">Berita</p>
                             </div>
                             <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -258,6 +258,7 @@
                 <div id="berita-table-container" style="display: none;">
                     <div class="row my-5">
                         <h3 class="fs-4 mb-3">Berita</h3>
+                        
                         <div class="col">
                         <div class="row my-5">
                                     <div class="col">
@@ -265,13 +266,25 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col" width="50">No</th>
+                                                    <th scope="col">Judul</th>
                                                     <th scope="col">Gambar</th>
-                                                    <th scope="col">Teks</th>
+                                                    <th scope="col">deskripsi</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+                                            <?php foreach ($berita->result_array() as $key) { ?>
+                                                    <tr>
+                                                        <td><?php echo $key['id'] ?></td>
+                                                        <td><?php echo $key['judul'] ?></td>
+                                                        <td><?php echo $key['gambar'] ?></td>
+                                                        <td><?php echo $key['deskripsi'] ?></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-info">Edit</a>
+                                                            <a href="#" class="btn btn-danger">Delete</a>
+                                                        </td> 
+                                                    </tr>
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -280,6 +293,11 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="beritmake-table-container" style="display: none;">
+                    
+                </div>
+
             </div>
         </div>
     </div>

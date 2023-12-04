@@ -9,6 +9,8 @@
             $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
             $data['adminCount'] = $this->m_dashboard->getAdminCount();
             $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+            $data['berita'] = $this->m_dashboard->getBerita();
+            $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
 
     
             $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
