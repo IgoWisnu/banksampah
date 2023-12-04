@@ -267,6 +267,7 @@
                                                     <th scope="col" width="50">No</th>
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Teks</th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

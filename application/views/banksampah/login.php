@@ -55,22 +55,25 @@
     }
 
     .Username{
+        left: 25px;
         top: 70px; 
         position: relative; 
         color: #333333; 
-        font-size: 14px; 
+        font-size: 15px; 
         font-weight: 600; 
     }
 
     .Password{
+        left: 25px;
         top: 100px; 
         position: relative; 
         color: #333333; 
-        font-size: 14px;  
+        font-size: 15px;  
         font-weight: 600; 
     }
 
     .form-control{
+        width: 300px;
         border-width: 2px;
         border-color: black;
         padding: 11px;
@@ -94,10 +97,27 @@
         font-size: 5mm;
     }
 
-    .BelumPunyaAkunSignup{
+    .BelumPunyaAkun{
+        font-size: 15px;
+        margin-left: 15px;
         top: 210px; 
-        position: relative; 
-        text-align: center;
+        position: relative;
+    }
+
+    .stick{
+        left: -2px;
+        top: 217px;
+        height: 45px;
+        position: relative;
+        width: 1px;
+        background: black;
+    }
+
+    .InginJadiImigran{
+        font-size: 15px;
+        margin-right: 15px;
+        top: 210px; 
+        position: relative;
     }
 
     .link{
@@ -137,14 +157,14 @@
                         ?>
                         <div class="tLogin">Login</div>
         
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="Username w-75">Username
                                 <input type="text" class="form-control" name="username" placeholder="Masukkan Username">
                                 <small class="text-danger"><?= form_error('username') ?></small>
                             </div>
                         </div>
                     
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="Password w-75">Password
                                 <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
                                 <small class="text-danger"><?= form_error('password') ?></small>
@@ -154,13 +174,13 @@
                         <div class="row justify-content-center">
                             <input type="submit" class="tbLogin btn w-50 " value="Login"></input>
                         </div>
-                        <div class="row justify-content-center mt-1">
-                            <a class="btn btn-secondary w-50 ">guest</a>
-                        </div>
-                        <div class="row">
-                            <div class="BelumPunyaAkunSignup">
-                                <div>Belum Punya Akun?</div>
-                                <a href="auth/goRegister" class="link">SignUp</a>
+                        <div class="col d-flex justify-content-between ">
+                            <div class="BelumPunyaAkun row justify-content-center">Belum Punya Akun?<br>
+                                <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
+                            </div>
+                            <div class="stick"></div>
+                            <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
+                                <a href="auth/goRegister" class="link row justify-content-center">Guest</a>
                             </div>
                         </div>
                     </div>
