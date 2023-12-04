@@ -39,6 +39,15 @@
 
         }
 
+        public function guestAccess(){
+            $sess = array(
+                'username' => 'guest',
+                'role' => 'user'
+            );
+            $this->session->userdata($sess);
+            redirect('home');
+        }
+
         public function cekLogin(){
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -50,7 +59,7 @@
             if ($data->num_rows() == 1) {
                 $data = $data->result_array();
                 $sess = array(
-                    'id' => $data[0]['id'],
+                    'id' => $data[0]['id_user'],
                     'username' => $data[0]['username'],
                     'role' => $data[0]['role']
                 );

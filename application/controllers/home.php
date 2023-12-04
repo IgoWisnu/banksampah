@@ -10,6 +10,9 @@
             parent::__construct();
             $this->load->model('m_home');
             
+            if($this->session->userdata('role') == ''){
+                redirect('auth/login');
+            }
         }
         
     
@@ -31,7 +34,7 @@
             $this->load->model('m_artikel');
             $data['artikel'] = $this->m_artikel->getData();
 
-            //load balance saldo
+            //load user saldo
             $id = $this->session->userdata('id');
             $data['saldo'] = $this->m_home->loadData($id);
 

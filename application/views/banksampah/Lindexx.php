@@ -229,7 +229,7 @@
                                             <tbody>
                                                 <?php foreach ($user->result_array() as $key) { ?>
                                                     <tr>
-                                                        <td><?php echo $key['id'] ?></td>
+                                                        <td><?php echo $key['id_user'] ?></td>
                                                         <td><?php echo $key['username'] ?></td>
                                                         <td><?php echo $key['password'] ?></td>
                                                         <td><?php echo $key['nama_lengkap'] ?></td>
