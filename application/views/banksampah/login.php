@@ -154,6 +154,9 @@
                         <div class="row justify-content-center">
                             <input type="submit" class="tbLogin btn w-50 " value="Login"></input>
                         </div>
+                        <div class="row justify-content-center mt-1">
+                            <a class="btn btn-secondary w-50 ">guest</a>
+                        </div>
                         <div class="row">
                             <div class="BelumPunyaAkunSignup">
                                 <div>Belum Punya Akun?</div>

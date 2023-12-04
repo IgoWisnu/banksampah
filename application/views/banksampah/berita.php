@@ -120,7 +120,7 @@
                         <div class="row justify-content-center">
                             <div class="Panel1">
                                 <div class="imagebe">
-                                    <img src="img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="Image Description">
+                                    <img src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="Image Description">
                                 </div>
                             </div>
                         </div>
