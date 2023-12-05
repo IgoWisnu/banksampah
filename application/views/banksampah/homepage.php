@@ -219,12 +219,9 @@
       
       <div class="row justify-content-center">
         <div class="box col-9">
-
-          <div class="row">
-            <div class="LayText d-flex justify-content-between">
-              <div class="username"><?=$username ?></div>
-              <div class="gacor"><?=$saldo?></div>
-            </div>
+          <div class="LayText">
+            <div class="username row justify-content-center"><?=$username ?></div>
+            <div class="gacor row justify-content-center"><?=$saldo?></div>
           </div>
           
           <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
