@@ -9,23 +9,29 @@
   
 <style>
     
-.background{
+    .background{
     height: 1000px; 
-    background: #557C55;
+    background: #00926E;
+}
+
+.topImg{
+    width: 100%;
+    position: absolute;
 }
 
 .wrap{
     height: 800px; 
-    top: 185px; 
+    top: 255px; 
     position: absolute; 
     background: white; 
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px;
+    box-shadow: 0px px 10px rgba(0, 0, 0, 0.25); 
 }
 
 .box{
-    height: 180px; 
-    top: 120px; 
+    height: 195px; 
+    top: 210px; 
     position: absolute; 
     background: white; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
@@ -33,22 +39,24 @@
 }
 
 .username{
+    font-size: 20px;
     top: 10px;
     position: relative;
     font-weight: 650;
 }
 
 .gacor{
-    top: 10px;
+    font-size: 30px;
+    top: 16px;
     position: relative;
     font-weight: 650;
 }
 
 .t1{
-    top: 50px;
+    top: 35px;
     position: relative;
-    font-size: 80%;
-    font-weight: 400;
+    font-size: 85%;
+    font-weight: 500;
 }
 
 .t2{
@@ -66,7 +74,7 @@
 }
 
 .LayBtn1{
-    top: 70px;
+    top: 40px;
     position: relative;
 }
 
@@ -76,6 +84,7 @@
     background-color: #2868E5;
     border-radius: 30px;
     font-weight: 500;
+    font-size: 20px;
 }
 
 .btn2{
@@ -84,6 +93,7 @@
     background-color: #01C59E;
     border-radius: 30px;
     font-weight: 500;
+    font-size: 20px;
 }
 
 .layBtn3{
@@ -116,38 +126,54 @@
   font-size: 11px;
 }
 
-@media screen and (max-width: 315px){
-    .box{
-      height: 190px;
-    }
-    .btn3{
-      height: 150px;
-    }
+@media screen and (max-width: 335px) {
+  .box{
+    height: 180px;
+  }
+  .btn3{
+    height: 150px;
+  }
+  .LayBtn1{
+    top: 60px;
+  }
+  .username{
+  
+    font-size: 13px;
+  }
+
+  .gacor{
+    font-size: 13px;
+  }
+
+  .t1{
+    font-size: 65%;
+  }
 
 }
 
-@media screen and (max-width: 300px) {
-    .username{
-    
-    font-size: 13px;
-    }
-
-    .gacor{
-    font-size: 13px;
-    }
-    
-}
-
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 422px) {
     .wrap{
-    width: 500px;
+    width: 422px;
     }
 }
 
 @media screen and (min-width: 360px) {
     .box{
-    width: 300px;
+    width: 305px;
     }
+}
+
+@media screen and (max-width: 422px){
+  .topImg{
+    height: 281px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 300px){
+  .LayBtn1{
+    top: 50px;
+  }
+  
 }
 
 </style>
@@ -155,6 +181,9 @@
   <body>
 
     <div class="background">
+      <div class="col">
+        <img class="topImg" src="Waste recycling Vectors & Illustrations for Free Download _ Freepik 1.png" alt="">
+      </div>
 
       <div class="col">
         <div class="row justify-content-center">
