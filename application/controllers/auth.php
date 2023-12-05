@@ -39,6 +39,11 @@
 
         }
 
+        public function logout(){
+            session_destroy();
+            redirect('auth');
+        }
+
         public function guestAccess(){
             $sess = array(
                 'username' => 'guest',

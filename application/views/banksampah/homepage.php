@@ -112,6 +112,10 @@
   font-weight: 300;
 }
 
+.text-artikel{
+  font-size: 11px;
+}
+
 @media screen and (max-width: 315px){
     .box{
       height: 190px;
@@ -167,11 +171,15 @@
             </div>
 
             <div class="t3 ms-5">Artikel Terkini</div>
-            <div class="layCard row d-flex justify-content-start border-0 ms-5">
+            <div class="layCard row d-flex justify-content-start border-0 ms-4">
               <?php foreach($artikel as $key): ?>
-                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="c1 card col-3 me-2">
-                  <img src="<?=base_url()?>img/email.png" alt="">
-                  <p class="text-small"><?=$key['judul'] ?></p>
+                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="c1 col-6 col-lg-4">
+                  <div class="card shadow">
+                    <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
+                    <div class="card-body">
+                      <p class="text-unstyled" ><?=$key['judul'] ?></p>
+                    </div>
+                  </div>
                 </a>
               <?php endforeach; ?>
             </div>
