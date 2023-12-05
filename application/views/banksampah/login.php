@@ -110,6 +110,8 @@
         height: 45px;
         position: relative;
         width: 1px;
+        margin-right: -5px;
+        margin-left: -5px;
         background: black;
     }
 
@@ -174,13 +176,12 @@
                         <div class="row justify-content-center">
                             <input type="submit" class="tbLogin btn w-50 " value="Login"></input>
                         </div>
-
                         <div class="col d-flex justify-content-between ">
                             <div class="BelumPunyaAkun row justify-content-center">Belum Punya Akun?<br>
                                 <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
                             </div>
                             <div class="stick"></div>
-                            <div class="InginJadiImigran row justify-content-center">Masuk Sebagai Guest!<br>
+                            <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
                                 <a href="auth/goRegister" class="link row justify-content-center">Guest</a>
                             </div>
                         </div>

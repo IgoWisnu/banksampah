@@ -39,6 +39,20 @@
 
         }
 
+        public function logout(){
+            session_destroy();
+            redirect('auth');
+        }
+
+        public function guestAccess(){
+            $sess = array(
+                'username' => 'guest',
+                'role' => 'user'
+            );
+            $this->session->set_userdata($sess);
+            redirect('home');
+        }
+
         public function cekLogin(){
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -50,13 +64,17 @@
             if ($data->num_rows() == 1) {
                 $data = $data->result_array();
                 $sess = array(
-                    'id' => $data[0]['id'],
+                    'id' => $data[0]['id_user'],
                     'username' => $data[0]['username'],
                     'role' => $data[0]['role']
                 );
                 $this->session->set_userdata($sess);
                 $this->session->set_flashdata('alert','login berhasil!');
-                redirect('home');
+                if($sess['role'] == 'admin'){
+                    redirect('dashboard');
+                } else{
+                    redirect('home');
+                }
             }else{
                 echo 'login failed';
                 echo "$username".$password."dasad";

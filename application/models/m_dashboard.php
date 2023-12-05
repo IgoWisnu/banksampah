@@ -20,6 +20,16 @@ class m_dashboard extends CI_Model {
         $count = $this->db->count_all('user');
         return $count;
     }
+
+    public function getBerita(){
+        $data = $this->db->get('artikel'); 
+        return $data;
+    }
+
+    public function getArtikelCount(){
+        $count = $this->db->count_all('artikel');
+        return $count;
+    }
     
 
 }

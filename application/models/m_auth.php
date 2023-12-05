@@ -77,6 +77,7 @@
 
         public function add(){
             $kode = random_string('alnum', 20);
+            $role = 'user';
             $data = array(
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
@@ -85,6 +86,7 @@
                 'tanggal_lahir' => $this->input->post('tanggal_lahir'),
                 'alamat' => $this->input->post('alamat'),
                 'notelp' => $this->input->post('notelp'),
+                'role' => $role,
                 'kode_verif' => $kode,
                 'email' => $this->input->post('email'),
                 'isVerif' => 0
