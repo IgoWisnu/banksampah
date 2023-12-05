@@ -70,7 +70,11 @@
                 );
                 $this->session->set_userdata($sess);
                 $this->session->set_flashdata('alert','login berhasil!');
-                redirect('home');
+                if($sess['role'] == 'admin'){
+                    redirect('dashboard');
+                } else{
+                    redirect('home');
+                }
             }else{
                 echo 'login failed';
                 echo "$username".$password."dasad";
