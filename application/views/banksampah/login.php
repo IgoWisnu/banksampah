@@ -182,7 +182,7 @@
                             </div>
                             <div class="stick"></div>
                             <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
-                                <a href="auth/goRegister" class="link row justify-content-center">Guest</a>
+                                <a href="<?=base_url('auth/guestAccess') ?>" class="link row justify-content-center">Guest</a>
                             </div>
                         </div>
                     </div>
