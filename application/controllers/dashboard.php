@@ -39,6 +39,11 @@
             $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
         }
 
+        public function deleteb($id){
+            $this->m_dashboard->deleteData($id); 
+            redirect('dashboard');
+        }
+
 
     
     }

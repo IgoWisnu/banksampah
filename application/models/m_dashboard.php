@@ -35,6 +35,11 @@ class m_dashboard extends CI_Model {
         // Masukkan data ke dalam tabel artikel
         $this->db->insert('artikel', $data);
     }
+
+    public function deleteData($id){
+        $this->db->where('id', $id);
+        $this->db->delete('artikel');
+    }
     
 
 }

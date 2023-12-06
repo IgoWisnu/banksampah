@@ -268,6 +268,7 @@
                             
                             <div id="form-tambah-berita" style="display: none;">
                                 <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
+
                                     <div class="mb-3">
                                         <label for="judulBerita" class="form-label">Judul Berita</label>
                                         <input type="text" class="form-control" id="judulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
@@ -306,7 +307,7 @@
                                                             <td><?php echo $key['deskripsi'] ?></td>
                                                             <td>
                                                                 <a href="#" class="btn btn-info">Edit</a>
-                                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                                <a href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>" class="btn btn-danger">Delete</a>
                                                             </td> 
                                                         </tr>
                                                     <?php } ?>
