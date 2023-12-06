@@ -256,7 +256,7 @@
                                     </div>
                                         
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                     <div id="berita-table-container" style="display: none;">
