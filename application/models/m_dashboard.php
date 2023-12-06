@@ -30,6 +30,11 @@ class m_dashboard extends CI_Model {
         $count = $this->db->count_all('artikel');
         return $count;
     }
+
+    public function insertBerita($data) {
+        // Masukkan data ke dalam tabel artikel
+        $this->db->insert('artikel', $data);
+    }
     
 
 }
