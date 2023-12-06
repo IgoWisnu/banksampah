@@ -180,8 +180,45 @@
              } else{
                  Return "email gagal terkirim";
              }
+
         }
-        
+                
+        public function registerTabungan($id){
+            date_default_timezone_set('Asia/Manila');
+            $data = array(
+                'id_user_nasabah' => $id,
+                'no_rekening' => '0012'.$id,
+                'tgl_buka_rekening' => date('y-m-d')
+            );
+
+            $result = $this->db->insert('tabungan', $data);
+            return $result;
+        }
+
+        public function registerSaldo($id){
+            $query = $this->db->get_where('saldo', array('id_user' => $id));
+            if($query->num_rows() == 0){
+                $data = array(
+                    'id_user' => $id,
+                    'saldo' => 0
+                );
+                $result = $this->db->insert('saldo', $data);
+                return $result;
+            } else {
+                return null;
+            }
+        }
+
+        public function getUser($token){
+            $query = $this->db->get_where('user', array('kode_verif' => $token));
+            if ($query->num_rows() > 0) {
+                $result = $query->row_array();
+                return $result['id_user'];
+            } else {
+                // Record not found
+                return null;
+            }
+        }
     
     }
     
