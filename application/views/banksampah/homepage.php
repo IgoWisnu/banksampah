@@ -220,7 +220,7 @@
       <div class="row justify-content-center">
         <div class="box col-9">
           <div class="LayText">
-            <div class="username row justify-content-center"><?=$username ?></div>
+            <div class="username row justify-content-center"><?=$username?></div>
             <div class="gacor row justify-content-center"><?=$saldo?></div>
           </div>
           

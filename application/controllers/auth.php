@@ -88,12 +88,21 @@
         public function verify() {
             $token = $this->input->get('token');
             $verifyCheck = $this->m_auth->verify($token);
+
             if ($verifyCheck){
-                $this->session->set_flashdata('alert','Verifikasi berhasil'); 
-                redirect('auth/login');
+                $userId = $this->m_auth->getUser($token);
+                $bukaTabungan = $this->m_auth->registerTabungan($userId);
+                $bukaSaldo = $this->m_auth->registerSaldo($userId);
+                if($bukaTabungan AND $bukaSaldo){
+                    $this->session->set_flashdata('alert','Verifikasi berhasil'); 
+                    redirect('auth/login');
+                } else{
+                    $this->session->set_flashdata('alert','Terjadi masalah pada sistem'); 
+                    redirect('dashboard');
+                }
             } else{
                 $this->session->set_flashdata('alert','Verifikasi gagal');
-                redirect('auth/login');
+                redirect('auth/register');
             }
         }
         
