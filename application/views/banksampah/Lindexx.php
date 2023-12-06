@@ -256,15 +256,34 @@
                                     </div>
                                         
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                     <div id="berita-table-container" style="display: none;">
                         <div class="row my-5">
                             <h3 class="fs-4 mb-3">Berita</h3>
                             <div class="d-flex justify-content-start mb-3">
-                                <button type="button" class="btn btn-success mb-3">Tambah Berita</button>
+                                <button type="button" class="btn btn-success mb-3" onclick="tampilkanFormTambahBerita()">Tambah Berita</button>
                             </div>
+                            
+                            <div id="form-tambah-berita" style="display: none;">
+                                <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="judulBerita" class="form-label">Judul Berita</label>
+                                        <input type="text" class="form-control" id="judulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gambarBerita" class="form-label">Upload Gambar Berita</label>
+                                        <input type="file" class="form-control" id="gambarBerita" name="gambarBerita" accept="image/*">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
+                                        <textarea class="form-control" id="deskripsiBerita" name="deskripsiBerita" rows="3" placeholder="Masukkan Deskripsi"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                </form>
+                             </div>
+
                             <div class="col">
                             <div class="row my-1">
                                         <div class="col">
@@ -422,6 +441,24 @@
                 beritaTableContainer.style.display = "none";
                 setorTableContainer.style.display = "none";
             };
+
+            function tampilkanFormTambahBerita() {
+                var formTambahBerita = document.getElementById("form-tambah-berita");
+                formTambahBerita.style.display = "block";
+            }
+
+            function tambahBerita() {
+                // Ambil nilai dari input form tambah berita
+                var judulBerita = document.getElementById("judulBerita").value;
+                var gambarBerita = document.getElementById("gambarBerita").value;
+                var deskripsiBerita = document.getElementById("deskripsiBerita").value;
+
+                // Lakukan sesuatu dengan data berita, misalnya simpan ke database
+
+                // Sembunyikan kembali form tambah berita
+                var formTambahBerita = document.getElementById("form-tambah-berita");
+                formTambahBerita.style.display = "none";
+            }
             
     
         </script>

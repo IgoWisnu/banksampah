@@ -184,10 +184,11 @@
         }
                 
         public function registerTabungan($id){
+            date_default_timezone_set('Asia/Manila');
             $data = array(
                 'id_user_nasabah' => $id,
-                'no_rekening' => 0012+$id,
-                'tgl_buka_rekening' => 'NOW()'
+                'no_rekening' => '0012'.$id,
+                'tgl_buka_rekening' => date('y-m-d')
             );
 
             $result = $this->db->insert('tabungan', $data);
