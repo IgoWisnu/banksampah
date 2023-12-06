@@ -17,6 +17,7 @@
 .topImg{
     width: 100%;
     position: absolute;
+    transition: opacity 1000ms ease-in-out;
 }
 
 .wrap{
@@ -158,13 +159,22 @@
   
 }
 
+@media screen and (min-width: 700px) {
+    .topImg{
+      opacity: 0;
+    }
+    .background{
+      background: linear-gradient(white,#00926E,#00926E );
+    }
+  }
+
 </style>
 
   <body>
 
     <div class="background">
         <div class="col">
-            <img class="topImg" src="Waste recycling Vectors & Illustrations for Free Download _ Freepik 1.png" alt="">
+            <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
         </div>
 
         <div class="col">
@@ -172,7 +182,7 @@
                 <div class="wrap">
                   <div class="layBtn">
                     <a class="btn" type="button" href="">
-                      <img class="arrow" src="aKembali.png" alt="">Kembali
+                      <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
                     </a>
                   </div>
                   <div class="t1 row justify-content-center">Riwayat Transaksi</div>
@@ -184,7 +194,7 @@
 
                       <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
-                          <img class="arrow2" src="atarik.png" alt="">
+                          <img class="arrow2" src="<?=base_url()?>img/aTarik.png" alt="">
                           <div class="date">21 Nov 2023</div>
                         </div>
                         <div class="layText1">
@@ -202,7 +212,7 @@
 
                       <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
-                          <img class="arrow3" src="aSetor.png" alt="">
+                          <img class="arrow3" src="<?=base_url()?>img/aSetor.png" alt="">
                           <div class="date">21 Nov 2023</div>
                         </div>
                         <div class="layText2">
