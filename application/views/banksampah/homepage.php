@@ -257,9 +257,9 @@
           <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
           <div class="LayBtn1 d-flex justify-content-center">
             <a href="" class="btn1 btn ms-2 me-1" type="button">Setor
-              <img class="imgSetor" src="<?=base_url()?>img/aSetor.png" alt=""></a>
+              <img class="imgSetor" src="<?=base_url()?>img/Setor.png" alt=""></a>
             <a href="" class="btn2 btn me-2" type="button">Tarik
-              <img class="imgTarik" src="<?=base_url()?>img/aTarik.png" alt=""></a>
+              <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt=""></a>
           </div>
             
         </div>
