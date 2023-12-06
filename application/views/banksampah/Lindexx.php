@@ -66,6 +66,7 @@
 
         #sidebar-wrapper .list-group {
         width: 15rem;
+        
         }
 
         #page-content-wrapper {
@@ -122,7 +123,7 @@
                             class="fas fa-user fa-beat me-2"></i>Nasabah</a>
                     <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                             class="fas fa-chart-line me-2"></i>Berita</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
+                    <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
                             class="fas fa-arrow-up me-2"></i>Setor</a>                        
                     <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                             class="fas fa-arrow-down me-2"></i>Tarik</a>
@@ -232,7 +233,7 @@
                                                 <tbody>
                                                     <?php foreach ($user->result_array() as $key) { ?>
                                                         <tr>
-                                                            <td><?php echo $key['id_user'] ?></td>
+                                                            <td><?php echo $key['id'] ?></td>
                                                             <td><?php echo $key['username'] ?></td>
                                                             <td><?php echo $key['password'] ?></td>
                                                             <td><?php echo $key['nama_lengkap'] ?></td>
@@ -298,6 +299,76 @@
                             </div>
                         </div>
                     </div>
+                                                        
+
+                    <div id="setor-table-container">
+                        <div class="row my-5">
+                            <h3 class="fs-4 mb-3">Setor</h3>
+                            
+                            <!-- Textfield 1 -->
+                            <div class="col-md-4 mb-3">
+                                <label for="textfield1" class="form-label">ID Nasabah</label>
+                                <input type="text" class="form-control" id="textfield1" placeholder="Masukan Nomor">
+                            </div>
+
+                            <!-- Textfield 2 -->
+                            <div class="col-md-4 mb-3">
+                                <label for="textfield2" class="form-label">Nama Nasabah</label>
+                                <input type="text" class="form-control" id="textfield2" placeholder="Masukkan Nama">
+                            </div>
+
+                            <!-- Textfield 2 -->
+                            <div class="col-md-4 mb-3">
+                                <label for="textfield2" class="form-label">berat sampah</label>
+                                <input type="text" class="form-control" id="textfield2" placeholder="Masukkan berat">
+                            </div>
+
+                            <!-- Dropdown -->
+                            <div class="col-md-4 mb-3">
+                                <label for="dropdown" class="form-label">Pilih Sampah</label>
+                                <select class="form-select" id="dropdown">
+                                    <option value="option1">Opsi 1</option>
+                                    <option value="option2">Opsi 2</option>
+                                    <option value="option3">Opsi 3</option>
+                                </select>
+                            </div>
+
+                            <!-- Tombol Setor -->
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-success">Setor</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="fs-4 mb-3">Riwayat Setor</h3>
+                                <table class="table bg-white rounded shadow-sm  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Nasabah</th>
+                                            <th>Nama</th>
+                                            <th>Jenis Sampah</th>
+                                            <th>Total Harga</th>
+                                            <th>Invoice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data setoran akan ditambahkan di sini -->
+                                        <!-- Contoh data setoran -->
+                                        <tr>
+                                            <td>1</td>
+                                            <td>John Doe</td>
+                                            <td>Kertas</td> 
+                                            <td>Rp.10</td>
+                                            <td><a href="#" class="btn btn-info">Lihat</a></td>
+                                        </tr>
+                                        <!-- End contoh data setoran -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>  
+
 
                     <div id="beritmake-table-container" style="display: none;">
                         
@@ -315,8 +386,10 @@
             var dashboardLink = document.getElementById("dashboard-link");
             var nasabahLink = document.getElementById("nasabah-link");
             var beritaLink = document.getElementById("berita-link");
+            var setorLink = document.getElementById("setor-link");
             var nasabahTableContainer = document.getElementById("nasabah-table-container");
             var beritaTableContainer = document.getElementById("berita-table-container");
+            var setorTableContainer = document.getElementById("setor-table-container");
 
             toggleButton.onclick = function () {
                 el.classList.toggle("toggled");
@@ -325,16 +398,29 @@
             nasabahLink.onclick = function () {
                 nasabahTableContainer.style.display = "block";
                 beritaTableContainer.style.display = "none";
+                setorTableContainer.style.display = "none";
             };
 
             beritaLink.onclick = function () {
                 beritaTableContainer.style.display = "block";
                 nasabahTableContainer.style.display = "none";
+                setorTableContainer.style.display = "none";
             };
+
+            setorLink.onclick = function () {
+                setorTableContainer.style.display = "block";
+                nasabahTableContainer.style.display = "none";
+                beritaTableContainer.style.display = "none";
+            };
+
+            nasabahTableContainer.style.display = "none";
+            beritaTableContainer.style.display = "none";
+            setorTableContainer.style.display = "none";
 
             dashboardLink.onclick = function () {
                 nasabahTableContainer.style.display = "none";
                 beritaTableContainer.style.display = "none";
+                setorTableContainer.style.display = "none";
             };
             
     
