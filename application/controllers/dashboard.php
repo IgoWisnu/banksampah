@@ -11,9 +11,11 @@
         
             public function tambahBerita() {
                 // Ambil data dari form
+                
                 $judulBerita = $this->input->post('judulBerita');
                 $gambarBerita = !empty($_FILES['gambarBerita']['name']) ? $_FILES['gambarBerita']['name'] : NULL;
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
+                $upload_path = "Upload/up/";
         
                 // Simpan ke database (gunakan method model)
                 $data = array(
@@ -22,6 +24,7 @@
                     'deskripsi' => $deskripsiBerita
                 );
                 $this->m_dashboard->insertBerita($data);
+                
         
                 // Redirect atau tampilkan pesan sukses
                 redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
