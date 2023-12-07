@@ -303,7 +303,10 @@
                                                         <tr>
                                                             <td><?php echo $key['id'] ?></td>
                                                             <td><?php echo $key['judul'] ?></td>
-                                                            <td><?php echo $key['gambar'] ?></td>
+                                                            <td>
+                                                                <!-- Menampilkan gambar dengan menggunakan tag img -->
+                                                                <img src="<?php echo base_url('uploads/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
+                                                            </td>
                                                             <td><?php echo $key['deskripsi'] ?></td>
                                                             <td>
                                                                 <a href="#" class="btn btn-info">Edit</a>

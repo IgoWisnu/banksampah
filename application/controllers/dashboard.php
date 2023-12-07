@@ -11,24 +11,38 @@
         
             public function tambahBerita() {
                 // Ambil data dari form
-                
                 $judulBerita = $this->input->post('judulBerita');
-                $gambarBerita = !empty($_FILES['gambarBerita']['name']) ? $_FILES['gambarBerita']['name'] : NULL;
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
-                $upload_path = "Upload/up/";
-        
-                // Simpan ke database (gunakan method model)
-                $data = array(
-                    'judul' => $judulBerita,
-                    'gambar' => $gambarBerita,
-                    'deskripsi' => $deskripsiBerita
-                );
-                $this->m_dashboard->insertBerita($data);
-                
-        
-                // Redirect atau tampilkan pesan sukses
-                redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
+            
+                // Konfigurasi upload
+                $config['upload_path'] = "./uploads/up"; // Path to the upload folder
+                $config['allowed_types'] = 'gif|jpg|png';  // Allowed file types
+                $config['max_size'] = 2048;  // Maximum file size in KB
+            
+                $this->load->library('upload', $config);
+            
+                if (!$this->upload->do_upload('gambarBerita')) {
+                    // Handle upload error, if any
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);  // You might want to handle this more gracefully in a production environment
+                } else {
+                    // Upload successful, get the uploaded file data
+                    $upload_data = $this->upload->data();
+                    $gambarBerita = $upload_data['file_name'];  // Get the uploaded file name
+            
+                    // Simpan ke database
+                    $data = array(
+                        'judul' => $judulBerita,
+                        'gambar' => $gambarBerita,
+                        'deskripsi' => $deskripsiBerita
+                    );
+                    $this->m_dashboard->insertBerita($data);
+            
+                    // Redirect atau tampilkan pesan sukses
+                    redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
+                }
             }
+            
 
         public function index(){
             $this->load->model('m_dashboard');  // Load the model
