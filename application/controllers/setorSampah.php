@@ -15,8 +15,8 @@
     
         public function index()
         {
-            $this->load->view('banksampah/setor');
-            
+            $data['option'] = $this->m_setor->loadSelect();
+            $this->load->view('banksampah/setor', $data);
         }
 
         public function setor(){
@@ -47,6 +47,48 @@
                 }
             }
             echo $output;
+        }
+
+        public function insert_data() {
+            $trSampah = array(
+                'id_user_staff' => $this->session->userdata('id'),
+                'id_user_nasabah' => $this->input->post('id_user'),
+                'tgl_transaksi' => date('y-m-d')
+            );
+            $id = $this->m_setor->insertData($trSampah);
+
+            $DtSampah = array(
+                'id_transaksi_sampah' => $id,
+                'id_jenis_sampah' => $this->input->post('id_jenis_sampah'),
+                'total_harga' => $this->input->post('total_harga'),
+                'berat_sampah' => $this->input->post('berat_sampah')
+            );
+        }
+
+        public function kalkulasi(){
+            //insert data to table transaksi_sampah
+            $id_transaksi = $this->m_setor->insertSampah();
+        
+            // insert data to table transaksi_sampahdetail
+            $this->m_setor->insertDtSampah($id_transaksi);
+
+            //update total transaksi in transaksi_sampah
+            $total = $this->m_setor->updateTotal($id_transaksi);
+
+            //insert data to table tabungan_transaksi
+            $this->m_setor->insertTabungan($id_transaksi, $total);
+
+            //update data in table saldo
+            $this->m_setor->updateDebitSaldo($total);
+        }
+
+        public function hitungHarga(){
+            $id = $this->input->post('id');
+            $berat = $this->input->post('berat');
+
+            $harga = $this->m_setor->cariHarga($id);
+            $total = $harga * $berat;
+            echo $total;
         }
     }
     
