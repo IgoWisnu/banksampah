@@ -8,9 +8,10 @@
   </head>
   
   <style>
-    .Container{
-        background: #557C55;
+    .background{
+        background: #;
         height: 1000px;
+        background: #00926E;
     }
 
     .Panel{
@@ -84,11 +85,11 @@
         border-radius: 5mm;
         top: 180px;
         position: relative;
-        background-color: #557C55;
+        background-color: #00926E;
     }
 
     .btn:hover{
-        background-color: #557C55;
+        background-color: #00926E;
     }
 
     .tbLogin{
@@ -125,13 +126,21 @@
     .link{
         text-decoration: none;
     }
+
+    @media screen and (min-width: 700px) {
+    
+        .background{
+            background: rgb(0,146,110);
+            background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+        }
+    }
   </style>
 
   <body>
         <?php
             
         ?>
-            <div class="Container col justify-content-center">
+            <div class="background col justify-content-center">
                 
                 <div class="row justify-content-center">
                     <div class="SelamatDatangKembali">
