@@ -56,6 +56,7 @@
   .coin{
     top: 10px;
     position: relative;
+    margin-right: 5px;
   }
 
   .t1{
@@ -196,7 +197,8 @@
       opacity: 0;
     }
     .background{
-      background: linear-gradient(white,#00926E,#00926E );
+            background: rgb(0,146,110);
+            background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
     }
   }
 
