@@ -5,6 +5,8 @@
             <meta charset="UTF-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+            <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -120,6 +122,25 @@
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
+            }
+
+            .ql-editor {
+                background-color: white !important;
+                border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+                min-height: 150px; /* Adjust the height as needed */
+            }
+
+            /* Add this style to set the background of the Quill toolbar to white */
+            .ql-toolbar {
+                background-color: white !important;
+            }
+
+            /* Additional styling for better appearance */
+            #editor {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                margin-top: 8px;
+                margin-bottom: 16px;
             }
 
 
@@ -263,11 +284,6 @@
                             </div> 
                         </div>
 
-                        <div id="popup-container" class="popup-container">
-                            <button class="btn btn-danger exit-btn" onclick="tutupPopup()">Exit</button>
-                            
-                        </div>
-
 
 
                         <div id="berita-table-container" style="display: none;">
@@ -290,7 +306,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
-                                            <textarea class="form-control" id="deskripsiBerita" name="deskripsiBerita" rows="3" placeholder="Masukkan Deskripsi"></textarea>
+                                            <div id="editor"></div>
+                                            <input type="hidden" id="deskripsiBerita" name="deskripsiBerita">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Tambah</button>
                                     </form>
@@ -413,7 +430,7 @@
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-            <script>
+<script>
                 var el = document.getElementById("wrapper");
                 var toggleButton = document.getElementById("menu-toggle");
                 var dashboardLink = document.getElementById("dashboard-link");
@@ -473,19 +490,18 @@
                     var formTambahBerita = document.getElementById("form-tambah-berita");
                     formTambahBerita.style.display = "none";
                 }
-
-                    function tampilkanDetailNasabah(userId) {
-                        // Here, you can fetch and display details for the specific user if needed.
-                        // For simplicity, I'm just showing an empty popup for demonstration purposes.
-
-                        // Display the popup container
-                        $("#popup-container").show();
-                    }
-                    function tutupPopup() {
-                        // Hide the popup container
-                        $("#popup-container").hide();
-                    }
                 
+                    var quill = new Quill('#editor', {
+                        theme: 'snow',
+                        placeholder: 'Masukkan Deskripsi',
+                    });
+
+                    // Add an event listener to update the hidden input when the content changes
+                    quill.on('text-change', function() {
+                        var htmlContent = quill.root.innerHTML;
+                        document.getElementById('deskripsiBerita').value = htmlContent;
+
+                    });
 
                 
                 
