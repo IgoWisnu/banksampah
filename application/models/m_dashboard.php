@@ -41,6 +41,19 @@ class m_dashboard extends CI_Model {
         $this->db->delete('artikel');
     }
     
+    public function getBeritaById($id) {
+        $this->db->where('id', $id);
+        $data = $this->db->get('artikel')->row_array();
+        return $data;  
+    }
+
+    public function updateBerita($id, $data) {
+        // Fungsi untuk mengupdate berita berdasarkan ID
+        $this->db->where('id', $id);
+        $this->db->update('artikel', $data);
+    }
+    
+    
 
 }
 
