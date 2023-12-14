@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
+    <style>
+        .center {
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px;
+        }
+        .container {
+      background-color: #fff;
+        }
+        .input {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+    }
+    </style>
 </head>
+
 <body>
-    <h2 class="center">Live Data Search in Codeigniter using Ajax JQuery</h2><br />
+    <h2 class="center">Data Search</h2>
+    <br />
     <div class="container">
         <div class="row">
-         <div class="input-group col-6">
-         
-          <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
-         </div>
-         <div class="result" id="result">
-      
-         </div>
-         <br>
+            <div class="input-group col-6">
+                <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+            </div>
+            <div class="result" id="result"></div>
+            <br>
         </div>
         <br>
         <h3>Input Sampah</h3>
-        <div class="input bg-secondary py-3 px-3 rounded" >
-            <form action="<?=base_url()?>setorSampah/kalkulasi" method="post" id="add_form">
-            <div class="row g-3 align-items-center mb-3">
-                <!-- Data User -->
-                <div class="col-auto">
-                    <label for="userid" class="form-label">ID</label>
-                    <input type="text" name="id_user" id="userid" class="form-control" readonly>
-                </div>
+        <div class="input py-3 px-3 rounded">
+            <form action="<?= base_url() ?>setorSampah/kalkulasi" method="post" id="add_form">
+                <div class="row g-3 align-items-center mb-3">
+                    <!-- Data User -->
+                    <div class="col-auto">
+                        <label for="userid" class="form-label">ID</label>
+                        <input type="text" name="id_user" id="userid" class="form-control" readonly>
+                    </div>
                     <div class="col-auto">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" name="username" id="username" class="form-control" readonly>
@@ -37,30 +51,40 @@
                 </div>
 
                 <!-- Data Sampah -->
-                <div class="" id="show_item">
-                    <div class="row my-2" id="show_item">
-                        <div class="col-5">
-                            <select name="id_jenis_sampah[]" class="form-select id_jenis_sampah">
-                                <?php foreach($option->result_array() as $key){ ?>
-                                    <option value="<?=$key['id']?>"><?=$key['jenis_sampah']?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-3">
-                            <input type="number" name="berat_sampah[]" id="berat_sampah[]" class="form-control berat_sampah">
-                        </div>
-                        <div class="col-2 preview">
-                            <input type="number" name="harga_sampah[]" id="harga_sampah[]" class="form-control harga_sampah" readonly></input>
-                        </div>
-                        <div class="col-2">
-                            <div class="btn btn-success" id="add_btn" name="add_btn">Add</div>
-                        </div>
+                <div class="row my-2" id="show_item">
+                    <div class="col-5">
+                        <select name="id_jenis_sampah[]" class="form-select id_jenis_sampah">
+                            <?php foreach ($option->result_array() as $key) { ?>
+                                <option value="<?= $key['id'] ?>"><?= $key['jenis_sampah'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="berat_sampah[]" class="form-control berat_sampah">
+                    </div>
+                    <div class="col-2 preview">
+                        <input type="number" name="harga_sampah[]" class="form-control harga_sampah" readonly>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success add_btn" name="add_btn">Add</button>
                     </div>
                 </div>
                 <div class="">
                     <input type="submit" class="btn btn-primary">
                 </div>
             </form>
+            <table class="table table-bordered mt-5" id="datatable">
+            
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Nasabah</th>
+            <th>Jenis Kelamin</th>
+            <th>Tanggal Masuk</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
         </div>
     </div>
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
