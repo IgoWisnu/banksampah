@@ -34,6 +34,8 @@
         }
 
         public function insertSampah(){
+            
+
             $data = array(
                 'id_user_staff' => $this->session->userdata('id'),
                 'id_user_nasabah' => $this->input->post('id_user'),
@@ -68,6 +70,7 @@
         }
 
         public function insertTabungan($id, $total){
+
             $data = array(
                 'id_transaksi_sampah' => $id,
                 'id_user_staff' => $this->session->userdata('id'),

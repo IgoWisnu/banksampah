@@ -9,7 +9,6 @@
   
   <style>
     .background{
-        background: #;
         height: 1000px;
         background: #00926E;
     }

@@ -189,9 +189,9 @@
                   <div class="t1 row justify-content-center">Riwayat Transaksi</div>
                   
 
-
+                  <?php foreach($riwayat->result_array() as $key){ ?>
                   <div class="row justify-content-center">
-                    <a href="" class="laycard card col-10" type="button">
+                    <a href="" class="laycard2 card col-10" type="button">
 
                       <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -208,23 +208,7 @@
                     </a>
                   </div>
 
-                  <div class="row justify-content-center">
-                    <a href="" class="laycard2 card col-10" type="button">
-
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
-                          <img class="arrow3" src="<?=base_url()?>img/aSetor.png" alt="">
-                          <div class="date">21 Nov 2023</div>
-                        </div>
-                        <div class="layText2">
-                          <div class="nominal2">+Rp.100.000</div>
-                          <div class="keterangan2">Kertas <br> Kulkas <br> Beton</div>
-                        </div>
-                      </div>
-                      
-                      
-                    </a>
-                  </div>
+                  <?php } ?>
 
                   <div class="row justify-content-end">
                     <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
