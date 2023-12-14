@@ -42,6 +42,58 @@
                     redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
                 }
             }
+
+            public function updateBerita() {
+                // Ambil data dari form
+                $id = $this->input->post('id');
+                $judulBerita = $this->input->post('judulBerita');
+                $deskripsiBerita = $this->input->post('deskripsiBerita');
+        
+                // Konfigurasi upload (jika diperlukan)
+                $config['upload_path'] = "./uploads";
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 2048;
+        
+                $this->load->library('upload', $config);
+        
+                // Cek apakah ada file gambar yang diupload
+                if ($_FILES['gambarBerita']['name']) {
+                    // Lakukan proses upload gambar
+                    if (!$this->upload->do_upload('gambarBerita')) {
+                        // Handle upload error, if any
+                        $error = array('error' => $this->upload->display_errors());
+                        print_r($error);  // Handle this more gracefully in a production environment
+                        return;
+                    }
+        
+                    // Upload successful, get the uploaded file data
+                    $upload_data = $this->upload->data();
+                    $gambarBerita = $upload_data['file_name'];
+                } else {
+                    // Jika tidak ada file yang diupload, gunakan gambar yang sudah ada
+                    $gambarBerita = $this->input->post('gambarBerita_existing');
+                }
+        
+                // Simpan ke database
+                $data = array(
+                    'judul' => $judulBerita,
+                    'gambar' => $gambarBerita,
+                    'deskripsi' => $deskripsiBerita
+                );
+        
+                $this->m_dashboard->updateBerita($id, $data);
+        
+                // Redirect atau tampilkan pesan sukses
+                redirect('dashboard');
+            }
+
+            public function tampilkanTabelNasabah() {
+                $data['user'] = $this->m_dashboard->getData(); // Mengambil data nasabah dari model
+            
+                // Load view yang menampilkan tabel nasabah
+                $this->load->view('banksampah/tnasabah', $data);
+            }
+            
             
 
         public function index(){
@@ -59,6 +111,11 @@
         public function deleteb($id){
             $this->m_dashboard->deleteData($id); 
             redirect('dashboard');
+        }
+
+        public function editberita($id){
+            $data['artikel'] = $this->m_dashboard->getBeritaById($id);
+            $this->load->view('banksampah/edit_berita', $data);
         }
 
 

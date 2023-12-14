@@ -10,6 +10,9 @@
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
             <title>Admin Dashboard</title>
         </head>
 
@@ -270,7 +273,8 @@
                                                             <td><?php echo $key['tanggal_lahir'] ?></td>
                                                             <td><?php echo $key['email'] ?></td>
                                                             <td>
-                                                                <button class="btn btn-info" onclick="tampilkanDetailNasabah(<?php echo $key['id_user']; ?>)">Detail</button>
+                                                            <a href="#" id="nasabahd-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                                                class="fas fa-user fa-beat me-2"></i>Detail</a>
                                                             </td>
 
                                                         </tr>
@@ -284,7 +288,25 @@
                             </div> 
                         </div>
 
-
+                        <div id="nasabah-modal-container">
+                            <div class="modal fade" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Modal body text goes here.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div id="berita-table-container" style="display: none;">
                             <div class="row my-5">
@@ -294,6 +316,26 @@
                                 </div>
                                 
                                 <div id="form-tambah-berita" style="display: none;">
+                                    <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
+
+                                        <div class="mb-3">
+                                            <label for="judulBerita" class="form-label">Judul Berita</label>
+                                            <input type="text" class="form-control" id="judulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="gambarBerita" class="form-label">Upload Gambar Berita</label>
+                                            <input type="file" class="form-control" id="gambarBerita" name="gambarBerita" accept="image/*">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
+                                            <div id="editor"></div>
+                                            <input type="hidden" id="deskripsiBerita" name="deskripsiBerita">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                    </form>
+                                </div>
+
+                                <div id="form-edit-berita" style="display: none;">
                                     <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
 
                                         <div class="mb-3">
@@ -336,7 +378,8 @@
                                                                 </td>
                                                                 <td><?php echo $key['deskripsi'] ?></td>
                                                                 <td>
-                                                                    <a href="#" class="btn btn-info">Edit</a>
+                                                                    <a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>" class="btn btn-info">Edit</a>
+                                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">Modal</button>
                                                                     <a href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>" class="btn btn-danger">Delete</a>
                                                                 </td> 
                                                             </tr>
@@ -349,76 +392,28 @@
                                 </div>
                             </div>
                         </div>
-                                                            
-
-                        <div id="setor-table-container">
-                            <div class="row my-5">
-                                <h3 class="fs-4 mb-3">Setor</h3>
-                                
-                                <!-- Textfield 1 -->
-                                <div class="col-md-4 mb-3">
-                                    <label for="textfield1" class="form-label">ID Nasabah</label>
-                                    <input type="text" class="form-control" id="textfield1" placeholder="Masukan Nomor">
-                                </div>
-
-                                <!-- Textfield 2 -->
-                                <div class="col-md-4 mb-3">
-                                    <label for="textfield2" class="form-label">Nama Nasabah</label>
-                                    <input type="text" class="form-control" id="textfield2" placeholder="Masukkan Nama">
-                                </div>
-
-                                <!-- Textfield 2 -->
-                                <div class="col-md-4 mb-3">
-                                    <label for="textfield2" class="form-label">berat sampah</label>
-                                    <input type="text" class="form-control" id="textfield2" placeholder="Masukkan berat">
-                                </div>
-
-                                <!-- Dropdown -->
-                                <div class="col-md-4 mb-3">
-                                    <label for="dropdown" class="form-label">Pilih Sampah</label>
-                                    <select class="form-select" id="dropdown">
-                                        <option value="option1">Opsi 1</option>
-                                        <option value="option2">Opsi 2</option>
-                                        <option value="option3">Opsi 3</option>
-                                    </select>
-                                </div>
-
-                                <!-- Tombol Setor -->
-                                <div class="col-md-12">
-                                    <button type="button" class="btn btn-success">Setor</button>
+                            <div id="berita-modal-container">
+                                <div id="myModal" class="modal fade" tabindex="-1">
+                                 <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 class="fs-4 mb-3">Riwayat Setor</h3>
-                                    <table class="table bg-white rounded shadow-sm  table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>ID Nasabah</th>
-                                                <th>Nama</th>
-                                                <th>Jenis Sampah</th>
-                                                <th>Total Harga</th>
-                                                <th>Invoice</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Data setoran akan ditambahkan di sini -->
-                                            <!-- Contoh data setoran -->
-                                            <tr>
-                                                <td>1</td>
-                                                <td>John Doe</td>
-                                                <td>Kertas</td> 
-                                                <td>Rp.10</td>
-                                                <td><a href="#" class="btn btn-info">Lihat</a></td>
-                                            </tr>
-                                            <!-- End contoh data setoran -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>  
 
+                        
 
                         <div id="beritmake-table-container" style="display: none;">
                             
@@ -429,17 +424,21 @@
             </div>
             </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+            
+            
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
                 var el = document.getElementById("wrapper");
                 var toggleButton = document.getElementById("menu-toggle");
                 var dashboardLink = document.getElementById("dashboard-link");
                 var nasabahLink = document.getElementById("nasabah-link");
                 var beritaLink = document.getElementById("berita-link");
-                var setorLink = document.getElementById("setor-link");
+                var nasabahdLink = document.getElementById("nasabahd-link");
                 var nasabahTableContainer = document.getElementById("nasabah-table-container");
                 var beritaTableContainer = document.getElementById("berita-table-container");
-                var setorTableContainer = document.getElementById("setor-table-container");
+                var nasabahmodalcontainer = document.getElementById("nasabah-modal-container");
+                
 
                 toggleButton.onclick = function () {
                     el.classList.toggle("toggled");
@@ -448,33 +447,34 @@
                 nasabahLink.onclick = function () {
                     nasabahTableContainer.style.display = "block";
                     beritaTableContainer.style.display = "none";
-                    setorTableContainer.style.display = "none";
                 };
 
                 beritaLink.onclick = function () {
                     beritaTableContainer.style.display = "block";
                     nasabahTableContainer.style.display = "none";
-                    setorTableContainer.style.display = "none";
                 };
 
-                setorLink.onclick = function () {
-                    setorTableContainer.style.display = "block";
-                    nasabahTableContainer.style.display = "none";
-                    beritaTableContainer.style.display = "none";
+                nasabahdLink.onclick = function () {
+                    var myModal = new bootstrap.Modal(document.getElementById('nasabah-modal-container'));
+                    myModal.show();
                 };
+
 
                 nasabahTableContainer.style.display = "none";
                 beritaTableContainer.style.display = "none";
-                setorTableContainer.style.display = "none";
 
                 dashboardLink.onclick = function () {
                     nasabahTableContainer.style.display = "none";
                     beritaTableContainer.style.display = "none";
-                    setorTableContainer.style.display = "none";
                 };
 
                 function tampilkanFormTambahBerita() {
                     var formTambahBerita = document.getElementById("form-tambah-berita");
+                    formTambahBerita.style.display = "block";
+                }
+
+                function tampilkanFormEditBerita() {
+                    var formTambahBerita = document.getElementById("form-edit-berita");
                     formTambahBerita.style.display = "block";
                 }
 
@@ -501,8 +501,76 @@
                         var htmlContent = quill.root.innerHTML;
                         document.getElementById('deskripsiBerita').value = htmlContent;
 
-                    });
+                });
 
+                
+                
+                // Fungsi untuk menampilkan/menyembunyikan sidebar
+                function toggleSidebar() {
+                    var el = document.getElementById("wrapper");
+                    el.classList.toggle("toggled");
+                    // Simpan status sidebar ke localStorage
+                    localStorage.setItem("sidebarToggled", el.classList.contains("toggled"));
+                }   
+
+                // Fungsi untuk menampilkan tabel Dashboard
+                function showDashboard() {
+                    document.getElementById("nasabah-table-container").style.display = "none";
+                    document.getElementById("berita-table-container").style.display = "none";
+                    // Simpan tab aktif ke localStorage
+                    localStorage.setItem("activeTab", "dashboard");
+                }
+
+                // Fungsi untuk menampilkan tabel Nasabah
+                function showNasabahTable() {
+                    document.getElementById("nasabah-table-container").style.display = "block";
+                    document.getElementById("berita-table-container").style.display = "none";
+                    // Simpan tab aktif ke localStorage
+                    localStorage.setItem("activeTab", "nasabah");
+                }
+
+                // Fungsi untuk menampilkan tabel Berita
+                function showBeritaTable() {
+                    document.getElementById("berita-table-container").style.display = "block";
+                    document.getElementById("nasabah-table-container").style.display = "none";
+                    // Simpan tab aktif ke localStorage
+                    localStorage.setItem("activeTab", "berita");
+                }
+
+                // Fungsi untuk menginisialisasi status halaman berdasarkan localStorage
+                function initializePageState() {
+                    var sidebarToggled = localStorage.getItem("sidebarToggled");
+                    var activeTab = localStorage.getItem("activeTab");
+
+                    // Mengembalikan status sidebar
+                    var el = document.getElementById("wrapper");
+                    if (sidebarToggled === "true") {
+                        el.classList.add("toggled");
+                    } else {
+                        el.classList.remove("toggled");
+                    }
+
+                    // Mengembalikan tab aktif
+                    if (activeTab === "nasabah") {
+                        showNasabahTable();
+                    } else if (activeTab === "berita") {
+                        showBeritaTable();
+                    } else if (activeTab === "dashboard") {
+                        showDashboard();
+                    }
+                }
+
+
+                // Mendengarkan peristiwa untuk tombol toggle sidebar
+                document.getElementById("menu-toggle").addEventListener("click", toggleSidebar);
+
+                // Mendengarkan peristiwa untuk tautan tab
+                document.getElementById("dashboard-link").addEventListener("click", showDashboard);
+                document.getElementById("nasabah-link").addEventListener("click", showNasabahTable);
+                document.getElementById("berita-link").addEventListener("click", showBeritaTable);
+
+                // Menginisialisasi status halaman
+                initializePageState();
                 
                 
             </script>
