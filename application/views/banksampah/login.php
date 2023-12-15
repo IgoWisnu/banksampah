@@ -10,7 +10,8 @@
   <style>
     .background{
         height: 1000px;
-        background: #00926E;
+        background: rgb(0,146,110);
+        background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
     }
 
     .Panel{
@@ -126,13 +127,6 @@
         text-decoration: none;
     }
 
-    @media screen and (min-width: 700px) {
-    
-        .background{
-            background: rgb(0,146,110);
-            background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
-        }
-    }
   </style>
 
   <body>
