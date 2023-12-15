@@ -154,7 +154,7 @@
   }
 
   .bBar{
-    height: 7.5%;
+    height: 7%;
     bottom: 0;
     position: fixed;
     border-top-right-radius: 30px; 
@@ -164,15 +164,15 @@
   }
 
   .history{
-    width: 70px;
+    width: 60px;
   }
 
   .home{
-    width: 60px;
+    width: 50px;
   }
 
   .profile{
-    width: 60px;
+    width: 50px;
   }
 
 

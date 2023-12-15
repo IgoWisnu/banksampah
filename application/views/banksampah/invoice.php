@@ -121,7 +121,7 @@
 
     <div class="background">
       <div class="col">
-        <img class="topImg" src="Waste recycling Vectors & Illustrations for Free Download _ Freepik 1.png" alt="">
+        <img class="topImg" src="<?=base_url()?>Waste recycling Vectors & Illustrations for Free Download _ Freepik 1.png" alt="">
       </div>
 
       <div class="col">
