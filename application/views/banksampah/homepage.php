@@ -154,7 +154,7 @@
   }
 
   .bBar{
-    height: 7%;
+    height: 7.5%;
     bottom: 0;
     position: fixed;
     border-top-right-radius: 30px; 
