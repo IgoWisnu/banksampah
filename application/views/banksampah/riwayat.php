@@ -188,25 +188,31 @@
                   </div>
                   <div class="t1 row justify-content-center">Riwayat Transaksi</div>
                   
-
                   <?php foreach($riwayat->result_array() as $key){ ?>
-                  <div class="row justify-content-center">
-                    <a href="" class="laycard2 card col-10" type="button">
+                    <?php 
+                      if($key['kredit'] == 0){
+                          $img = base_url()."img/aSetor.png";
+                          $nominal = '+'.$key['debit'];
+                      } else{
+                          $img = "<?=base_url()?>img/aTarik.png";
+                          $nominal = '-'.$key['kredit'];
+                      }
+                    ?>
+                    <div class="row justify-content-center">
+                      <a href="" class="laycard2 card col-10" type="button">
 
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
-                          <img class="arrow2" src="<?=base_url()?>img/aTarik.png" alt="">
-                          <div class="date">21 Nov 2023</div>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <img class="arrow2" src=<?=$img?> alt="">
+                            <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                          </div>
+                          <div class="layText1">
+                            <div class="nominal"><?=$nominal ?></div>
+                            <div class="keterangan">Cash Bank Sampah PNB</div>
+                          </div>
                         </div>
-                        <div class="layText1">
-                          <div class="nominal">-Rp.10.000</div>
-                          <div class="keterangan">Cash Bank Sampah PNB</div>
-                        </div>
-                      </div>
-
-
-                    </a>
-                  </div>
+                      </a>
+                    </div>
 
                   <?php } ?>
 
