@@ -161,20 +161,23 @@
     border-top-left-radius: 30px;
     background-color: white;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+    transition: all 1.3s ease;
   }
 
   .history{
+    margin-top: 10px;
     width: 60px;
   }
 
   .home{
+    margin-top: 10px;
     width: 50px;
   }
 
   .profile{
+    margin-top: 10px;
     width: 50px;
   }
-
 
   @media screen and (max-width: 335px) {
     .box{
@@ -237,10 +240,49 @@
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
       background-attachment: fixed;
     }
+    .bBar{
+      position: fixed;
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      background-color: transparent;
+      box-shadow: none;
+      transform: translate(0, -880px)
+    }
+    .bBar.opaque {
+      background-color: white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: all 0.5s ease;
+    }
+
+  }
+  @media screen and (max-width: 700px){
+    .bBar{
+      transition: all 1.3s ease;
+    }
+
   }
 
-</style>
 
+</style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var bBar = document.querySelector(".bBar");
+
+      function updateTransparency() {
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition > 200) {
+          bBar.classList.add("opaque");
+        } else {
+          bBar.classList.remove("opaque");
+        }
+      }
+
+      window.addEventListener("scroll", updateTransparency);
+    });
+  </script>
   <body>
 
     <div class="background">
@@ -277,28 +319,15 @@
               <?php endforeach; ?>
             </div>
           
-            <div class="d-flex justify-content-evenly">
-                <div class="bBar d-flex justify-content-evenly">
-                  <a href="">
-                    <img src="<?=base_url()?>img/history.png" alt="" class="history">
-                  </a>
-                  <a href="">
-                    <img src="<?=base_url()?>img/home.png" alt="" class="home">
-                  </a>
-                  <a href="">
-                    <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
-                  </a>
-                </div>
-            </div>
-
+            
           </div>
         </div>
       </div>
       
       <div class="row justify-content-center">
         <div class="box col-9">
-
-         <div class="row">
+          
+          <div class="row">
             <div class="LayText d-flex justify-content-between">
               <div class="username ms-2"><?=$username?></div>
               <div class="layCoin d-flex justify-content-between">
@@ -312,12 +341,25 @@
           <div class="LayBtn1 d-flex justify-content-center">
             <a href="" class="btn1 btn ms-2 me-1" type="button">Setor
               <img class="imgSetor" src="<?=base_url()?>img/Setor.png" alt=""></a>
-            <a href="" class="btn2 btn me-2" type="button">Tarik
-              <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt=""></a>
+              <a href="" class="btn2 btn me-2" type="button">Tarik
+                <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt=""></a>
+              </div>
+              
+            </div>
           </div>
-
+        </div>
+      </body>
+      <div class="d-flex justify-content-evenly">
+        <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
+          <a href="">
+            <img src="<?=base_url()?>img/history.png" alt="" class="history">
+          </a>
+          <a href="">
+            <img src="<?=base_url()?>img/home.png" alt="" class="home">
+          </a>
+          <a href="">
+            <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+          </a>
         </div>
       </div>
-    </div>
-  </body>
 </html>
