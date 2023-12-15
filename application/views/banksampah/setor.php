@@ -66,7 +66,7 @@
                         <input type="number" name="harga_sampah[]" class="form-control harga_sampah" readonly>
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-success add_btn" name="add_btn">Add</button>
+                        <div class="btn btn-success add_btn" name="add_btn" id="add_btn">Add</div>
                     </div>
                 </div>
                 <div class="">

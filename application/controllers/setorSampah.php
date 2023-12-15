@@ -76,10 +76,11 @@
             $total = $this->m_setor->updateTotal($id_transaksi);
 
             //insert data to table tabungan_transaksi
-            $this->m_setor->insertTabungan($id_transaksi, $total);
+            $id_tbUser = $this->m_setor->cariIdTabungan();
+            $this->m_setor->insertTabungan($id_transaksi, $id_tbUser, $total);
 
             //update data in table saldo
-            $this->m_setor->updateDebitSaldo($total);
+            $this->m_setor->updateDebitSaldo($id_tbUser, $total);
         }
 
         public function hitungHarga(){

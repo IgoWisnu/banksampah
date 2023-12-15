@@ -69,10 +69,26 @@
             return $data;
         }
 
-        public function insertTabungan($id, $total){
+        public function cariIdTabungan(){
+            $id = $this->input->post('id_user');
+            $query = $this->db->select('id_tabungan')
+                        ->from('tabungan')
+                        ->where('id_user_nasabah', $id)
+                        ->get();
 
+            if ($query->num_rows() > 0) {
+                $result = $query->row();
+                $id_tabungan = $result->id_tabungan;
+                return $id_tabungan;
+            } else {
+                return null;
+            }
+        }
+
+        public function insertTabungan($id, $id_tabungan, $total){
             $data = array(
                 'id_transaksi_sampah' => $id,
+                'id_tabungan' => $id_tabungan,
                 'id_user_staff' => $this->session->userdata('id'),
                 'kredit' => 0,
                 'debit' => $total,
@@ -81,11 +97,10 @@
             $this->db->insert('tabungan_transaksi', $data);
         }
 
-        public function updateDebitSaldo($total){
-            $id = $this->input->post('id_user');
+        public function updateDebitSaldo($id_tabungan, $total){
             $this->db->set('saldo', 'saldo + ' . $total, FALSE);
-            $this->db->where('id_user', $id);
-            $query = $this->db->update('saldo');
+            $this->db->where('id_tabungan', $id_tabungan);
+            $query = $this->db->update('tabungan');
         }
 
         public function loadSelect(){
