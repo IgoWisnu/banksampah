@@ -9,8 +9,8 @@
   
 <style>
       
-  .background{
-    height: 1100px; 
+  body{
+    height: 100%; 
     background: #00926E;
   }
 
@@ -82,9 +82,11 @@
     .topImg{
         opacity: 0;
     }
-    .background{
+    body{
+      height: 100%;
       background: rgb(0,146,110);
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+      background-attachment: fixed;
     }
   }
 
@@ -92,7 +94,7 @@
 
   <body>
 
-    <div class="background">
+    <div class="">
       <div class="col">
         <img class="topImg" src="<?=base_url()?>img/Waste_recycling_Vectors___Illustrations_for_Free_Download___Freepik_1-svaecW6Z_-transformed.png" alt="">
       </div>

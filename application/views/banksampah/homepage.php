@@ -8,8 +8,10 @@
 </head>
   
 <style>
+    
   body{
-    background-color: #00926E;
+    height: 100%;
+    background: #00926E;
   }
 
   .topImg{
@@ -19,7 +21,7 @@
   }
 
   .wrap{
-    height: 800px; 
+    height: 100%; 
     top: 255px; 
     position: absolute; 
     background: white; 
@@ -144,6 +146,14 @@
     font-size: 85%;
   }
 
+  .bBar{
+    height: 50px;
+    border-top-right-radius: 30px; 
+    border-top-left-radius: 30px;
+    background: white;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+  }
+
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -167,6 +177,9 @@
 
   @media screen and (min-width: 422px) {
     .wrap{
+      width: 422px;
+    }
+    .bBar{
       width: 422px;
     }
   }
@@ -194,12 +207,11 @@
     .topImg{
       opacity: 0;
     }
-    body{   
-            height: 100%;
-            background: #00926E;
-            background: rgb(0,146,110);
-            background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
-            background-attachment: fixed;
+    body{
+      height: 100%;
+      background: rgb(0,146,110);
+      background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+      background-attachment: fixed;
     }
   }
 
@@ -239,6 +251,14 @@
                 </a>
               <?php endforeach; ?>
             </div>
+          
+          <div class="col">
+            <div class="row justify-content-center">
+              <div class="bBar fixed-bottom">
+                
+              </div>
+            </div>
+          </div>
 
           </div>
         </div>
@@ -264,7 +284,7 @@
             <a href="" class="btn2 btn me-2" type="button">Tarik
               <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt=""></a>
           </div>
-            
+
         </div>
       </div>
     </div>

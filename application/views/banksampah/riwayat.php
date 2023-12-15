@@ -9,8 +9,8 @@
   
 <style>
     
-.background{
-    height: 1100px; 
+body{
+    height: 100%; 
     background: #00926E;
 }
 
@@ -163,28 +163,42 @@
     .topImg{
       opacity: 0;
     }
-    .background{
+    body{
+      height: 100%;
       background: rgb(0,146,110);
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+      background-attachment: fixed;
     }
   }
 
 </style>
 
-  <body>
+<body>
 
-    <div class="background">
-        <div class="col">
-            <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
-        </div>
+<div class="background">
+  <div class="col">
+      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+  </div>
 
-        <div class="col">
+  <div class="col">
+      <div class="row justify-content-center">
+          <div class="wrap">
+            <div class="layBtn">
+              <a class="btn" type="button" href="">
+                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+              </a>
+            </div>
+            <div class="t1 row justify-content-center">Riwayat Transaksi</div>
+            
+
+
             <div class="row justify-content-center">
-                <div class="wrap">
-                  <div class="layBtn">
-                    <a class="btn" type="button" href="">
-                      <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-                    </a>
+              <a href="" class="laycard card col-10" type="button">
+
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="arrow2" src="<?=base_url()?>img/aTarik.png" alt="">
+                    <div class="date">21 Nov 2023</div>
                   </div>
                   <div class="t1 row justify-content-center">Riwayat Transaksi</div>
                   
@@ -214,8 +228,35 @@
                     <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
                   </div>
                 </div>
+
+
+              </a>
             </div>
-        </div>
-    </div>
-  </body>
+
+            <div class="row justify-content-center">
+              <a href="" class="laycard2 card col-10" type="button">
+
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="arrow3" src="<?=base_url()?>img/aSetor.png" alt="">
+                    <div class="date">21 Nov 2023</div>
+                  </div>
+                  <div class="layText2">
+                    <div class="nominal2">+Rp.100.000</div>
+                    <div class="keterangan2">Kertas <br> Kulkas <br> Beton</div>
+                  </div>
+                </div>
+                
+                
+              </a>
+            </div>
+
+            <div class="row justify-content-end">
+              <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</body>
 </html>

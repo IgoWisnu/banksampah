@@ -25,6 +25,21 @@
             $this->load->view('banksampah/berita');
         }
 
+        public function verif(){
+            $this->load->view('banksampah/Verifikasi');
+            
+        }
+
+        public function Riwayat(){
+            $this->load->view('banksampah/RiwayatTransaksi');
+            
+        }
+
+        public function invoice(){
+            $this->load->view('banksampah/invoice');
+            
+        }
+
         public function loadArtikel(){
             //user data
             $username = $this->session->userdata('username');
