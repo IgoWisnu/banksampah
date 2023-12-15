@@ -20,13 +20,21 @@
     transition: opacity 1000ms ease-in-out;
   }
 
+  .panel{
+    top: 255px;
+    height: 130px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: absolute;
+    background-color: white;
+  }
+  
   .wrap{
-    height: 100%; 
-    top: 255px; 
+    padding-bottom: 150px;
+    padding-bottom: auto; 
+    top: 380px; 
     position: absolute; 
     background: white; 
-    border-top-left-radius: 30px; 
-    border-top-right-radius: 30px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
   }
 
@@ -65,25 +73,25 @@
     font-size: 85%;
     font-weight: 300;
   }
-
-  .t2{
-    top: 160px;
-    position: relative;
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .t3{
-    top: 205px;
-    position: relative;
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-
+  
   .LayBtn1{
     top: 40px;
     position: relative;
+  }
+
+  .t2{
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .t3{ 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: 600;
+    font-size: 20px;
   }
 
   .btn1{
@@ -115,7 +123,6 @@
   }
 
   .layBtn3{
-    top: 180px;
     position: relative;
   }
 
@@ -130,10 +137,10 @@
   }
 
   .c1{
-    top: 230px;
+    margin-bottom: 15px;
     position: relative;
     border-radius: 20px;
-    height: 170px;
+    height: 20%;
     text-decoration: none;
   }
 
@@ -147,12 +154,27 @@
   }
 
   .bBar{
-    height: 50px;
+    height: 7.5%;
+    bottom: 0;
+    position: fixed;
     border-top-right-radius: 30px; 
     border-top-left-radius: 30px;
-    background: white;
+    background-color: white;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .history{
+    width: 70px;
+  }
+
+  .home{
+    width: 60px;
+  }
+
+  .profile{
+    width: 60px;
+  }
+
 
   @media screen and (max-width: 335px) {
     .box{
@@ -178,6 +200,9 @@
   @media screen and (min-width: 422px) {
     .wrap{
       width: 422px;
+    }
+    .panel{
+      width: 422px
     }
     .bBar{
       width: 422px;
@@ -208,7 +233,6 @@
       opacity: 0;
     }
     body{
-      height: 100%;
       background: rgb(0,146,110);
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
       background-attachment: fixed;
@@ -226,6 +250,7 @@
 
       <div class="col">
         <div class="row justify-content-center">
+          <div class="panel"></div>
           <div class="wrap">
 
             <div class="t2 ms-5">Menu</div>
@@ -239,9 +264,9 @@
             </div>
 
             <div class="t3 ms-5">Artikel Terkini</div>
-            <div class="layCard row d-flex justify-content-start border-0 ms-4">
+            <div class="layCard row justify-content-center border-0">
               <?php foreach($artikel as $key): ?>
-                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}") ?>" class="c1 col-6 col-lg-4">
+                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-5">
                   <div class="card shadow">
                     <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
                     <div class="card-body">
@@ -252,13 +277,19 @@
               <?php endforeach; ?>
             </div>
           
-          <div class="col">
-            <div class="row justify-content-center">
-              <div class="bBar fixed-bottom">
-                
-              </div>
+            <div class="d-flex justify-content-evenly">
+                <div class="bBar d-flex justify-content-evenly">
+                  <a href="">
+                    <img src="<?=base_url()?>img/history.png" alt="" class="history">
+                  </a>
+                  <a href="">
+                    <img src="<?=base_url()?>img/home.png" alt="" class="home">
+                  </a>
+                  <a href="">
+                    <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+                  </a>
+                </div>
             </div>
-          </div>
 
           </div>
         </div>

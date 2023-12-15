@@ -31,7 +31,7 @@
         }
 
         public function Riwayat(){
-            $this->load->view('banksampah/RiwayatTransaksi');
+            $this->load->view('banksampah/riwayat');
             
         }
 
