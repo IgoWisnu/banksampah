@@ -17,6 +17,31 @@
             $this->load->model('m_tarik');
             
         }
+
+        public function cekSaldo(){
+            $input = floatval($this->input->post('cari'));
+            $saldo = floatval($this->input->post('saldo'));
+
+            if($input <= $saldo){
+                $output = '<p class="text-success">Saldo Mencukupi Ditari</p>';
+            } else{
+                $output = '<p class="text-danger">Saldo tidak mencukupi</p>';
+            }
+            echo $output;
+        }
+
+        public function tarikTabungan(){
+            $saldo = floatval($this->input->post('saldo'));
+            $jumlahTarik = floatval($this->input->post('tariksaldo'));
+
+            if($jumlahTarik <= $saldo){
+                $setor = $this->m_tarik->insertTrTarik();
+                $this->m_tarik->updateSaldo();
+                redirect('dashboard');
+            } else{
+                redirect('tarik');
+            }
+        }
         
         
         public function cariuser(){
@@ -30,8 +55,8 @@
                     <table class="table table-bordered table-striped">';
                     foreach($data->result() as $row){
                         $output .= '
-                        <tr class="result-item" data-user-id="'.$row->id_user.'" data-username="'.$row->username.'" data-saldo="'.$row->saldo.'">
-                                <td>'.$row->id_user.'</td>
+                        <tr class="result-item" data-tabungan-id="'.$row->id_tabungan.'" data-username="'.$row->username.'" data-saldo="'.$row->saldo.'">
+                                <td>'.$row->id_tabungan.'</td>
                                 <td>'.$row->username.'</td>
                                 <td>'.$row->saldo.'</td>
                                 </tr>

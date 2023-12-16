@@ -11,6 +11,14 @@
             $result = $this->db->query($query);
             return $result;
         }
+
+        public function getDetail($id){
+            $this->db->select('*');
+            $this->db->from('tabungan_transaksi');
+            $this->db->join('transaksi_sampah', 'user.id_user = tabungan.id_user_nasabah');
+
+
+        }
     
     }
     

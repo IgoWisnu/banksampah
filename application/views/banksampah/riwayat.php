@@ -84,7 +84,7 @@ body{
 }
 
 .arrow2{
-  width: 50px;
+  width: 40px;
   background-color: #01C59E;
   position: relative;
   margin-left: -20px;
@@ -189,26 +189,17 @@ body{
               </a>
             </div>
             <div class="t1 row justify-content-center">Riwayat Transaksi</div>
-            
+            <br>
 
 
-            <div class="row justify-content-center">
-              <a href="" class="laycard card col-10" type="button">
-
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <img class="arrow2" src="<?=base_url()?>img/aTarik.png" alt="">
-                    <div class="date">21 Nov 2023</div>
-                  </div>
-                  <div class="t1 row justify-content-center">Riwayat Transaksi</div>
-                  
+            <div class="row justify-content-center mt-5">
                   <?php foreach($riwayat->result_array() as $key){ ?>
                     <?php 
                       if($key['kredit'] == 0){
-                          $img = base_url()."img/aSetor.png";
+                          $img = base_url()."img/gSetor.png";
                           $nominal = '+'.$key['debit'];
                       } else{
-                          $img = "<?=base_url()?>img/aTarik.png";
+                          $img = base_url()."img/gTarik.png";
                           $nominal = '-'.$key['kredit'];
                       }
                     ?>
@@ -230,30 +221,6 @@ body{
 
                   <?php } ?>
 
-                  <div class="row justify-content-end">
-                    <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
-                  </div>
-                </div>
-
-
-              </a>
-            </div>
-
-            <div class="row justify-content-center">
-              <a href="" class="laycard2 card col-10" type="button">
-
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <img class="arrow3" src="<?=base_url()?>img/aSetor.png" alt="">
-                    <div class="date">21 Nov 2023</div>
-                  </div>
-                  <div class="layText2">
-                    <div class="nominal2">+Rp.100.000</div>
-                    <div class="keterangan2">Kertas <br> Kulkas <br> Beton</div>
-                  </div>
-                </div>
-                
-                
               </a>
             </div>
 

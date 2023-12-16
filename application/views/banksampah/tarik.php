@@ -17,12 +17,12 @@
             <div class="result" id="result"></div>
             <br>
         </div>
-        <form action="<?= base_url() ?>setorSampah/kalkulasi" method="post" id="add_form">
+        <form action="<?= base_url() ?>tarik/tarikTabungan" method="post" id="add_form">
                     <div class="row g-3 align-items-center mb-3">
                         <!-- Data User -->
                         <div class="col-4">
-                            <label for="userid" class="form-label">ID</label>
-                            <input type="text" name="id_user" id="userid" class="form-control" readonly>
+                            <label for="id_tabungan" class="form-label">ID</label>
+                            <input type="text" name="id_tabungan" id="id_tabungan" class="form-control" readonly>
                         </div>
                         <div class="col-4">
                             <label for="username" class="form-label">Username</label>
@@ -35,6 +35,18 @@
                     </div>
     
                     <!-- Tarik saldo -->
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="tariksaldo" class="form-label">Jumlah Tarik</label>
+                            <input type="number" name="tariksaldo" id="tariksaldo" class="form-control">
+                        </div>
+                        <div class="col-4">
+                            <input type="submit" name="submit" class="btn btn-success mt-4">
+                        </div>
+                    </div>
+                    <div class="keterangan" id="keterangan">
+
+                    </div>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -59,23 +71,42 @@
                 });
             });
 
+            $('#tariksaldo').on('keyup', function(){
+                console.log('ass')
+                $('#keterangan').html('');
+
+                var saldo =  document.getElementById('saldo').value;
+                $.ajax({
+                    url     : '<?= base_url('tarik/cekSaldo')?>',
+                    type    : 'POST',
+                    data    : {
+                        cari : $(this).val(),
+                        saldo : saldo
+                    },
+                    success : function(data){
+                        if (data.error) {
+                            console.error('Error:', data.error);
+                        } else {
+                            $('#keterangan').html(data);
+                        }
+                    }
+                });
+            });
+
             // Handle click event on the result items
             $('#result').on('click', '.result-item', function(){
                 // Retrieve additional data using the data method
-                var userId = $(this).data('user-id');
+                var idTabungan = $(this).data('tabungan-id');
                 var username = $(this).data('username');
                 var saldo = $(this).data('saldo');
 
                 // Populate the selected user's information into the 'username' input field
-                $('#userid').val(userId);
+                $('#id_tabungan').val(idTabungan);
                 $('#username').val(username);
                 $('#saldo').val(saldo);
 
-                console.log('Selected User ID:', userId);
-                console.log('Selected Username:', username);
-                console.log('Selected Saldo:', saldo);
                 //change user input background
-                var usersText = document.getElementById('userid');
+                var usersText = document.getElementById('id_tabungan');
                 usersText.style.background = '#B8EAD4';
 
                 var usernameText = document.getElementById('username');
@@ -83,6 +114,7 @@
 
                 var saldoText = document.getElementById('saldo');
                 saldoText.style.background = '#B8EAD4';
+
                 // Log or use the retrieved data as needed
                 console.log('Selected User ID:', userId);
 

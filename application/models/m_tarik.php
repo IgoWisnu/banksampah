@@ -15,6 +15,26 @@
             return $query;
         }
         
+        public function insertTrTarik(){
+            $data = array(
+                'id_tabungan' => $this->input->post('id_tabungan'),
+                'id_user_staff' => $this->session->userdata('id'),
+                'kredit' => $this->input->post('tariksaldo'),
+                'debit' => 0,
+                'tgl_tabungan_transaksi' => date('y-m-d H:i:s')
+            );
+            $query = $this->db->insert('tabungan_transaksi', $data);
+            return $query;
+        }
+
+        public function updateSaldo(){
+            $id = $this->input->post('id_tabungan');
+            $kredit = $this->input->post('tariksaldo');
+
+            $this->db->set('saldo', 'saldo - ' . $kredit, FALSE);
+            $this->db->where('id_tabungan', $id);
+            $query = $this->db->update('tabungan');
+        }
     
     }
     

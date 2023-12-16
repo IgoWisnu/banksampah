@@ -40,7 +40,7 @@
                 'id_user_staff' => $this->session->userdata('id'),
                 'id_user_nasabah' => $this->input->post('id_user'),
                 'total_transaksi' => 0,
-                'tgl_transaksi' => date('y-m-d')
+                'tgl_transaksi' => date('y-m-d H:i:s')
             );
             $this->db->insert('transaksi_sampah', $data);
             return $this->db->insert_id();
@@ -92,7 +92,7 @@
                 'id_user_staff' => $this->session->userdata('id'),
                 'kredit' => 0,
                 'debit' => $total,
-                'tgl_tabungan_transaksi' => date('y-m-d')
+                'tgl_tabungan_transaksi' => date('y-m-d H:i:s')
             );
             $this->db->insert('tabungan_transaksi', $data);
         }
@@ -108,6 +108,7 @@
             $query = $this->db->get('jenis_sampah');
             return $query;
         }
+
     }
     
     /* End of file m_setor.php */
