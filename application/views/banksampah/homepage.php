@@ -154,6 +154,7 @@
   }
 
   .bBar{
+    width: 100%;
     height: 7.5%;
     bottom: 0;
     position: fixed;
@@ -161,7 +162,7 @@
     border-top-left-radius: 30px;
     background-color: white;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
-    transition: all 1.3s ease;
+    transition: 1s ease;
   }
 
   .history{
@@ -203,10 +204,11 @@
   @media screen and (min-width: 422px) {
     .wrap{
       width: 422px;
-    }
+      transition: all 1s ease;
+    } 
     .panel{
       width: 422px
-    }
+    }  
     .bBar{
       width: 422px;
     }
@@ -239,6 +241,7 @@
       background: rgb(0,146,110);
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
       background-attachment: fixed;
+      transition: 1s ease;
     }
     .bBar{
       position: fixed;
@@ -248,118 +251,115 @@
       border-top-right-radius: 0px;
       background-color: transparent;
       box-shadow: none;
-      transform: translate(0, -880px)
+      bottom: 93%;
+      transition: all 1s ease;
     }
-    .bBar.opaque {
+    .bBar.ilang {
       background-color: white;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       transition: all 0.5s ease;
     }
-
-  }
-  @media screen and (max-width: 700px){
-    .bBar{
-      transition: all 1.3s ease;
+    .wrap{
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      transition: 1s ease;
     }
-
   }
-
 
 </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var bBar = document.querySelector(".bBar");
 
-      function updateTransparency() {
-        var scrollPosition = window.scrollY;
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var bBar = document.querySelector(".bBar");
 
-        if (scrollPosition > 200) {
-          bBar.classList.add("opaque");
-        } else {
-          bBar.classList.remove("opaque");
-        }
+    function updateTransparency() {
+      var scrollPosition = window.scrollY;
+
+      if (scrollPosition > 200) {
+        bBar.classList.add("ilang");
+      } else {
+        bBar.classList.remove("ilang");
       }
+    }
 
-      window.addEventListener("scroll", updateTransparency);
-    });
-  </script>
-  <body>
+    window.addEventListener("scroll", updateTransparency);
+  });
+</script>
 
-    <div class="background">
-      <div class="col">
-        <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
-      </div>
+<body>
 
-      <div class="col">
-        <div class="row justify-content-center">
-          <div class="panel"></div>
-          <div class="wrap">
-
-            <div class="t2 ms-5">Menu</div>
-            <div class="layBtn3 row justify-content-center">
-              <a href="" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
-                Sampah apa saja yang bisa ditukar?
-              </div></a>
-              <a href="" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
-                Bagaimana cara penggunaan aplikasi?
-              </div></a>
-            </div>
-
-            <div class="t3 ms-5">Artikel Terkini</div>
-            <div class="layCard row justify-content-center border-0">
-              <?php foreach($artikel as $key): ?>
-                <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-5">
-                  <div class="card shadow">
-                    <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
-                    <div class="card-body">
-                      <p class="judul" ><?=$key['judul'] ?></p>
-                    </div>
-                  </div>
-                </a>
-              <?php endforeach; ?>
-            </div>
-          
-            
-          </div>
-        </div>
-      </div>
-      
+  <div class="background">
+    <div class="col">
+      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    </div>
+    <div class="col">
       <div class="row justify-content-center">
-        <div class="box col-9">
-          
-          <div class="row">
-            <div class="LayText d-flex justify-content-between">
-              <div class="username ms-2"><?=$username?></div>
-              <div class="layCoin d-flex justify-content-between">
-                <img class="coin" src="<?=base_url()?>img/coin.png" alt="">
-                <div class="gacor me-2"><?=$saldo?></div>
-              </div>
-            </div>
+        <div class="panel"></div>
+        <div class="wrap">
+          <div class="t2 ms-5">Menu</div>
+          <div class="layBtn3 row justify-content-center">
+            <a href="" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
+              Sampah apa saja yang bisa ditukar?
+            </div></a>
+            <a href="" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
+              Bagaimana cara penggunaan aplikasi?
+            </div></a>
           </div>
-          
-          <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
-          <div class="LayBtn1 d-flex justify-content-center">
-            <a href="" class="btn1 btn ms-2 me-1" type="button">Setor
-              <img class="imgSetor" src="<?=base_url()?>img/Setor.png" alt=""></a>
-              <a href="" class="btn2 btn me-2" type="button">Tarik
-                <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt=""></a>
-              </div>
-              
+
+          <div class="t3 ms-5">Artikel Terkini</div>
+          <div class="layCard row justify-content-center border-0">
+            <?php foreach($artikel as $key): ?>
+              <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-5">
+                <div class="card shadow">
+                  <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
+                  <div class="card-body">
+                    <p class="judul" ><?=$key['judul'] ?></p>
+                  </div>
+                </div>
+              </a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="box col-9">
+        <div class="row">
+          <div class="LayText d-flex justify-content-between">
+            <div class="username ms-2"><?=$username?></div>
+            <div class="layCoin d-flex justify-content-between">
+              <img class="coin" src="<?=base_url()?>img/coin.png" alt="">
+              <div class="gacor me-2"><?=$saldo?></div>
             </div>
           </div>
         </div>
-      </body>
-      <div class="d-flex justify-content-evenly">
-        <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-          <a href="">
-            <img src="<?=base_url()?>img/history.png" alt="" class="history">
+    
+        <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
+        <div class="LayBtn1 d-flex justify-content-center">
+          <a class="btn1 btn ms-2 me-1" type="button">Setor
+            <img class="imgSetor" src="<?=base_url()?>img/Setor.png" alt="">
           </a>
-          <a href="">
-            <img src="<?=base_url()?>img/home.png" alt="" class="home">
-          </a>
-          <a href="">
-            <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+          <a class="btn2 btn me-2">Tarik
+            <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt="">
           </a>
         </div>
       </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
+        <a href="">
+          <img src="<?=base_url()?>img/history.png" alt="" class="history">
+        </a>
+        <a href="">
+          <img src="<?=base_url()?>img/home.png" alt="" class="home">
+        </a>
+        <a href="">
+          <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
