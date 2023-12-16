@@ -21,13 +21,13 @@ body{
 }
 
 .wrap{
-    height: 800px; 
-    top: 255px; 
-    position: absolute; 
-    background: white; 
-    border-top-left-radius: 30px; 
-    border-top-right-radius: 30px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
+  padding-bottom: 15%;
+  top: 255px; 
+  position: absolute; 
+  background: white; 
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
 }
 
 .t1{
@@ -138,7 +138,29 @@ body{
 .layText2{
   text-align: end;
 }
-
+.bBar{
+  width: 100%;
+  height: 7.5%;
+  bottom: 0;
+  position: fixed;
+  border-top-right-radius: 30px; 
+  border-top-left-radius: 30px;
+  background-color: white;
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+  transition: 1s ease;
+}
+.history{
+  margin-top: 10px;
+  width: 60px;
+}
+.home{
+  margin-top: 10px;
+  width: 50px;
+}
+.profile{
+  margin-top: 10px;
+  width: 50px;
+}
 @media screen and (min-width: 422px) {
     .wrap{
     width: 422px;
@@ -169,66 +191,107 @@ body{
       background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
       background-attachment: fixed;
     }
+    .bBar{
+      position: fixed;
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      background-color: transparent;
+      box-shadow: none;
+      bottom: 93%;
+      transition: all 1s ease;
+    }
+    .bBar.ilang {
+      background-color: white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: all 0.5s ease;
+    }
   }
 
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var bBar = document.querySelector(".bBar");
 
+    function updateTransparency() {
+      var scrollPosition = window.scrollY;
+
+      if (scrollPosition > 200) {
+        bBar.classList.add("ilang");
+      } else {
+        bBar.classList.remove("ilang");
+      }
+    }
+
+    window.addEventListener("scroll", updateTransparency);
+  });
+</script>
 <body>
 
 <div class="background">
   <div class="col">
-      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
   </div>
 
   <div class="col">
-      <div class="row justify-content-center">
-          <div class="wrap">
-            <div class="layBtn">
-              <a class="btn" type="button" href="">
-                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-              </a>
-            </div>
-            <div class="t1 row justify-content-center">Riwayat Transaksi</div>
-            <br>
+    <div class="row justify-content-center">
+      <div class="wrap">
+        <div class="layBtn">
+          <a class="btn" type="button" href="">
+            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+          </a>
+        </div>
+        <div class="t1 row justify-content-center">Riwayat Transaksi</div>
+        <br>
 
+        <div class="row justify-content-center mt-5">
+          <?php foreach($riwayat->result_array() as $key){ ?>
+            <?php 
+              if($key['kredit'] == 0){
+                  $img = base_url()."img/gSetor.png";
+                  $nominal = '+'.$key['debit'];
+              } else{
+                  $img = base_url()."img/gTarik.png";
+                  $nominal = '-'.$key['kredit'];
+              }
+            ?>
+            <div class="row justify-content-center">
+              <a href="" class="laycard2 card col-10" type="button">
 
-            <div class="row justify-content-center mt-5">
-                  <?php foreach($riwayat->result_array() as $key){ ?>
-                    <?php 
-                      if($key['kredit'] == 0){
-                          $img = base_url()."img/gSetor.png";
-                          $nominal = '+'.$key['debit'];
-                      } else{
-                          $img = base_url()."img/gTarik.png";
-                          $nominal = '-'.$key['kredit'];
-                      }
-                    ?>
-                    <div class="row justify-content-center">
-                      <a href="" class="laycard2 card col-10" type="button">
-
-                        <div class="d-flex justify-content-between">
-                          <div class="d-flex align-items-center">
-                            <img class="arrow2" src=<?=$img?> alt="">
-                            <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
-                          </div>
-                          <div class="layText1">
-                            <div class="nominal"><?=$nominal ?></div>
-                            <div class="keterangan">Cash Bank Sampah PNB</div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                  <?php } ?>
-
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="arrow2" src=<?=$img?> alt="">
+                    <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                  </div>
+                  <div class="layText1">
+                    <div class="nominal"><?=$nominal ?></div>
+                    <div class="keterangan">Cash Bank Sampah PNB</div>
+                  </div>
+                </div>
               </a>
             </div>
 
-            <div class="row justify-content-end">
-              <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
-            </div>
-          </div>
+          <?php } ?>
+        </div>
+        <div class="row justify-content-end">
+          <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
+      <a href="">
+        <img src="<?=base_url()?>img/history.png" alt="" class="history">
+      </a>
+      <a href="">
+        <img src="<?=base_url()?>img/home.png" alt="" class="home">
+      </a>
+      <a href="">
+        <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+      </a>
+    </div>
   </div>
 </div>
 </body>
