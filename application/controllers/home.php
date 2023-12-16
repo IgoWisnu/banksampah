@@ -40,6 +40,16 @@
             
         }
 
+        public function tarik(){
+            $this->load->view('banksampah/tarik');
+            
+        }
+
+        public function setor(){
+            $this->load->view('banksampah/setor');
+            
+        }
+
         public function loadArtikel(){
             //user data
             $username = $this->session->userdata('username');
