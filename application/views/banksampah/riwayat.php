@@ -204,7 +204,7 @@ body{
                       }
                     ?>
                     <div class="row justify-content-center">
-                      <a href="" class="laycard2 card col-10" type="button">
+                      <a href="<?=base_url()?>riwayat/invoice?id=<?=$key['id_tabungan_transaksi'] ?>" class="laycard2 card col-10" type="button">
 
                         <div class="d-flex justify-content-between">
                           <div class="d-flex align-items-center">

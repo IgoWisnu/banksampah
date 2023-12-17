@@ -137,35 +137,51 @@
                 <img class="lCheck" src="<?=base_url()?>img/check.png" alt="">
             </div>
             <div class="t1 row justify-content-center">Transaksi Berhasil</div>
+            <div class=""></div>
 
+            <?php foreach($detail->result_array() as $key){ ?>
             <div class="row justify-content-center mt-3">
 
                 <div class="c1 card col-10">
-                    <div class="date d-flex justify-content-between">21 Nov 2023
-                        <div class="userid me-1">User ID <?=$userid?></div>
+                    <div class="date d-flex justify-content-between">
+                        <div class="text"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                        <div class="userid me-1"><?=$key['id_user']?></div>
                     </div>
                 </div>
 
                 <div class="c1 card col-10">
                     <div class="tTotalBayar d-flex justify-content-between mt-2 mb-2">Total Bayar
-                        <div class="Rp">Rp <?=$uang?></div>
+                        <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
                     </div>
                 </div>
 
                 <div class="c1 card col-10">
                     <div class="tDetailTransaksi">Detail Transaksi</div>
                     <div class="tIdTransaksi d-flex justify-content-between">ID Transaksi
-                        <div class="idTransaksi"><?=$idTransaksi?> 123</div>
+                        <div class="idTransaksi"><?=$key['id_tabungan_transaksi']?></div>
                     </div>
                     <div class="tTransaksi d-flex justify-content-between">Jenis Transaksi
-                        <div class="jTeransaksi"><?=$jTeransaksi?> Tarik Saldo</div>
+                        <div class="jTeransaksi">Tarik Saldo</div>
                     </div>
                     <div class="tTotalBayarDT d-flex justify-content-between">Total Bayar
-                        <div class="Rp">Rp <?=$uang?>20.000</div>
+                        <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
                     </div>
                 </div>
 
+                <div class="c1 card col-10">
+                  <div class="tDetailTransaksi d-flex justify-content-between">Jenis Sampah
+                        <div class="idTransaksi">harga</div>
+                  </div>
+                  <br>
+                  <?php foreach($sampah->result_array() as $some){ ?>
+                    <div class="tIdTransaksi d-flex justify-content-between"><?=$some['jenis_sampah'] ?>
+                          <div class="idTransaksi"><?=$some['berat_sampah']?>kg x Rp<?=$some['harga_sampah']?></div>
+                    </div>
+                  <?php } ?>
+                </div>
+
             </div>
+            <?php } ?>
 
           </div>
         </div>
