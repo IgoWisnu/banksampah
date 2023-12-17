@@ -24,6 +24,17 @@
             
         }
 
+        public function tesLoadDetail(){
+            $this->load->view('banksampah/invoice');
+            
+        }
+
+        public function invoice(){
+            $id_transaksi = $this->input->get('id');
+            $data = $this->m_riwayat->getDetail($id_transaksi);
+            $this->load->view('banksampah/invoice', $data);
+        }
+
 
     
     }
