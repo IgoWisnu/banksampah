@@ -132,18 +132,6 @@
           <div class="row justify-content-center">
               <img class="lCheck" src="<?=base_url()?>img/check.png" alt="">
           </div>
-          <div class="t1 row justify-content-center">Transaksi Berhasil</div>
-          <div class="row justify-content-center mt-3">
-            <div class="c1 card col-10">
-              <div class="date d-flex justify-content-between">21 Nov 2023
-                <div class="userid me-1">User ID <?=$userid?></div>
-              </div>
-            </div>
-            <div class="c1 card col-10">
-              <div class="tTotalBayar d-flex justify-content-between mt-2 mb-2">Total Bayar
-                <div class="Rp">Rp <?=$uang?></div>
-              </div>
-            </div>
             <div class="t1 row justify-content-center">Transaksi Berhasil</div>
             <div class=""></div>
 
