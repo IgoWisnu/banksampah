@@ -267,7 +267,6 @@
   }
 
 </style>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var bBar = document.querySelector(".bBar");
@@ -285,9 +284,7 @@
     window.addEventListener("scroll", updateTransparency);
   });
 </script>
-
 <body>
-
   <div class="background">
     <div class="col">
       <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">

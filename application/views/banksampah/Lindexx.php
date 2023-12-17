@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -193,8 +193,6 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -273,8 +271,19 @@
                                                             <td><?php echo $key['tanggal_lahir'] ?></td>
                                                             <td><?php echo $key['email'] ?></td>
                                                             <td>
-                                                            <a href="#" id="nasabahd-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                                                class="fas fa-user fa-beat me-2"></i>Detail</a>
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                                data-profile="<?php echo $key['profile'] ?>"
+                                                                data-nama="<?php echo $key['nama_lengkap'] ?>"
+                                                                data-tempat-lahir="<?php echo $key['tempat_lahir'] ?>"
+                                                                data-tanggal-lahir="<?php echo $key['tanggal_lahir'] ?>"
+                                                                data-alamat="<?php echo $key['alamat'] ?>"
+                                                                data-email="<?php echo $key['email'] ?>"
+                                                                data-telepon="<?php echo $key['notelp'] ?>"
+                                                                > 
+                                                                Detail
+                                                            </button>
+
+
                                                             </td>
 
                                                         </tr>
@@ -283,40 +292,72 @@
                                             </table>
                                             </div>
                                         </div>
-                                            
                                 </div>
                             </div> 
                         </div>
 
-                        <div id="nasabah-modal-container">
-                            <div class="modal fade" tabindex="-1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Modal body text goes here.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">User Details</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="modal-profile-img" src="" alt="Profile Image" class="img-fluid rounded-circle mx-auto d-block">
+                                    <p id="modal-nama"></p>
+                                    <p id="modal-tempat-lahir"></p>
+                                    <p id="modal-tanggal-lahir"></p>
+                                    <p id="modal-alamat"></p>
+                                    <p id="modal-email"></p>
+                                    <p id="modal-telepon"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
+                    <script>
+                        $('#exampleModal').on('show.bs.modal', function (event) {
+                            var button = $(event.relatedTarget);
+                            var modal = $(this);
+                            var profileImageSrc = '<?= base_url('uploads/profile/'); ?>' + button.data('profile');
+
+                            modal.find('#modal-profile-img').attr('src', profileImageSrc);
+                            modal.find('#modal-nama').text('Nama Lengkap: ' + button.data('nama'));
+                            modal.find('#modal-tempat-lahir').text('Tempat Lahir: ' + button.data('tempat-lahir'));
+                            modal.find('#modal-tanggal-lahir').text('Tanggal Lahir: ' + button.data('tanggal-lahir'));
+                            modal.find('#modal-alamat').text('Alamat: ' + button.data('alamat'));
+                            modal.find('#modal-email').text('Email: ' + button.data('email'));
+                            modal.find('#modal-telepon').text('Nomor Telepon: ' + button.data('telepon'));
+                        });
+                    </script>
+
+
+
+                                                        
                         <div id="berita-table-container" style="display: none;">
                             <div class="row my-5">
                                 <h3 class="fs-4 mb-3">Berita</h3>
                                 <div class="d-flex justify-content-start mb-3">
-                                    <button type="button" class="btn btn-success mb-3" onclick="tampilkanFormTambahBerita()">Tambah Berita</button>
+                                    <button type="button" class="btn btn-success mb-3 ms-0 p-2" data-bs-toggle="modal" data-bs-target="#tambahBeritaModal">
+                                        Tambah Berita
+                                    </button>
                                 </div>
                                 
-                                <div id="form-tambah-berita" style="display: none;">
-                                    <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
+                                <!-- Modal -->
+                                <div class="modal fade" id="tambahBeritaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Berita</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
 
                                         <div class="mb-3">
                                             <label for="judulBerita" class="form-label">Judul Berita</label>
@@ -328,32 +369,37 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
-                                            <div id="editor"></div>
-                                            <input type="hidden" id="deskripsiBerita" name="deskripsiBerita">
+                                            <!-- Sembunyikan elemen input teks asli -->
+                                            <input type="text" style="display: none;" id="deskripsiBerita" name="deskripsiBerita">
+                                            <!-- Gantikan dengan elemen textarea untuk Quill -->
+                                            <div id="deskripsiQuilli" style="min-height: 150px;"></div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Tambah</button>
-                                    </form>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
                                 </div>
 
-                                <div id="form-edit-berita" style="display: none;">
-                                    <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
+                                <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+                                <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
-                                        <div class="mb-3">
-                                            <label for="judulBerita" class="form-label">Judul Berita</label>
-                                            <input type="text" class="form-control" id="judulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="gambarBerita" class="form-label">Upload Gambar Berita</label>
-                                            <input type="file" class="form-control" id="gambarBerita" name="gambarBerita" accept="image/*">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
-                                            <div id="editor"></div>
-                                            <input type="hidden" id="deskripsiBerita" name="deskripsiBerita">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
-                                    </form>
-                                </div>
+                                <script>
+                                var quill = new Quill('#deskripsiQuilli', {
+                                    theme: 'snow'
+                                });
+
+                                // Handle form submission within the modal
+                                var modalForm = document.querySelector('#tambahBeritaModal form');
+                                modalForm.onsubmit = function() {
+                                    document.getElementById('deskripsiBerita').value = quill.root.innerHTML;
+                                    // You may want to add additional validation logic here before allowing the form to be submitted
+                                    return true; // Allow the form to be submitted
+                                };
+                                </script>
 
                                 <div class="col">
                                 <div class="row my-1">
@@ -379,7 +425,6 @@
                                                                 <td><?php echo $key['deskripsi'] ?></td>
                                                                 <td>
                                                                     <a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>" class="btn btn-info">Edit</a>
-                                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">Modal</button>
                                                                     <a href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>" class="btn btn-danger">Delete</a>
                                                                 </td> 
                                                             </tr>
@@ -392,25 +437,7 @@
                                 </div>
                             </div>
                         </div>
-                            <div id="berita-modal-container">
-                                <div id="myModal" class="modal fade" tabindex="-1">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            
 
 
                         
@@ -479,30 +506,19 @@
                 }
 
                 function tambahBerita() {
-                    // Ambil nilai dari input form tambah berita
-                    var judulBerita = document.getElementById("judulBerita").value;
-                    var gambarBerita = document.getElementById("gambarBerita").value;
-                    var deskripsiBerita = document.getElementById("deskripsiBerita").value;
+                        try {
+                            var judulBerita = document.getElementById("judulBerita").value;
+                            var gambarBerita = document.getElementById("gambarBerita").value;
+                            var deskripsiBerita = document.getElementById("deskripsiBerita").value;
 
-                    // Lakukan sesuatu dengan data berita, misalnya simpan ke database
+                            // Lakukan sesuatu dengan data berita, misalnya simpan ke database
 
-                    // Sembunyikan kembali form tambah berita
-                    var formTambahBerita = document.getElementById("form-tambah-berita");
-                    formTambahBerita.style.display = "none";
+                            var formTambahBerita = document.getElementById("form-tambah-berita");
+                            formTambahBerita.style.display = "none";
+                        } catch (error) {
+                            console.error("Terjadi kesalahan:", error);
+                        }
                 }
-                
-                    var quill = new Quill('#editor', {
-                        theme: 'snow',
-                        placeholder: 'Masukkan Deskripsi',
-                    });
-
-                    // Add an event listener to update the hidden input when the content changes
-                    quill.on('text-change', function() {
-                        var htmlContent = quill.root.innerHTML;
-                        document.getElementById('deskripsiBerita').value = htmlContent;
-
-                });
-
                 
                 
                 // Fungsi untuk menampilkan/menyembunyikan sidebar
@@ -559,6 +575,21 @@
                         showDashboard();
                     }
                 }
+
+                function setActiveTab() {
+                    var activeTab = localStorage.getItem("activeTab") || "dashboard"; // Jika tidak ada data di localStorage, maka aktifkan dashboard
+                    var tabElement = document.getElementById(activeTab + "-link");
+                    if (tabElement) {
+                        tabElement.click(); // Klik tautan tab sesuai dengan tab yang aktif
+                    }
+                }
+
+                // Fungsi untuk memanggil fungsi inisialisasi saat halaman dimuat
+                    window.onload = function () {
+                        initializePageState();
+                        setActiveTab();
+                        initializeQuillEditor();
+                    };
 
 
                 // Mendengarkan peristiwa untuk tombol toggle sidebar
