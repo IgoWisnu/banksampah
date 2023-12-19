@@ -60,11 +60,11 @@
                 if ($_FILES['gambarBerita']['name']) {
                     // Lakukan proses upload gambar
                     if (!$this->upload->do_upload('gambarBerita')) {
-                        // Handle upload error, if any
                         $error = array('error' => $this->upload->display_errors());
-                        print_r($error);  // Handle this more gracefully in a production environment
+                        print_r($error);
                         return;
                     }
+                    
         
                     // Upload successful, get the uploaded file data
                     $upload_data = $this->upload->data();
@@ -96,17 +96,24 @@
             
             
 
-        public function index(){
-            $this->load->model('m_dashboard');  // Load the model
-            $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
-            $data['adminCount'] = $this->m_dashboard->getAdminCount();
-            $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
-            $data['berita'] = $this->m_dashboard->getBerita();
-            $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
-
-    
-            $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
-        }
+            public function index(){
+                $this->load->model('m_dashboard');  // Load the model
+                $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
+                $data['adminCount'] = $this->m_dashboard->getAdminCount();
+                $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+                $data['berita'] = $this->m_dashboard->getBerita();
+                $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
+            
+                // Assuming you want to fetch the first article's ID
+                $firstArticle = $this->m_dashboard->getBerita()->row_array();
+                $data['artikel'] = $this->m_dashboard->getBeritaById($firstArticle['id']);
+                
+                
+                $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
+                $this->load->view('banksampah/v_footer');
+                
+            }
+            
 
         public function deleteb($id){
             $this->m_dashboard->deleteData($id); 
@@ -115,8 +122,12 @@
 
         public function editberita($id){
             $data['artikel'] = $this->m_dashboard->getBeritaById($id);
+            
             $this->load->view('banksampah/edit_berita', $data);
+            
         }
+        
+        
 
 
     
