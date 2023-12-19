@@ -306,7 +306,7 @@
           <div class="t3 ms-5">Artikel Terkini</div>
           <div class="layCard row justify-content-center border-0">
             <?php foreach($artikel as $key): ?>
-              <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-5">
+              <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-10">
                 <div class="card shadow">
                   <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
                   <div class="card-body">
@@ -346,13 +346,13 @@
 
     <div class="d-flex justify-content-center">
       <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-        <a href="">
+        <a href="<?=base_url()?>riwayat">
           <img src="<?=base_url()?>img/history.png" alt="" class="history">
         </a>
-        <a href="">
+        <a href="<?=base_url()?>home/loadArtikel">
           <img src="<?=base_url()?>img/home.png" alt="" class="home">
         </a>
-        <a href="">
+        <a href="<?=base_url()?>profile">
           <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
         </a>
       </div>

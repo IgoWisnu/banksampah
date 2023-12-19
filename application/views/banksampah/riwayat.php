@@ -238,7 +238,7 @@ body{
     <div class="row justify-content-center">
       <div class="wrap">
         <div class="layBtn">
-          <a class="btn" type="button" href="">
+          <a class="btn" type="button" href="<?=base_url()?>home/loadArtikel">
             <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
           </a>
         </div>

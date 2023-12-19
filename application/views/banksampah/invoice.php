@@ -119,13 +119,13 @@
 <body>
   <div class="background">
     <div class="col">
-      <img class="topImg" src="<?=base_url()?>Waste recycling Vectors & Illustrations for Free Download _ Freepik 1.png" alt="">
+      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     </div>
     <div class="col">
       <div class="row justify-content-center">
         <div class="wrap">
           <div class="layBtn">
-              <a class="btn1" type="button" href="">
+              <a class="btn1" type="button" href="<?=base_url()?>riwayat">
                 <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
               </a>
           </div>
