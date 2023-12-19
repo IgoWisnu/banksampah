@@ -119,7 +119,7 @@
             $this->m_dashboard->deleteData($id); 
             redirect('dashboard');
         }
-
+ 
         public function editberita($id){
             $data['artikel'] = $this->m_dashboard->getBeritaById($id);
             
