@@ -348,7 +348,7 @@
                                     </button>
                                 </div>
                                 
-                                <!-- Modal -->
+                                <!-- Modal Tambah -->
                                 <div class="modal fade" id="tambahBeritaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -401,6 +401,68 @@
                                 };
                                 </script>
 
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="editBeritaModal" tabindex="-1" aria-labelledby="editBeritaModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="editBeritaModalLabel">Edit Berita</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="editForm" action="<?= base_url('dashboard/updateBerita') ?>" method="post" enctype="multipart/form-data">
+                                                    <input type="hidden" name="id" id="editBeritaId">
+                                                    <input type="hidden" name="gambarBerita_existing" id="editGambarBeritaExisting">
+
+                                                    <div class="mb-3">
+                                                        <label for="editJudulBerita" class="form-label">Judul Berita</label>
+                                                        <input type="text" class="form-control" id="editJudulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editGambarBerita" class="form-label">Upload Gambar Berita</label>
+                                                        <input type="file" class="form-control-file" id="editGambarBerita" name="gambarBerita" accept="image/*">
+                                                        <img id="editGambarPreview" style="max-width: 200px;" alt="Current Image">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editDeskripsiBerita" class="form-label">Deskripsi Berita</label>
+                                                        <div id="editEditor" style="min-height: 150px;"></div>
+                                                        <input type="hidden" id="editDeskripsiBerita" name="deskripsiBerita">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    var editQuill = new Quill('#editEditor', {
+                                        theme: 'snow'
+                                    });
+
+                                    // Handle form submission within the edit modal
+                                    var editModalForm = document.querySelector('#editForm');
+                                    editModalForm.addEventListener('submit', function () {
+                                        document.getElementById('editDeskripsiBerita').value = editQuill.root.innerHTML;
+                                        // Additional validation logic can be added here before allowing the form to be submitted
+                                        return true; // Allow the form to be submitted
+                                    });
+
+                                    // Open the edit modal with data when the edit button is clicked
+                                    function openEditModal(id, judul, gambar, deskripsi) {
+                                        document.getElementById('editBeritaId').value = id;
+                                        document.getElementById('editJudulBerita').value = judul;
+                                        document.getElementById('editGambarBeritaExisting').value = gambar;
+                                        document.getElementById('editGambarPreview').src = '<?= base_url("uploads/") ?>' + gambar;
+                                        editQuill.root.innerHTML = deskripsi;
+                                        $('#editBeritaModal').modal('show');
+                                    }
+                                </script>
+
+
                                 <div class="col">
                                 <div class="row my-1">
                                             <div class="col">
@@ -424,7 +486,8 @@
                                                                 </td>
                                                                 <td><?php echo $key['deskripsi'] ?></td>
                                                                 <td>
-                                                                    <a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>" class="btn btn-info">Edit</a>
+                                                                    <button class="btn btn-warning" onclick="openEditModal('<?php echo $key['id']; ?>', '<?php echo $key['judul']; ?>', '<?php echo $key['gambar']; ?>', '<?php echo htmlspecialchars($key['deskripsi']); ?>')">Edit</button>
+                                                                   <!--<a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>" class="btn btn-info">Edit</a>-->
                                                                     <a href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>" class="btn btn-danger">Delete</a>
                                                                 </td> 
                                                             </tr>
@@ -437,15 +500,6 @@
                                 </div>
                             </div>
                         </div>
-                            
-
-
-                        
-
-                        <div id="beritmake-table-container" style="display: none;">
-                            
-                        </div>
-
                     </div>
                 </div>
             </div>
