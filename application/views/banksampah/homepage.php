@@ -295,7 +295,7 @@
         <div class="wrap">
           <div class="t2 ms-5">Menu</div>
           <div class="layBtn3 row justify-content-center">
-            <a href="" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
+            <a href="<?=base_url()?>jenissampah" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
               Sampah apa saja yang bisa ditukar?
             </div></a>
             <a href="" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
