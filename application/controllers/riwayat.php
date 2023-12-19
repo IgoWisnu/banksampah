@@ -31,7 +31,8 @@
 
         public function invoice(){
             $id_transaksi = $this->input->get('id');
-            $data = $this->m_riwayat->getDetail($id_transaksi);
+            $data['detail'] = $this->m_riwayat->getDetail($id_transaksi);
+            $data['sampah'] = $this->m_riwayat->getDetailSampah($id_transaksi);
             $this->load->view('banksampah/invoice', $data);
         }
 

@@ -246,33 +246,36 @@ body{
         <br>
 
         <div class="row justify-content-center mt-5">
-          <?php foreach($riwayat->result_array() as $key){ ?>
-            <?php 
-              if($key['kredit'] == 0){
-                  $img = base_url()."img/gSetor.png";
-                  $nominal = '+'.$key['debit'];
-              } else{
-                  $img = base_url()."img/gTarik.png";
-                  $nominal = '-'.$key['kredit'];
-              }
-            ?>
-            <div class="row justify-content-center">
-              <a href="" class="laycard2 card col-10" type="button">
+            <div class="row justify-content-center mt-5">
+                  <?php foreach($riwayat->result_array() as $key){ ?>
+                    <?php 
+                      if($key['kredit'] == 0){
+                          $img = base_url()."img/gSetor.png";
+                          $nominal = '+'.$key['debit'];
+                      } else{
+                          $img = base_url()."img/gTarik.png";
+                          $nominal = '-'.$key['kredit'];
+                      }
+                    ?>
+                    <div class="row justify-content-center">
+                      <a href="<?=base_url()?>riwayat/invoice?id=<?=$key['id_tabungan_transaksi'] ?>" class="laycard2 card col-10" type="button">
 
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <img class="arrow2" src=<?=$img?> alt="">
-                    <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
-                  </div>
-                  <div class="layText1">
-                    <div class="nominal"><?=$nominal ?></div>
-                    <div class="keterangan">Cash Bank Sampah PNB</div>
-                  </div>
-                </div>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <img class="arrow2" src=<?=$img?> alt="">
+                            <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                          </div>
+                          <div class="layText1">
+                            <div class="nominal"><?=$nominal ?></div>
+                            <div class="keterangan">Cash Bank Sampah PNB</div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                  <?php } ?>
               </a>
             </div>
-
-          <?php } ?>
         </div>
         <div class="row justify-content-end">
           <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
