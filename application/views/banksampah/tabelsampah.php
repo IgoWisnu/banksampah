@@ -130,6 +130,7 @@
                           <table class="table mt-4">
                               <?php foreach($sampah->result_array() as $key){ ?>
                               
+                                
                               <tr>
                                   <td><?=$key['id'] ?></td>
                                   <td><?=$key['jenis_sampah'] ?></td>
