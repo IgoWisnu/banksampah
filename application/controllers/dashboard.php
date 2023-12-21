@@ -57,7 +57,7 @@
                 $this->load->library('upload', $config);
         
                 // Cek apakah ada file gambar yang diupload
-                if ($_FILES['gambar']['name']) {
+                if ($_FILES['gambarBerita']['name']) {
                     // Lakukan proses upload gambar
                     if (!$this->upload->do_upload('gambarBerita')) {
                         $error = array('error' => $this->upload->display_errors());
@@ -84,6 +84,7 @@
                 $this->m_dashboard->updateBerita($id, $data);
         
                 // Redirect atau tampilkan pesan sukses
+                redirect('dashboard');
             }
 
             public function tampilkanTabelNasabah() {
