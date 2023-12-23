@@ -308,9 +308,10 @@
             <?php foreach($artikel as $key): ?>
               <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-10">
                 <div class="card shadow">
-                  <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
+                  <img src="<?=base_url()?>uploads/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
                   <div class="card-body">
                     <p class="judul" ><?=$key['judul'] ?></p>
+                    <p><?=$key['gambar'] ?></p>
                   </div>
                 </div>
               </a>
