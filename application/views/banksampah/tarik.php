@@ -7,7 +7,7 @@
     <title>tarik</title>
 </head>
 <body>
-    <h3>Tarik Sampah</h3>
+    <h1 class="text-center">Tarik Sampah</h1>
     <br>
     <div class="container">
         <div class="row">

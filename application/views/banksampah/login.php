@@ -146,11 +146,10 @@
                     <?php
                         $alert = $this->session->flashdata('alert');
                         if(isset($alert)){
-                            echo '<div class="alert alert-primary" role="alert">
-                            This is a primary alert—check it out!
-                            </div>';
-                    
+                            echo '<div class="alert alert-danger" role="alert">'.$alert.'</div>';
                             var_dump($alert);
+                        } else if(isset($success)){
+                            echo '<div class="alert alert-success" role="alert">'.$alert.'</div>';
                         }
                     ?>
                     <div class="tLogin">Login</div>
@@ -174,7 +173,7 @@
                             <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
                         </div>
                         <div class="stick"></div>
-                        <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
+                        <div class="InginJadiImigran row justify-content-center">Tidak ingin login?<br>
                             <a href="<?=base_url('auth/guestAccess') ?>" class="link row justify-content-center">Guest</a>
                         </div>
                     </div>

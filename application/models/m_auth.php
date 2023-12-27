@@ -66,14 +66,26 @@
         }
 
         public function verify($token) {
-            $this->db->where('kode_verif', $token)
-                     ->update('user', ['isVerif' => 1]);
-            $istrue = false;       
-            if ($this->db->affected_rows() > 0) {
-                $istrue = true;
+            // Check if 'kode_verif' exists
+            $user = $this->db->get_where('user', ['kode_verif' => $token])->row();
+        
+            if ($user && $user->isVerif == 0) {
+                // 'kode_verif' exists and 'isVerif' is not 1, proceed with the update
+                $this->db->where('kode_verif', $token)
+                         ->update('user', ['isVerif' => 1]);
+        
+                // Check if the update was successful
+                $condition = 'verif';
+            } elseif($user && $user->isVerif == 1) {
+                // 'kode_verif' doesn't exist or 'isVerif' is already 1, no need to update
+                $condition = 'already_verif';
+            } else{
+                $condition = 'not_found';
             }
-            return $istrue;
+        
+            return $condition;
         }
+        
 
         public function add(){
             $kode = random_string('alnum', 20);
@@ -187,7 +199,7 @@
             date_default_timezone_set('Asia/Manila');
             $data = array(
                 'id_user_nasabah' => $id,
-                'no_rekening' => '0012'.$id,
+                'saldo' => '0',
                 'tgl_buka_rekening' => date('y-m-d')
             );
 
@@ -196,13 +208,12 @@
         }
 
         public function registerSaldo($id){
-            $query = $this->db->get_where('saldo', array('id_user' => $id));
+            $query = $this->db->get_where('tabungan', array('id_user_nasabah' => $id));
             if($query->num_rows() == 0){
                 $data = array(
-                    'id_user' => $id,
                     'saldo' => 0
                 );
-                $result = $this->db->insert('saldo', $data);
+                $result = $this->db->update('tabungan', $data);
                 return $result;
             } else {
                 return null;
