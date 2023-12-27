@@ -8,8 +8,8 @@
 </head>
 <style>
       
-    .background{
-    height: 1100px; 
+  body{
+    height: 100%; 
     background: #00926E;
   }
 
@@ -19,8 +19,7 @@
     transition: opacity 1000ms ease-in-out;
   }
 
-  .wrap{
-    height: 800px; 
+  .wrap{ 
     top: 255px; 
     position: absolute; 
     background: white; 
@@ -29,44 +28,8 @@
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
   }
 
-  .t1{
-    top: 55px;
-    font-size: 30px;
-    font-weight: 700;
-    position: relative;
-  }
-
-  .lCheck{
-    top: 40px;
-    width: 20%;
-    position: relative;
-  }
-
-  .date{
-    
-  }
-
-  .tTotalBayar{
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .tDetailTransaksi{
-    font-weight: 600;
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  
-  .c1{
-    top: 60px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0px;
-    position: relative;
-  }
-
   .btn1{
+    margin-bottom: 5%;
     font-weight: 500;
     padding: 2%;
     width: 110px;
@@ -86,65 +49,123 @@
     
   }
 
+  .table-responsive{
+    margin-left: 3%;
+    margin-bottom: 5%;
+  }
+
+  .bBar{
+    width: 100%;
+    height: 5.5%;
+    bottom: 0;
+    position: fixed;
+    border-top-right-radius: 30px; 
+    border-top-left-radius: 30px;
+    background-color: white;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+    transition: 1s ease;
+    align-items: center;
+  }
+
+  .history{
+    margin-top: 10px;
+    width: 50px;
+  }
+
+  .home{
+    width: 43px;
+  }
+
+  .profile{
+    width: 40px;
+  }
+
   @media screen and (min-width: 422px) {
-      .wrap{
+    .wrap{
       width: 422px;
-      }
-  }
-
-
-  @media screen and (max-width: 422px){
-    .topImg{
-      height: 281px;
-      width: 100%;
+    }
+    .bBar{
+      width: 422px;
     }
   }
-  @media screen and (max-width: 300px){
-    .LayBtn1{
-      top: 50px;
-    }
-    
-  }
+
   @media screen and (min-width: 700px) {
     .topImg{
-        opacity: 0;
+      opacity: 0;
     }
-    .background{
-        background: linear-gradient(white,#00926E,#00926E );
+    body{
+      background: rgb(0,146,110);
+      background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+      background-attachment: fixed;
+      transition: 1s ease;
+    }
+    .bBar{
+      position: fixed;
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      background-color: transparent;
+      box-shadow: none;
+      bottom: 95%;
+      transition: all 1s ease;
+    }
+    .bBar.ilang {
+      background-color: white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: all 0.5s ease;
+    }
+    .wrap{
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      transition: 1s ease;
     }
   }
 </style>
-<body class="background">
-    <div class="row justify-content-center">
-        <div class="col">
-          <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
-        </div>
-        <div class="col1">
-            <div class="row justify-content-center">
-                <div class="wrap">
-                    <div class="layBtn">
-                        <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
-                            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-                        </a>
-                        <div class="table-responsive">
-                          <table class="table mt-4">
-                              <?php foreach($sampah->result_array() as $key){ ?>
-                              
-                                
-                              <tr>
-                                  <td><?=$key['id'] ?></td>
-                                  <td><?=$key['jenis_sampah'] ?></td>
-                                  <td><?=$key['kategori_sampah'] ?></td>
-                                  <td><?=$key['sub_kategori_sampah'] ?></td>
-                                  <td><?=$key['harga_sampah'] ?></td>
-                              </tr>
-                              <?php } ?>
-                          </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var bBar = document.querySelector(".bBar");
+
+    function updateTransparency() {
+      var scrollPosition = window.scrollY;
+
+      if (scrollPosition > 200) {
+        bBar.classList.add("ilang");
+      } else {
+        bBar.classList.remove("ilang");
+      }
+    }
+    window.addEventListener("scroll", updateTransparency);
+  });
+</script>
+<body>
+  <div class="row justify-content-center">
+    <div class="col">
+      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     </div>
+    <div class="col1">
+      <div class="row justify-content-center">
+        <div class="wrap">
+          <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
+            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+          </a>
+          <div class="table-responsive">
+            <table class="table mt-4">
+              <?php foreach($sampah->result_array() as $key){ ?>
+              <tr>
+                <td><?=$key['id'] ?></td>
+                <td><?=$key['jenis_sampah'] ?></td>
+                <td><?=$key['kategori_sampah'] ?></td>
+                <td><?=$key['sub_kategori_sampah'] ?></td>
+                <td><?=$key['harga_sampah'] ?></td>
+              </tr>
+              <?php } ?>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php include('menu.php') ?>
 </body>
 </html>
