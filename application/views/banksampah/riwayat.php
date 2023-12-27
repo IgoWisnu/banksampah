@@ -138,9 +138,10 @@ body{
 .layText2{
   text-align: end;
 }
+
 .bBar{
   width: 100%;
-  height: 7.5%;
+  height: 5.5%;
   bottom: 0;
   position: fixed;
   border-top-right-radius: 30px; 
@@ -148,32 +149,28 @@ body{
   background-color: white;
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
   transition: 1s ease;
+  align-items: center;
 }
+
 .history{
   margin-top: 10px;
-  width: 60px;
+  width: 50px;
 }
+
 .home{
-  margin-top: 10px;
-  width: 50px;
+  width: 40px;
 }
+
 .profile{
-  margin-top: 10px;
-  width: 50px;
+  width: 40px;
 }
+
 @media screen and (min-width: 422px) {
     .wrap{
     width: 422px;
     }
 }
 
-
-@media screen and (max-width: 422px){
-  .topImg{
-    height: 281px;
-    width: 100%;
-  }
-}
 @media screen and (max-width: 300px){
   .LayBtn1{
     top: 50px;
@@ -199,7 +196,7 @@ body{
     border-top-right-radius: 0px;
     background-color: transparent;
     box-shadow: none;
-    bottom: 93%;
+    bottom: 95%;
     transition: all 1s ease;
   }
   .bBar.ilang {
@@ -207,7 +204,7 @@ body{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: all 0.5s ease;
   }
-  }
+}
 
 </style>
 <script>
@@ -283,19 +280,7 @@ body{
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-      <a href="">
-        <img src="<?=base_url()?>img/history.png" alt="" class="history">
-      </a>
-      <a href="">
-        <img src="<?=base_url()?>img/home.png" alt="" class="home">
-      </a>
-      <a href="">
-        <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
-      </a>
-    </div>
-  </div>
+  <?php include('menu.php') ?>
 </div>
 </body>
 </html>

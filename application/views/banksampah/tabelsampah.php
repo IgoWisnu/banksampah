@@ -64,20 +64,19 @@
     background-color: white;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
     transition: 1s ease;
+    align-items: center;
   }
 
   .history{
-    margin-top: 7px;
+    margin-top: 10px;
     width: 50px;
   }
 
   .home{
-    margin-top: 7px;
-    width: 40px;
+    width: 43px;
   }
 
   .profile{
-    margin-top: 7px;
     width: 40px;
   }
 
@@ -89,15 +88,10 @@
       width: 422px;
     }
   }
-  @media screen and (max-width: 422px){
-    .topImg{
-      height: 281px;
-      width: 100%;
-    }
-  }
+
   @media screen and (min-width: 700px) {
     .topImg{
-        opacity: 0;
+      opacity: 0;
     }
     body{
       background: rgb(0,146,110);
@@ -172,18 +166,6 @@
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-      <a href="<?=base_url()?>riwayat">
-        <img src="<?=base_url()?>img/history.png" alt="" class="history">
-      </a>
-      <a href="<?=base_url()?>home/loadArtikel">
-        <img src="<?=base_url()?>img/home.png" alt="" class="home">
-      </a>
-      <a href="<?=base_url()?>profile">
-        <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
-      </a>
-    </div>
-  </div>
+  <?php include('menu.php') ?>
 </body>
 </html>

@@ -24,8 +24,7 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     padding-top: 130px;
-    padding-bottom: 150px;
-    padding-bottom: auto; 
+    padding-bottom: 100px; 
     top: 255px; 
     position: absolute; 
     background: white; 
@@ -149,7 +148,7 @@
 
   .bBar{
     width: 100%;
-    height: 7.5%;
+    height: 5.5%;
     bottom: 0;
     position: fixed;
     border-top-right-radius: 30px; 
@@ -157,23 +156,21 @@
     background-color: white;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
     transition: 1s ease;
+    align-items: center;
   }
 
   .history{
     margin-top: 10px;
-    width: 60px;
+    width: 50px;
   }
 
   .home{
-    margin-top: 10px;
-    width: 50px;
+    width: 40px;
   }
 
   .profile{
-    margin-top: 10px;
-    width: 50px;
+    width: 40px;
   }
-
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -188,7 +185,6 @@
     
       font-size: 13px;
     }
-
     .gacor{
       font-size: 13px;
     }
@@ -214,13 +210,6 @@
     }
   }
 
-  @media screen and (max-width: 422px){
-    .topImg{
-      height: 281px;
-      width: 100%;
-    }
-    
-  }
   @media screen and (max-width: 300px){
     .LayBtn1{
       top: 50px;
@@ -244,8 +233,10 @@
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
       background-color: transparent;
+      display: flex;
+      align-items: center;
       box-shadow: none;
-      bottom: 93%;
+      bottom: 95%;
       transition: all 1s ease;
     }
     .bBar.ilang {
@@ -285,7 +276,6 @@
     </div>
     <div class="col">
       <div class="row justify-content-center">
-        <div class="panel"></div>
         <div class="wrap">
           <div class="t2 ms-5">Menu</div>
           <div class="layBtn3 row justify-content-center">
@@ -338,20 +328,7 @@
         </div>
       </div>
     </div>
-
-    <div class="d-flex justify-content-center">
-      <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-        <a href="<?=base_url()?>riwayat">
-          <img src="<?=base_url()?>img/history.png" alt="" class="history">
-        </a>
-        <a href="<?=base_url()?>home/loadArtikel">
-          <img src="<?=base_url()?>img/home.png" alt="" class="home">
-        </a>
-        <a href="<?=base_url()?>profile">
-          <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
-        </a>
-      </div>
-    </div>
+    <?php include('menu.php') ?>
   </div>
 </body>
 </html>
