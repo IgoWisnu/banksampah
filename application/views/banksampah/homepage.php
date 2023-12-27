@@ -19,20 +19,14 @@
     position: absolute;
     transition: opacity 1000ms ease-in-out;
   }
-
-  .panel{
-    top: 255px;
-    height: 130px;
+    
+  .wrap{
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    position: absolute;
-    background-color: white;
-  }
-  
-  .wrap{
+    padding-top: 130px;
     padding-bottom: 150px;
     padding-bottom: auto; 
-    top: 380px; 
+    top: 255px; 
     position: absolute; 
     background: white; 
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 

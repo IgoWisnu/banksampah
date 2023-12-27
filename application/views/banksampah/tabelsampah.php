@@ -51,6 +51,7 @@
 
   .table-responsive{
     margin-left: 3%;
+    margin-bottom: 5%;
   }
 
   .bBar{
@@ -140,7 +141,6 @@
         bBar.classList.remove("ilang");
       }
     }
-
     window.addEventListener("scroll", updateTransparency);
   });
 </script>
@@ -173,17 +173,17 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-      <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
-        <a href="<?=base_url()?>riwayat">
-          <img src="<?=base_url()?>img/history.png" alt="" class="history">
-        </a>
-        <a href="<?=base_url()?>home/loadArtikel">
-          <img src="<?=base_url()?>img/home.png" alt="" class="home">
-        </a>
-        <a href="<?=base_url()?>profile">
-          <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
-        </a>
-      </div>
+    <div class="bBar d-flex justify-content-evenly LayBtn" id="myID">
+      <a href="<?=base_url()?>riwayat">
+        <img src="<?=base_url()?>img/history.png" alt="" class="history">
+      </a>
+      <a href="<?=base_url()?>home/loadArtikel">
+        <img src="<?=base_url()?>img/home.png" alt="" class="home">
+      </a>
+      <a href="<?=base_url()?>profile">
+        <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
+      </a>
     </div>
+  </div>
 </body>
 </html>

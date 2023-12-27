@@ -7,8 +7,7 @@
     <title>Profile</title>
 </head>
 <style>
-      
-    .background{
+  .background{
     height: 1100px; 
     background: #00926E;
   }
@@ -91,9 +90,9 @@
   }
 
   @media screen and (min-width: 422px) {
-      .wrap{
+    .wrap{
       width: 422px;
-      }
+    }
   }
 
 
@@ -119,54 +118,54 @@
   }
 </style>
 <body class="background">
-    <div class="row justify-content-center">
-        <div class="col">
-          <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
-        </div>
-        <div class="col1">
-            <div class="row justify-content-center">
-                <div class="wrap">
-                    <div class="layBtn">
-                        <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
-                            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+  <div class="row justify-content-center">
+    <div class="col">
+      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    </div>
+      <div class="col1">
+        <div class="row justify-content-center">
+          <div class="wrap">
+            <div class="layBtn">
+              <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
+                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+              </a>
+              <br>
+              <br>
+              <div class="row justify-content-center">
+                <?php foreach($profile->result_arraY() as $key){ ?>
+                <div class="card rounded shadow col-10">
+                  <p class="mt-2"><?=$key['username'] ?></p>
+                </div>
+                <div class="card rounded shadow col-10 mt-2">
+                  <p class="mt-2">Detail Tabungan</p>
+                </div>
+                <?php } ?>
+                <div class="table-responsive">
+                  <table class="table mt-4">
+                    <tr>
+                      <td>
+                        <a href="" class="">
+                          Edit Profile
                         </a>
-                        <br>
-                        <br>
-                        <div class="row justify-content-center">
-                            <?php foreach($profile->result_arraY() as $key){ ?>
-                            <div class="card rounded shadow col-10">
-                                <p class="mt-2"><?=$key['username'] ?></p>
-                            </div>
-                            <div class="card rounded shadow col-10 mt-2">
-                                <p class="mt-2">Detail Tabungan</p>
-                            </div>
-                            <?php } ?>
-                            <div class="table-responsive">
-                              <table class="table mt-4">
-                                  <tr>
-                                    <td>
-                                        <a href="" class="">
-                                            Edit Profile
-                                        </a>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                        <a href="">Ganti Password</a>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                        <a href="<?=base_url()?>auth/logout">Logout</a>
-                                    </td>
-                                  </tr>
-                              </table>
-                            </div>
-                        </div>
-                    </div>
+                      </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <a href="">Ganti Password</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="<?=base_url()?>auth/logout">Logout</a>
+                        </td>
+                    </tr>
+                  </table>
                 </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
