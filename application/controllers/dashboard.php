@@ -7,6 +7,10 @@
                 parent::__construct();
                 // Load model BeritaModel
                 $this->load->model('m_dashboard');
+
+                if($this->session->userdata('role') == ''){
+                    redirect('auth/login');
+                }
             }
         
             public function tambahBerita() {
@@ -97,6 +101,9 @@
             
 
             public function index(){
+                $username = $this->session->userdata('username');
+                $data['username'] = $username;
+
                 $this->load->model('m_dashboard');  // Load the model
                 $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
                 $data['adminCount'] = $this->m_dashboard->getAdminCount();
