@@ -6,8 +6,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>tarik</title>
 </head>
+<style>
+    body {
+        height: 1000px;
+        background: rgb(0, 146, 110);
+        background: linear-gradient(0deg, rgba(0, 146, 110, 1) 0%, rgba(0, 146, 110, 1) 20%, rgba(0, 146, 110, 1) 36%, rgba(29, 157, 131, 1) 52%, rgba(75, 176, 164, 1) 78%, rgba(147, 205, 217, 1) 100%);
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.9); 
+        padding: 25px; 
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    h3 {
+        font-weight: bold; 
+        font-size: 2em;
+        color: #fff; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    }
+
+    input:focus {
+        color: #000;
+    }
+    
+</style>
+
 <body>
-    <h3>Tarik Sampah</h3>
+    <div class="text-center py-4">
+        <h3 style="font-weight: bold; font-size: 2em;">Tarik Sampah</h3>
+    </div>
     <br>
     <div class="container">
         <div class="row">
