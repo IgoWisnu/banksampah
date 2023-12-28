@@ -81,6 +81,8 @@
 
             //update data in table saldo
             $this->m_setor->updateDebitSaldo($id_tbUser, $total);
+
+            redirect('dashboard');
         }
 
         public function hitungHarga(){

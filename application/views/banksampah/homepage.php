@@ -171,6 +171,11 @@
   .profile{
     width: 40px;
   }
+
+  .card-img-top{
+    max-height: 120px;
+
+  }
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -295,7 +300,6 @@
                   <img src="<?=base_url()?>uploads/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
                   <div class="card-body">
                     <p class="judul" ><?=$key['judul'] ?></p>
-                    <p><?=$key['gambar'] ?></p>
                   </div>
                 </div>
               </a>

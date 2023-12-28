@@ -89,6 +89,17 @@
     background: #00926E;
   }
 
+  .profile{
+    width: 50px;
+    height: 50px;
+    
+  }
+
+  .img-profile{
+    width: 50px;
+    height: 50px;
+  }
+
   @media screen and (min-width: 422px) {
     .wrap{
       width: 422px;
@@ -125,6 +136,16 @@
       <div class="col1">
         <div class="row justify-content-center">
           <div class="wrap">
+            <?php 
+                $success = $this->session->flashdata('success');
+                $failed = $this->session->flashdata('failed');
+
+                if($success){
+                  echo '<div class="alert alert-success" role="alert">'.$success.'</div>';
+                } elseif($failed){
+                  echo '<div class="alert alert-danger" role="alert">'.$failed.'</div>';
+                }
+            ?>
             <div class="layBtn">
               <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
                 <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
@@ -133,18 +154,24 @@
               <br>
               <div class="row justify-content-center">
                 <?php foreach($profile->result_arraY() as $key){ ?>
-                <div class="card rounded shadow col-10">
+                <div class="card rounded shadow col-10 justify-content-between">
                   <p class="mt-2"><?=$key['username'] ?></p>
+                  <div class="bg-dark profile rounded">
+                      <img src="<?=base_url()?>uploads/profile/<?=$key['profile']?>" alt="" class="img-profile img-fluid rounded">
+                  </div>
                 </div>
                 <div class="card rounded shadow col-10 mt-2">
                   <p class="mt-2">Detail Tabungan</p>
+                  <p><?=$key['id_tabungan'] ?></p>
+                  <p><?=$key['saldo'] ?></p>
+                  <p>Dibuka pada <?=$key['tgl_buka_rekening']?></p>
                 </div>
                 <?php } ?>
                 <div class="table-responsive">
                   <table class="table mt-4">
                     <tr>
                       <td>
-                        <a href="" class="">
+                        <a href="<?=base_url()?>profile/editprofile?id=<?=$key['id_user']?>" class="">
                           Edit Profile
                         </a>
                       </td>
