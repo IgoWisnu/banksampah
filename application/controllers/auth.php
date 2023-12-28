@@ -54,6 +54,9 @@
         }
 
         public function cekLogin(){
+            $rules = $this->m_auth->validation();
+            $this->form_validation->set_rules($rules);
+
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
@@ -76,8 +79,9 @@
                     redirect('home');
                 }
             }else{
-                echo 'login failed';
-                echo "$username".$password."dasad";
+                $this->session->set_flashdata('failed', 'Uername/Password salah');
+                redirect('auth');
+                
             }
         }
 

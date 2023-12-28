@@ -103,7 +103,7 @@
           <div class="wrap">
 
             <div class="layBtn">
-              <a class="btn1" type="button" href="">
+              <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
                 <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
               </a>
             </div>
@@ -115,7 +115,7 @@
             </div>
 
             <div class=" row justify-content-center">
-              <img class="gambar" src="<?=base_url()?>img/<?=$artikel['gambar'] ?>" alt="">
+              <img class="gambar" src="<?=base_url()?>uploads/<?=$artikel['gambar'] ?>" alt="">
             </div>
             
             <div class="row justify-content-center mt-2">

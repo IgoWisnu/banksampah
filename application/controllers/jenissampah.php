@@ -9,6 +9,10 @@
         {
             parent::__construct();
             $this->load->model('m_jenis_sampah');
+
+            if($this->session->userdata('role') == ''){
+                redirect('auth/login');
+            }
         }
         
         public function index()
