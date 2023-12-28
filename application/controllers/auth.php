@@ -69,7 +69,8 @@
                 $sess = array(
                     'id' => $data[0]['id_user'],
                     'username' => $data[0]['username'],
-                    'role' => $data[0]['role']
+                    'role' => $data[0]['role'],
+                    'admin_name' => $data[0]['admin_name']
                 );
                 $this->session->set_userdata($sess);
                 $this->session->set_flashdata('alert','login berhasil!');

@@ -32,6 +32,13 @@
             color: var(--second-text-color);
             }
 
+            #empty-container {
+                background-color: blue;
+                padding: 20px;
+                margin-top: 20px;
+                color: white;
+            }
+
             .primary-bg {
             background-color: var(--main-bg-color);
             }
@@ -162,14 +169,14 @@
                                 class="fas fa-user fa-beat me-2"></i>Nasabah</a>
                         <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                 class="fas fa-chart-line me-2"></i>Berita</a>
-                        <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
-                                class="fas fa-arrow-up me-2"></i>Setor</a>                        
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                class="fas fa-arrow-down me-2"></i>Tarik</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadSetorContent()"><i 
+                                class="fas fa-arrow-down me-2"></i>Setor</a>                       
+                        <a href="#" id="tarik-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTarikContent()"><i 
+                                class="fas fa-arrow-up me-2"></i>Tarik</a>
+                        <a href="<?php echo base_url('auth/logout/') ?>" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                 class="fas fa-power-off me-2"></i>Logout</a>
                     </div>
-                </div>
+                </div>  
 
                 <div id="page-content-wrapper">
                     <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
@@ -189,10 +196,10 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-user me-2"></i>John Doe
+                                        <i class="fas fa-user me-2"></i><?=$username?>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url('profile/index/') ?>">Profile</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -242,6 +249,30 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div id="setor-content" class="mt-3">
+                            <!-- Content from Setor will be loaded here -->
+                        </div>
+
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                        <script>
+                            function loadSetorContent() {
+                                // Fetch content from the setorSampah controller's index function and update #setor-content
+                                $("#setor-content").load("setorSampah/index");
+                            }
+                        </script>
+
+                        <div id="tarik-content" class="mt-3">
+                            <!-- Content from Tarik will be loaded here -->
+                        </div>
+
+                        <script>
+                            function loadTarikContent() {
+                                // Fetch content from the tarikSampah controller's index function and update #tarik-content
+                                $("#tarik-content").load("tarik/index");
+                            }
+                        </script>
 
                         <div id="nasabah-table-container" style="display: none;">
                             <div class="row my-5">
@@ -456,7 +487,7 @@
                                         document.getElementById('editBeritaId').value = id;
                                         document.getElementById('editJudulBerita').value = judul;
                                         document.getElementById('editGambarBeritaExisting').value = gambar;
-                                        document.getElementById('editGambarPreview').src = '<?= base_url("uploads/") ?>' + gambar;
+                                        document.getElementById('editGambarPreview').src = '<?= base_url("img/") ?>' + gambar;
                                         editQuill.root.innerHTML = deskripsi;
                                         $('#editBeritaModal').modal('show');
                                     }
@@ -482,7 +513,7 @@
                                                                 <td><?php echo $key['id'] ?></td>
                                                                 <td><?php echo $key['judul'] ?></td>
                                                                 <td>
-                                                                    <img src="<?php echo base_url('uploads/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
+                                                                    <img src="<?php echo base_url('img/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
                                                                 </td>
                                                                 <td><?php echo $key['deskripsi'] ?></td>
                                                                 <td>
