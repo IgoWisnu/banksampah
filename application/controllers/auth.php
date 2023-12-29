@@ -47,7 +47,7 @@
         public function guestAccess(){
             $sess = array(
                 'username' => 'guest',
-                'role' => 'user'
+                'role' => 'guest'
             );
             $this->session->set_userdata($sess);
             redirect('home');

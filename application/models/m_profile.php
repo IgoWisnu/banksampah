@@ -21,19 +21,35 @@
             return $data;
         }
 
-        public function update(){
+        public function update($data){
             $id = $this->input->post('id_user');
-            $data = array(
-                'nama_lengkap' => $this->input->post('nama_lengkap'),
-                'tempat_lahir' => $this->input->post('tempat_lahir'),
-                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-                'alamat' => $this->input->post('alamat')
-            );
 
             $this->db->where('id_user', $id);
             $result = $this->db->update('user', $data);
 
             return $result;
+        }
+
+        public function deleteProfile(){
+            $id = $this->input->post('id_user');
+            $img = $this->input->post('oldimg');
+
+            $path = FCPATH . 'uploads/profile/';
+
+            // Construct the full path to the image file
+            $file_path = $path . $img;
+
+            // Check if the file exists before attempting to delete it
+            if (file_exists($file_path)) {
+                // Attempt to delete the file
+                if (unlink($file_path)) {
+                    echo 'Image deleted successfully.';
+                } else {
+                    echo 'Unable to delete the image.';
+                }
+            } else {
+                echo 'The image file does not exist.';
+            }
         }
     
     }

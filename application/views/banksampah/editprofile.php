@@ -137,13 +137,16 @@
               </a>
               <br>
               <br>
-            <form action="<?=base_url()?>profile/updateProfile" method="post">
+              <?php echo form_open_multipart('profile/updateProfile');?>
                 <?php foreach($user->result_array() as $key){ ?>
                     <div class="mb-3">
                         <a href="" class="">
-                            <img src="" alt="" class="img-profile">
+                            <img id="blah" src="#" alt="" class="img-profile blah">
                         </a>
-                        <input type="file" name="userfile" size="5000">
+                        <!-- old img -->
+                        <input type="hidden" name="oldimg" value="<?=$key['profile']?>">
+                        <!-- new img -->
+                        <input type="file" name="userfile" size="5000" onchange="readURL(this);">
                     </div>
                     <div class="mb-3">
                         <input type="hidden" class="form-control" id="usrename" name="id_user" value="<?=$key['id_user']?>">
@@ -182,22 +185,19 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function() {
-                $('#image-preview').attr('src', e.target.result);
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
             }
 
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-    $("#userfile").change(function () {
-        readURL(this);
-    });
 </script>
 </body>
 </html>
