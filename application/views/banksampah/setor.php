@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <h2 class="center">Data Search</h2>
+    <h2 class="center">Setor Sampah</h2>
     <br />
     <div class="container">
         <div class="row">

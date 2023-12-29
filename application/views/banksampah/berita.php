@@ -93,10 +93,9 @@
 </style>
 
   <body>
-
     <div class="">
       <div class="col">
-        <img class="topImg" src="<?=base_url()?>img/Waste_recycling_Vectors___Illustrations_for_Free_Download___Freepik_1-svaecW6Z_-transformed.png" alt="">
+        <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
       </div>
 
       <div class="col">
@@ -104,9 +103,9 @@
           <div class="wrap">
 
             <div class="layBtn">
-                <a class="btn1" type="button" href="">
-                  <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-                </a>
+              <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
+                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+              </a>
             </div>
 
             <div class="row justify-content-center mt-5 mb-3">

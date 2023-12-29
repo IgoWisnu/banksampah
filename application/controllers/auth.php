@@ -54,6 +54,9 @@
         }
 
         public function cekLogin(){
+            $rules = $this->m_auth->validation();
+            $this->form_validation->set_rules($rules);
+
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
@@ -66,7 +69,8 @@
                 $sess = array(
                     'id' => $data[0]['id_user'],
                     'username' => $data[0]['username'],
-                    'role' => $data[0]['role']
+                    'role' => $data[0]['role'],
+                    'admin_name' => $data[0]['admin_name']
                 );
                 $this->session->set_userdata($sess);
                 $this->session->set_flashdata('alert','login berhasil!');
@@ -76,8 +80,9 @@
                     redirect('home');
                 }
             }else{
-                echo 'login failed';
-                echo "$username".$password."dasad";
+                $this->session->set_flashdata('failed', 'Uername/Password salah');
+                redirect('auth');
+                
             }
         }
 
@@ -89,20 +94,23 @@
             $token = $this->input->get('token');
             $verifyCheck = $this->m_auth->verify($token);
 
-            if ($verifyCheck){
+            if ($verifyCheck == 'verif'){
                 $userId = $this->m_auth->getUser($token);
                 $bukaTabungan = $this->m_auth->registerTabungan($userId);
                 $bukaSaldo = $this->m_auth->registerSaldo($userId);
                 if($bukaTabungan AND $bukaSaldo){
-                    $this->session->set_flashdata('alert','Verifikasi berhasil'); 
+                    $this->session->set_flashdata('success','Verifikasi berhasil'); 
                     redirect('auth/login');
                 } else{
-                    $this->session->set_flashdata('alert','Terjadi masalah pada sistem'); 
-                    redirect('dashboard');
+                    $this->session->set_flashdata('failed','Terjadi masalah pada sistem'); 
+                    redirect('auth/login');
                 }
+            } elseif($verifyCheck == 'already_verif'){
+                $this->session->set_flashdata('failed','Akun sudah diverifikasi');
+                redirect('auth/login');
             } else{
-                $this->session->set_flashdata('alert','Verifikasi gagal');
-                redirect('auth/register');
+                $this->session->set_flashdata('failed','Akun sudah diverifikasi');
+                redirect('auth/login');
             }
         }
         

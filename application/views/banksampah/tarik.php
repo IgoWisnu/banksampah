@@ -38,6 +38,7 @@
     <div class="text-center py-4">
         <h3 style="font-weight: bold; font-size: 2em;">Tarik Sampah</h3>
     </div>
+    <h1 class="text-center">Tarik Sampah</h1>
     <br>
     <div class="container">
         <div class="row">
