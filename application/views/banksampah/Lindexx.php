@@ -11,7 +11,6 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>img/logo white.png" />
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
             <title>Admin Dashboard</title>
@@ -162,7 +161,11 @@
         <body>
             <div class="d-flex" id="wrapper">
                 <div class="bg-white" id="sidebar-wrapper">
-                    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Bank Sampah</div>
+                <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+                    <img src="<?= base_url() ?>img/logo green.png" alt="Bank Sampah" class="me-2" style="height: 30px; width: 25px;" />
+                    Bank Sampah
+                </div>
+
                     <div class="list-group list-group-flush my-3">
                         <a href="#" id="dashboard-link" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                                 class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
@@ -171,7 +174,7 @@
                         <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                 class="fas fa-chart-line me-2"></i>Berita</a>
                         <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadSetorContent()"><i 
-                                class="fas fa-arrow-down me-2"></i>Setor</a>                       
+                                class="fas fa-arrow-down me-2"></i>Setor</a>                          
                         <a href="#" id="tarik-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTarikContent()"><i 
                                 class="fas fa-arrow-up me-2"></i>Tarik</a>
                         <a href="<?php echo base_url('auth/logout/') ?>" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
@@ -255,25 +258,12 @@
                             <!-- Content from Setor will be loaded here -->
                         </div>
 
-                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-                        <script>
-                            function loadSetorContent() {
-                                // Fetch content from the setorSampah controller's index function and update #setor-content
-                                $("#setor-content").load("setorSampah/index");
-                            }
-                        </script>
-
                         <div id="tarik-content" class="mt-3">
                             <!-- Content from Tarik will be loaded here -->
+                            
                         </div>
 
-                        <script>
-                            function loadTarikContent() {
-                                // Fetch content from the tarikSampah controller's index function and update #tarik-content
-                                $("#tarik-content").load("tarik/index");
-                            }
-                        </script>
+                        
 
                         <div id="nasabah-table-container" style="display: none;">
                             <div class="row my-5">
@@ -356,7 +346,7 @@
                         $('#exampleModal').on('show.bs.modal', function (event) {
                             var button = $(event.relatedTarget);
                             var modal = $(this);
-                            var profileImageSrc = '<?= base_url('uploads/profile/'); ?>' + button.data('profile');
+                            var profileImageSrc = '<?= base_url('img/profile/'); ?>' + button.data('profile');
 
                             modal.find('#modal-profile-img').attr('src', profileImageSrc);
                             modal.find('#modal-nama').text('Nama Lengkap: ' + button.data('nama'));
@@ -548,38 +538,53 @@
                 var nasabahLink = document.getElementById("nasabah-link");
                 var beritaLink = document.getElementById("berita-link");
                 var nasabahdLink = document.getElementById("nasabahd-link");
+                var setorLink = document.getElementById("setor-link");
+                var tarikLink = document.getElementById("tarik-link");
                 var nasabahTableContainer = document.getElementById("nasabah-table-container");
                 var beritaTableContainer = document.getElementById("berita-table-container");
                 var nasabahmodalcontainer = document.getElementById("nasabah-modal-container");
+                var setor = document.getElementById("setor-content");
+                var tarik = document.getElementById("tarik-content");
                 
 
                 toggleButton.onclick = function () {
                     el.classList.toggle("toggled");
                 };
 
+                dashboardLink.onclick = function () {
+                    nasabahTableContainer.style.display = "none";
+                    beritaTableContainer.style.display = "none";
+                    setor.style.display = "none";
+                    tarik.style.display = "none";
+                };
+
                 nasabahLink.onclick = function () {
                     nasabahTableContainer.style.display = "block";
                     beritaTableContainer.style.display = "none";
+                    setor.style.display = "none";
+                    tarik.style.display = "none";
                 };
 
                 beritaLink.onclick = function () {
                     beritaTableContainer.style.display = "block";
                     nasabahTableContainer.style.display = "none";
+                    setor.style.display = "none";
+                    tarik.style.display = "none";
                 };
-
+                
                 nasabahdLink.onclick = function () {
                     var myModal = new bootstrap.Modal(document.getElementById('nasabah-modal-container'));
                     myModal.show();
                 };
 
-
-                nasabahTableContainer.style.display = "none";
-                beritaTableContainer.style.display = "none";
-
-                dashboardLink.onclick = function () {
-                    nasabahTableContainer.style.display = "none";
-                    beritaTableContainer.style.display = "none";
-                };
+                function loadSetorContent() {
+                     // Fetch content from the setorSampah controller's index function and update #setor-content
+                    $("#setor-content").load("setorSampah/index");
+                }
+                function loadTarikContent() {
+                     // Fetch content from the tarikSampah controller's index function and update #tarik-content
+                    $("#tarik-content").load("tarik/index");
+                }
 
                 function tampilkanFormTambahBerita() {
                     var formTambahBerita = document.getElementById("form-tambah-berita");
@@ -615,79 +620,6 @@
                     localStorage.setItem("sidebarToggled", el.classList.contains("toggled"));
                 }   
 
-                // Fungsi untuk menampilkan tabel Dashboard
-                function showDashboard() {
-                    document.getElementById("nasabah-table-container").style.display = "none";
-                    document.getElementById("berita-table-container").style.display = "none";
-                    // Simpan tab aktif ke localStorage
-                    localStorage.setItem("activeTab", "dashboard");
-                }
-
-                // Fungsi untuk menampilkan tabel Nasabah
-                function showNasabahTable() {
-                    document.getElementById("nasabah-table-container").style.display = "block";
-                    document.getElementById("berita-table-container").style.display = "none";
-                    // Simpan tab aktif ke localStorage
-                    localStorage.setItem("activeTab", "nasabah");
-                }
-
-                // Fungsi untuk menampilkan tabel Berita
-                function showBeritaTable() {
-                    document.getElementById("berita-table-container").style.display = "block";
-                    document.getElementById("nasabah-table-container").style.display = "none";
-                    // Simpan tab aktif ke localStorage
-                    localStorage.setItem("activeTab", "berita");
-                }
-
-                // Fungsi untuk menginisialisasi status halaman berdasarkan localStorage
-                function initializePageState() {
-                    var sidebarToggled = localStorage.getItem("sidebarToggled");
-                    var activeTab = localStorage.getItem("activeTab");
-
-                    // Mengembalikan status sidebar
-                    var el = document.getElementById("wrapper");
-                    if (sidebarToggled === "true") {
-                        el.classList.add("toggled");
-                    } else {
-                        el.classList.remove("toggled");
-                    }
-
-                    // Mengembalikan tab aktif
-                    if (activeTab === "nasabah") {
-                        showNasabahTable();
-                    } else if (activeTab === "berita") {
-                        showBeritaTable();
-                    } else if (activeTab === "dashboard") {
-                        showDashboard();
-                    }
-                }
-
-                function setActiveTab() {
-                    var activeTab = localStorage.getItem("activeTab") || "dashboard"; // Jika tidak ada data di localStorage, maka aktifkan dashboard
-                    var tabElement = document.getElementById(activeTab + "-link");
-                    if (tabElement) {
-                        tabElement.click(); // Klik tautan tab sesuai dengan tab yang aktif
-                    }
-                }
-
-                // Fungsi untuk memanggil fungsi inisialisasi saat halaman dimuat
-                    window.onload = function () {
-                        initializePageState();
-                        setActiveTab();
-                        initializeQuillEditor();
-                    };
-
-
-                // Mendengarkan peristiwa untuk tombol toggle sidebar
-                document.getElementById("menu-toggle").addEventListener("click", toggleSidebar);
-
-                // Mendengarkan peristiwa untuk tautan tab
-                document.getElementById("dashboard-link").addEventListener("click", showDashboard);
-                document.getElementById("nasabah-link").addEventListener("click", showNasabahTable);
-                document.getElementById("berita-link").addEventListener("click", showBeritaTable);
-
-                // Menginisialisasi status halaman
-                initializePageState();
                 
                 
             </script>

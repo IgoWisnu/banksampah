@@ -95,7 +95,7 @@
   <body>
     <div class="">
       <div class="col">
-        <img class="topImg" src="<?=base_url()?>img/Waste_recycling_Vectors___Illustrations_for_Free_Download___Freepik_1-svaecW6Z_-transformed.png" alt="">
+        <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
       </div>
 
       <div class="col">
@@ -115,7 +115,7 @@
             </div>
 
             <div class=" row justify-content-center">
-              <img class="gambar" src="<?=base_url()?>uploads/<?=$artikel['gambar'] ?>" alt="">
+              <img class="gambar" src="<?=base_url()?>img/<?=$artikel['gambar'] ?>" alt="">
             </div>
             
             <div class="row justify-content-center mt-2">

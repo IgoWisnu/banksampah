@@ -19,9 +19,9 @@
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
             
                 // Konfigurasi upload
-                $config['upload_path'] = "./uploads"; // Path to the upload folder
+                $config['upload_path'] = "./img"; // Path to the upload folder
                 $config['allowed_types'] = 'gif|jpg|png';  // Allowed file types
-                $config['max_size'] = 2048;  // Maximum file size in KB
+                $config['max_size'] = 204800;  // Maximum file size in KB
             
                 $this->load->library('upload', $config);
             
@@ -54,9 +54,9 @@
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
         
                 // Konfigurasi upload (jika diperlukan)
-                $config['upload_path'] = "./uploads";
+                $config['upload_path'] = "./img";
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = 2048;
+                $config['max_size'] = 204800;
         
                 $this->load->library('upload', $config);
         
