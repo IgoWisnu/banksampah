@@ -7,6 +7,10 @@
                 parent::__construct();
                 // Load model BeritaModel
                 $this->load->model('m_dashboard');
+
+                if(!$this->session->userdata('role') == 'admin'){
+                    redirect('auth/login');
+                }
             }
         
             public function tambahBerita() {
@@ -15,9 +19,9 @@
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
             
                 // Konfigurasi upload
-                $config['upload_path'] = "./uploads"; // Path to the upload folder
+                $config['upload_path'] = "./img"; // Path to the upload folder
                 $config['allowed_types'] = 'gif|jpg|png';  // Allowed file types
-                $config['max_size'] = 2048;  // Maximum file size in KB
+                $config['max_size'] = 204800;  // Maximum file size in KB
             
                 $this->load->library('upload', $config);
             
@@ -50,9 +54,9 @@
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
         
                 // Konfigurasi upload (jika diperlukan)
-                $config['upload_path'] = "./uploads";
+                $config['upload_path'] = "./img";
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = 2048;
+                $config['max_size'] = 204800;
         
                 $this->load->library('upload', $config);
         
@@ -97,6 +101,9 @@
             
 
             public function index(){
+                $username = $this->session->userdata('username');
+                $data['username'] = $username;
+
                 $this->load->model('m_dashboard');  // Load the model
                 $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
                 $data['adminCount'] = $this->m_dashboard->getAdminCount();

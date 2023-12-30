@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <h2 class="center">Data Search</h2>
+    <h2 class="center">Setor Sampah</h2>
     <br />
     <div class="container">
         <div class="row">
@@ -52,19 +52,6 @@
 
                 <!-- Data Sampah -->
                 <div class="row my-2" id="show_item">
-                    <div class="col-5">
-                        <select name="id_jenis_sampah[]" class="form-select id_jenis_sampah">
-                            <?php foreach ($option->result_array() as $key) { ?>
-                                <option value="<?= $key['id'] ?>"><?= $key['jenis_sampah'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="col-3">
-                        <input type="number" name="berat_sampah[]" class="form-control berat_sampah">
-                    </div>
-                    <div class="col-2 preview">
-                        <input type="number" name="harga_sampah[]" class="form-control harga_sampah" readonly>
-                    </div>
                     <div class="col-2">
                         <div class="btn btn-success add_btn" name="add_btn" id="add_btn">Add</div>
                     </div>
@@ -137,6 +124,7 @@
             });
 
 
+
             // Handle click event on the result items
             $('#result').on('click', '.result-item', function(){
                 // Retrieve additional data using the data method
@@ -174,10 +162,10 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <input type="number" name="berat_sampah[]" id="berat_sampah[]" class="form-control berat_sampah">
+                            <input type="number" name="berat_sampah[]" class="form-control berat_sampah">
                         </div>
                         <div class="col-2 preview">
-                            <input type="number" name="harga_sampah[]" class="form-control harga_sampah" id="harga_sampah[]" readonly></input>
+                            <input type="number" name="harga_sampah[]" class="form-control harga_sampah" readonly>
                         </div>
                         <div class="col-2">
                             <button class="btn btn-danger remove_btn" id="remove_btn" name="remove_btn">Remove</button>

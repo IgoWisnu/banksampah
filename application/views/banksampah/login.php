@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>img/logo white.png" />
+    <title>Login Banksampah</title>
 </head>
 <style>
 .background{
@@ -144,13 +145,12 @@
             <div class="row justify-content-center">
                 <div class="Panel">
                     <?php
-                        $alert = $this->session->flashdata('alert');
-                        if(isset($alert)){
-                            echo '<div class="alert alert-primary" role="alert">
-                            This is a primary alert—check it out!
-                            </div>';
-                    
-                            var_dump($alert);
+                        $success = $this->session->flashdata('success');
+                        $failed = $this->session->flashdata('failed');
+                        if(isset($failed)){
+                            echo '<div class="alert alert-danger" role="alert">'.$failed.'</div>';
+                        } else if(isset($success)){
+                            echo '<div class="alert alert-success" role="alert">'.$success.'</div>';
                         }
                     ?>
                     <div class="tLogin">Login</div>
@@ -174,7 +174,7 @@
                             <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
                         </div>
                         <div class="stick"></div>
-                        <div class="InginJadiImigran row justify-content-center">Ingin Jadi Imigran?<br>
+                        <div class="InginJadiImigran row justify-content-center">Tidak ingin login?<br>
                             <a href="<?=base_url('auth/guestAccess') ?>" class="link row justify-content-center">Guest</a>
                         </div>
                     </div>

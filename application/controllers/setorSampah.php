@@ -10,6 +10,10 @@
             parent::__construct();
             $this->load->model('m_setor');
             
+
+            if(!$this->session->userdata('role') == 'admin'){
+                redirect('auth/login');
+            }
         }
         
     
@@ -81,6 +85,8 @@
 
             //update data in table saldo
             $this->m_setor->updateDebitSaldo($id_tbUser, $total);
+
+            redirect('dashboard');
         }
 
         public function hitungHarga(){

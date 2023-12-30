@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Banksampah</title>
 </head>
   
 <style>
@@ -138,8 +138,8 @@
   }
 
   .judul{
-    font-weight: 300;
-    font-size: 85%;
+    font-weight: bold;
+    font-size: 100%;
   }
 
   .bBar{
@@ -159,6 +159,14 @@
     width: 40px;
   }
 
+  .profile{
+    width: 40px;
+  }
+
+  .card-img-top{
+    max-height: 120px;
+
+  }
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -281,10 +289,9 @@
             <?php foreach($artikel as $key): ?>
               <a href="<?=base_url("artikel/detailArtikel?id={$key['id']}")?>" class="c1 col-10">
                 <div class="card shadow">
-                  <img src="<?=base_url()?>uploads/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
+                  <img src="<?=base_url()?>img/<?=$key['gambar'] ?>" class="card-img-top" alt="img">
                   <div class="card-body">
                     <p class="judul" ><?=$key['judul'] ?></p>
-                    <p><?=$key['gambar'] ?></p>
                   </div>
                 </div>
               </a>
@@ -317,7 +324,7 @@
         </div>
       </div>
     </div>
-    <?php include('menu.php') ?>
+    <?php include('menu.php'); ?>
   </div>
 </body>
 </html>
