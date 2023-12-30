@@ -14,6 +14,8 @@
             
             if($this->session->userdata('role') == ''){
                 redirect('auth/login');
+            } elseif($this->session->userdata('role') == 'guest'){
+                redirect('auth/regisGuest');
             }
         }
         

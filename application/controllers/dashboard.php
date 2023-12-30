@@ -8,7 +8,7 @@
                 // Load model BeritaModel
                 $this->load->model('m_dashboard');
 
-                if($this->session->userdata('role') == ''){
+                if(!$this->session->userdata('role') == 'admin'){
                     redirect('auth/login');
                 }
             }

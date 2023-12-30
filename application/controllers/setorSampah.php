@@ -10,6 +10,10 @@
             parent::__construct();
             $this->load->model('m_setor');
             
+
+            if(!$this->session->userdata('role') == 'admin'){
+                redirect('auth/login');
+            }
         }
         
     
