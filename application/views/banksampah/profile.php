@@ -41,10 +41,6 @@
     position: relative;
   }
 
-  .date{
-    
-  }
-
   .tTotalBayar{
     font-weight: 600;
     font-size: 20px;

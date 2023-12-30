@@ -8,7 +8,7 @@
 </head>
   
 <style>
-    
+  
   body{
     height: 100%;
     background: #00926E;
@@ -107,14 +107,10 @@
     position: relative;
   }
 
-  .imgTarik{
+  .imgTarik,.imgSetor{
     width: 25%;
   }
-
-  .imgSetor{
-    width: 25%;
-  }
-
+  
   .layBtn3{
     position: relative;
   }
@@ -159,18 +155,10 @@
     align-items: center;
   }
 
-  .history{
-    margin-top: 10px;
-    width: 50px;
-  }
-
-  .home{
+  .history,.home,.profile{
     width: 40px;
   }
 
-  .profile{
-    width: 40px;
-  }
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -232,12 +220,13 @@
       border-bottom-left-radius: 30px;
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
-      background-color: transparent;
+      background-color: white;
       display: flex;
       align-items: center;
       box-shadow: none;
       bottom: 95%;
       transition: all 1s ease;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     .bBar.ilang {
       background-color: white;

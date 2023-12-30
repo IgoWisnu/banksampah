@@ -152,23 +152,14 @@ body{
   align-items: center;
 }
 
-.history{
-  margin-top: 10px;
-  width: 50px;
-}
-
-.home{
-  width: 40px;
-}
-
-.profile{
+.history,.home,.profile{
   width: 40px;
 }
 
 @media screen and (min-width: 422px) {
-    .wrap{
+  .wrap{
     width: 422px;
-    }
+  }
 }
 
 @media screen and (max-width: 300px){

@@ -67,16 +67,7 @@
     align-items: center;
   }
 
-  .history{
-    margin-top: 10px;
-    width: 50px;
-  }
-
-  .home{
-    width: 43px;
-  }
-
-  .profile{
+  .history,.home,.profile{
     width: 40px;
   }
 
