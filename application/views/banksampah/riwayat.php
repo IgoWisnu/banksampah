@@ -10,7 +10,7 @@
 <style>
     
 body{
-  height: 100%; 
+  min-height: 100%; 
   background: #00926E;
 }
 
@@ -21,13 +21,14 @@ body{
 }
 
 .wrap{
-  padding-bottom: 15%;
-  top: 255px; 
-  position: absolute; 
+  margin-top: 255px;
+  padding-bottom: 70px;
+  position: relative; 
   background: white; 
   border-top-left-radius: 30px; 
   border-top-right-radius: 30px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
+  transition: all 1s ease-in-out;
 }
 
 .t1{
@@ -50,6 +51,7 @@ body{
 
 .btn1{
   margin-top: 5%;
+  margin-bottom: 15%;
   font-weight: 500;
   padding: 2%;
   width: 150px;
@@ -139,34 +141,10 @@ body{
   text-align: end;
 }
 
-.bBar{
-  width: 100%;
-  height: 5.5%;
-  bottom: 0;
-  position: fixed;
-  border-top-right-radius: 30px; 
-  border-top-left-radius: 30px;
-  background-color: white;
-  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
-  transition: 1s ease;
-  align-items: center;
-}
-
-.history,.home,.profile{
-  width: 40px;
-}
-
 @media screen and (min-width: 422px) {
   .wrap{
     width: 422px;
   }
-}
-
-@media screen and (max-width: 300px){
-  .LayBtn1{
-    top: 50px;
-  }
-  
 }
 
 @media screen and (min-width: 700px) {
@@ -179,50 +157,27 @@ body{
     background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
     background-attachment: fixed;
   }
-  .bBar{
-    position: fixed;
+  .wrap{
     border-bottom-right-radius: 30px; 
     border-bottom-left-radius: 30px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    background-color: transparent;
-    box-shadow: none;
-    bottom: 95%;
+    margin-top: 205px;
     transition: all 1s ease;
   }
-  .bBar.ilang {
-    background-color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transition: all 0.5s ease;
+  .gap{
+    margin-top: 10% ;
   }
 }
 
 </style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var bBar = document.querySelector(".bBar");
-
-    function updateTransparency() {
-      var scrollPosition = window.scrollY;
-
-      if (scrollPosition > 200) {
-        bBar.classList.add("ilang");
-      } else {
-        bBar.classList.remove("ilang");
-      }
-    }
-
-    window.addEventListener("scroll", updateTransparency);
-  });
-</script>
 <body>
-
-<div class="background">
+  
+  <div class="background">
   <div class="col">
     <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
   </div>
 
   <div class="col">
+    <?php include('logo.php') ?>
     <div class="row justify-content-center">
       <div class="wrap">
         <div class="layBtn">
@@ -232,43 +187,40 @@ body{
         </div>
         <div class="t1 row justify-content-center">Riwayat Transaksi</div>
         <br>
-
         <div class="row justify-content-center mt-5">
-          <div class="row justify-content-center mt-5">
-              <?php foreach($riwayat->result_array() as $key){ ?>
-                <?php 
-                  if($key['kredit'] == 0){
-                    $img = base_url()."img/gSetor.png";
-                    $nominal = '+'.$key['debit'];
-                  } else{
-                    $img = base_url()."img/gTarik.png";
-                    $nominal = '-'.$key['kredit'];
-                  }
-                ?>
-                <div class="row justify-content-center">
-                  <a href="<?=base_url()?>riwayat/invoice?id=<?=$key['id_tabungan_transaksi'] ?>" class="laycard2 card col-10" type="button">
+          <?php foreach($riwayat->result_array() as $key){ ?>
+          <?php 
+            if($key['kredit'] == 0){
+              $img = base_url()."img/gSetor.png";
+              $nominal = '+'.$key['debit'];
+            } else{
+              $img = base_url()."img/gTarik.png";
+              $nominal = '-'.$key['kredit'];
+            }
+            ?>
+            <div class="row justify-content-center">
+              <a href="<?=base_url()?>riwayat/invoice?id=<?=$key['id_tabungan_transaksi'] ?>" class="laycard2 card col-10" type="button">
 
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <img class="arrow2" src=<?=$img?> alt="">
-                        <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
-                      </div>
-                      <div class="layText1">
-                        <div class="nominal"><?=$nominal ?></div>
-                        <div class="keterangan">Cash Bank Sampah PNB</div>
-                      </div>
-                    </div>
-                  </a>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="arrow2" src=<?=$img?> alt="">
+                    <div class="date"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                  </div>
+                  <div class="layText1">
+                    <div class="nominal"><?=$nominal ?></div>
+                    <div class="keterangan">Cash Bank Sampah PNB</div>
+                  </div>
                 </div>
-
-              <?php } ?>
-            </a>
-          </div>
+              </a>
+            </div>
+          <?php } ?>
+          </a>
         </div>
         <div class="row justify-content-end">
           <a class="btn1 btn me-4" href="" type="button">Hapus Transaksi</a>
         </div>
       </div>
+      <div class="gap"></div>
     </div>
   </div>
   <?php include('menu.php') ?>

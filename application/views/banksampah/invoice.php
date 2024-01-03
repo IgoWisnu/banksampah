@@ -10,7 +10,7 @@
 <style>
       
   .background{
-    height: 1100px; 
+    height: 100%; 
     background: #00926E;
   }
 
@@ -21,13 +21,14 @@
   }
 
   .wrap{
-    height: 800px; 
-    top: 255px; 
+    min-height: 73%;
+    margin-top: 255px; 
     position: absolute; 
     background: white; 
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    transition: all 1s ease-in-out; 
   }
 
   .t1{
@@ -72,7 +73,6 @@
     background: #00926E;
     border-radius: 30px;
     color: white ;
-    transition: opacity 1000ms ease-in-out;
     text-decoration: none;
   }
 
@@ -105,70 +105,77 @@
       background-attachment: fixed;
       transition: 1s ease;
     }
+    .wrap{
+      margin-top: 205px;
+      border-bottom-right-radius: 30px; 
+      border-bottom-left-radius: 30px;
+      margin-top: 150px;
+      transition: all 1s ease;
+    }
+
   }
 
 </style>
-<body>
-  <div class="background">
-    <div class="col">
-      <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
-    </div>
-    <div class="col">
-      <div class="row justify-content-center">
-        <div class="wrap">
-          <div class="layBtn">
-            <a class="btn1" type="button" href="<?=base_url()?>riwayat">
-              <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-            </a>
-          </div>
-          <div class="row justify-content-center">
-            <img class="lCheck" src="<?=base_url()?>img/check.png" alt="">
-          </div>
-            <div class="t1 row justify-content-center">Transaksi Berhasil</div>
-            <div class=""></div>
+<body class="background">
+  <div class="col">
+    <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+  </div>
+  <?php include('logo.php'); ?>
+  <div class="col">
+    <div class="row justify-content-center">
+      <div class="wrap">
+        <div class="layBtn">
+          <a class="btn1" type="button" href="<?=base_url()?>riwayat">
+            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+          </a>
+        </div>
+        <div class="row justify-content-center">
+          <img class="lCheck" src="<?=base_url()?>img/check.png" alt="">
+        </div>
+          <div class="t1 row justify-content-center">Transaksi Berhasil</div>
+          <div class=""></div>
 
-            <?php foreach($detail->result_array() as $key){ ?>
-            <div class="row justify-content-center mt-3">
-              <div class="c1 card col-10">
-                <div class="date d-flex justify-content-between">
-                  <div class="text"><?=$key['tgl_tabungan_transaksi'] ?></div>
-                  <div class="userid me-1"><?=$key['id_user']?></div>
-                </div>
-              </div>
-
-              <div class="c1 card col-10">
-                <div class="tTotalBayar d-flex justify-content-between mt-2 mb-2">Total Bayar
-                  <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
-                </div>
-              </div>
-
-              <div class="c1 card col-10">
-                <div class="tDetailTransaksi">Detail Transaksi</div>
-                <div class="tIdTransaksi d-flex justify-content-between">ID Transaksi
-                  <div class="idTransaksi"><?=$key['id_tabungan_transaksi']?></div>
-                </div>
-                <div class="tTransaksi d-flex justify-content-between">Jenis Transaksi
-                  <div class="jTeransaksi">Tarik Saldo</div>
-                </div>
-                <div class="tTotalBayarDT d-flex justify-content-between">Total Bayar
-                  <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
-                </div>
-              </div>
-
-              <div class="c1 card col-10">
-                <div class="tDetailTransaksi d-flex justify-content-between">Jenis Sampah
-                  <div class="idTransaksi">harga</div>
-                </div>
-                <br>
-                <?php foreach($sampah->result_array() as $some){ ?>
-                  <div class="tIdTransaksi d-flex justify-content-between"><?=$some['jenis_sampah'] ?>
-                    <div class="idTransaksi"><?=$some['berat_sampah']?>kg x Rp<?=$some['harga_sampah']?></div>
-                  </div>
-                <?php } ?>
+          <?php foreach($detail->result_array() as $key){ ?>
+          <div class="row justify-content-center mt-3">
+            <div class="c1 card col-10">
+              <div class="date d-flex justify-content-between">
+                <div class="text"><?=$key['tgl_tabungan_transaksi'] ?></div>
+                <div class="userid me-1"><?=$key['id_user']?></div>
               </div>
             </div>
-            <?php } ?>
+
+            <div class="c1 card col-10">
+              <div class="tTotalBayar d-flex justify-content-between mt-2 mb-2">Total Bayar
+                <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
+              </div>
+            </div>
+
+            <div class="c1 card col-10">
+              <div class="tDetailTransaksi">Detail Transaksi</div>
+              <div class="tIdTransaksi d-flex justify-content-between">ID Transaksi
+                <div class="idTransaksi"><?=$key['id_tabungan_transaksi']?></div>
+              </div>
+              <div class="tTransaksi d-flex justify-content-between">Jenis Transaksi
+                <div class="jTeransaksi">Tarik Saldo</div>
+              </div>
+              <div class="tTotalBayarDT d-flex justify-content-between">Total Bayar
+                <div class="Rp">Rp <?=$key['debit'] + $key['kredit']?></div>
+              </div>
+            </div>
+
+            <div class="c1 card col-10">
+              <div class="tDetailTransaksi d-flex justify-content-between">Jenis Sampah
+                <div class="idTransaksi">harga</div>
+              </div>
+              <br>
+              <?php foreach($sampah->result_array() as $some){ ?>
+                <div class="tIdTransaksi d-flex justify-content-between"><?=$some['jenis_sampah'] ?>
+                  <div class="idTransaksi"><?=$some['berat_sampah']?>kg x Rp<?=$some['harga_sampah']?></div>
+                </div>
+              <?php } ?>
+            </div>
           </div>
+          <?php } ?>
         </div>
       </div>
     </div>
