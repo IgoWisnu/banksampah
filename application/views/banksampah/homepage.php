@@ -8,12 +8,11 @@
 </head>
   
 <style>
-    
   body{
     height: 100%;
     background: #00926E;
   }
-
+  
   .topImg{
     width: 100%;
     position: absolute;
@@ -25,10 +24,11 @@
     border-top-right-radius: 30px;
     padding-top: 130px;
     padding-bottom: 100px; 
-    top: 255px; 
-    position: absolute; 
+    margin-top: 255px; 
+    position: relative; 
     background: white; 
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
+    transition: all 1s ease-in-out;
   }
 
   .box{
@@ -38,6 +38,7 @@
     background: white; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
     border-radius: 20px;
+    transition: all 1s ease-in-out;
   }
 
   .username{
@@ -107,14 +108,10 @@
     position: relative;
   }
 
-  .imgTarik{
+  .imgTarik,.imgSetor{
     width: 25%;
   }
-
-  .imgSetor{
-    width: 25%;
-  }
-
+  
   .layBtn3{
     position: relative;
   }
@@ -137,39 +134,9 @@
     text-decoration: none;
   }
 
-  .tBtn{
-    font-weight: 300;
-  }
-
   .judul{
     font-weight: bold;
     font-size: 100%;
-  }
-
-  .bBar{
-    width: 100%;
-    height: 5.5%;
-    bottom: 0;
-    position: fixed;
-    border-top-right-radius: 30px; 
-    border-top-left-radius: 30px;
-    background-color: white;
-    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
-    transition: 1s ease;
-    align-items: center;
-  }
-
-  .history{
-    margin-top: 10px;
-    width: 50px;
-  }
-
-  .home{
-    width: 40px;
-  }
-
-  .profile{
-    width: 40px;
   }
 
   .card-img-top{
@@ -199,14 +166,7 @@
   @media screen and (min-width: 422px) {
     .wrap{
       width: 422px;
-      transition: all 1s ease;
     } 
-    .panel{
-      width: 422px
-    }  
-    .bBar{
-      width: 422px;
-    }
   }
 
   @media screen and (min-width: 360px) {
@@ -231,54 +191,28 @@
       background-attachment: fixed;
       transition: 1s ease;
     }
-    .bBar{
-      position: fixed;
-      border-bottom-right-radius: 30px; 
-      border-bottom-left-radius: 30px;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      box-shadow: none;
-      bottom: 95%;
-      transition: all 1s ease;
-    }
-    .bBar.ilang {
-      background-color: white;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      transition: all 0.5s ease;
+    .box{
+      top: 160px;
+      transition: all 1s ease-in-out;
     }
     .wrap{
+      margin-top: 205px;
       border-bottom-right-radius: 30px; 
       border-bottom-left-radius: 30px;
-      transition: 1s ease;
+      transition: all 1s ease;
+    }
+    .gap{
+      margin-top: 10%;
     }
   }
 
 </style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var bBar = document.querySelector(".bBar");
-
-    function updateTransparency() {
-      var scrollPosition = window.scrollY;
-
-      if (scrollPosition > 200) {
-        bBar.classList.add("ilang");
-      } else {
-        bBar.classList.remove("ilang");
-      }
-    }
-
-    window.addEventListener("scroll", updateTransparency);
-  });
-</script>
 <body>
   <div class="background">
     <div class="col">
       <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     </div>
+    <?php include('logo.php'); ?>
     <div class="col">
       <div class="row justify-content-center">
         <div class="wrap">
@@ -303,12 +237,11 @@
                   </div>
                 </div>
               </a>
-            <?php endforeach; ?>
-          </div>
+              <?php endforeach; ?>
+            </div>
         </div>
       </div>
     </div>
-    
     <div class="row justify-content-center">
       <div class="box col-9">
         <div class="row">
@@ -320,7 +253,7 @@
             </div>
           </div>
         </div>
-    
+        
         <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
         <div class="LayBtn1 d-flex justify-content-center">
           <a class="btn1 btn ms-2 me-1" type="button">Setor
@@ -332,6 +265,7 @@
         </div>
       </div>
     </div>
+    <div class="gap"></div>
     <?php include('menu.php'); ?>
   </div>
 </body>
