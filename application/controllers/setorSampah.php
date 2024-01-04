@@ -94,7 +94,7 @@
             $berat = $this->input->post('berat');
 
             $harga = $this->m_setor->cariHarga($id);
-            $total = $harga * $berat;
+            $total = floor($harga * $berat);
             echo $total;
         }
     }
