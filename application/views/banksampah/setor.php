@@ -62,15 +62,7 @@
             </form>
             <table class="table table-bordered mt-5" id="datatable">
             
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Nama Nasabah</th>
-            <th>Jenis Kelamin</th>
-            <th>Tanggal Masuk</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
+        
       </table>
         </div>
     </div>
@@ -162,7 +154,7 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <input type="number" name="berat_sampah[]" class="form-control berat_sampah">
+                            <input type="number" name="berat_sampah[]" step="0.01" class="form-control berat_sampah">
                         </div>
                         <div class="col-2 preview">
                             <input type="number" name="harga_sampah[]" class="form-control harga_sampah" readonly>

@@ -19,11 +19,11 @@
                 $deskripsiBerita = $this->input->post('deskripsiBerita');
             
                 // Konfigurasi upload
-                $config['upload_path'] = "./img"; // Path to the upload folder
+                $config['upload_path'] = "./uploads"; // Path to the upload folder
                 $config['allowed_types'] = 'gif|jpg|png';  // Allowed file types
                 $config['max_size'] = 204800;  // Maximum file size in KB
             
-                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
             
                 if (!$this->upload->do_upload('gambarBerita')) {
                     // Handle upload error, if any
