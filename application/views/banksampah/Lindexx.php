@@ -504,7 +504,7 @@
                                                                 <td><?php echo $key['id'] ?></td>
                                                                 <td><?php echo $key['judul'] ?></td>
                                                                 <td>
-                                                                    <img src="<?php echo base_url('img/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
+                                                                    <img src="<?php echo base_url('uploads/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
                                                                 </td>
                                                                 <td><?php echo $key['deskripsi'] ?></td>
                                                                 <td>
