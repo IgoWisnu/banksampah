@@ -224,7 +224,7 @@
                                 <?=$key['username'] ?>
                             </div>
                             <div class="email">
-                            <?=$key['email'] ?>
+                                <?=$key['email'] ?>
                             </div>
                         </div>
                     </div>
