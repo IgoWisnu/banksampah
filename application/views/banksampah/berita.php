@@ -126,7 +126,7 @@
         </div>
 
         <div class=" row justify-content-center">
-          <img class="gambar" src="<?=base_url()?>img/<?=$artikel['gambar'] ?>" alt="">
+          <img class="gambar" src="<?=base_url()?>uploads/<?=$artikel['gambar'] ?>" alt="">
         </div>
         
         <div class="row justify-content-center mt-2">

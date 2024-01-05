@@ -22,6 +22,10 @@
             $this->load->view('banksampah/login');
         }
 
+        public function regisGuest(){
+            $this->load->view('banksampah/regisGuest');
+        }
+
         public function mail(){
             $rules = $this->m_auth->validation();
             $this->form_validation->set_rules($rules);
@@ -60,24 +64,30 @@
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $where = "username='$username' AND password='$password' AND IsVerif=1";
-            $this->db->where($where);
-            $data = $this->db->get('user');
+            $data = $this->m_auth->checkUser($username);
 
             if ($data->num_rows() == 1) {
-                $data = $data->result_array();
-                $sess = array(
-                    'id' => $data[0]['id_user'],
-                    'username' => $data[0]['username'],
-                    'role' => $data[0]['role'],
-                    'admin_name' => $data[0]['admin_name']
-                );
-                $this->session->set_userdata($sess);
-                $this->session->set_flashdata('alert','login berhasil!');
-                if($sess['role'] == 'admin'){
-                    redirect('dashboard');
-                } else{
-                    redirect('home');
+                echo 'ada';
+                foreach($data->result_array() as $key) {
+                    if(password_verify($password, $key['password'])){
+                        $data = $data->result_array();
+                        $sess = array(
+                            'id' => $data[0]['id_user'],
+                            'username' => $data[0]['username'],
+                            'role' => $data[0]['role'],
+                            'admin_name' => $data[0]['admin_name']
+                        );
+                        $this->session->set_userdata($sess);
+                        $this->session->set_flashdata('alert','login berhasil!');
+                        if($sess['role'] == 'admin'){
+                            redirect('dashboard');
+                        } else{
+                            redirect('home');
+                        }
+                    }
+                    else{
+                        echo 'gk ada';
+                    }
                 }
             }else{
                 $this->session->set_flashdata('failed', 'Uername/Password salah');

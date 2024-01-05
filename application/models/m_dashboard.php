@@ -26,6 +26,11 @@ class m_dashboard extends CI_Model {
         return $data;
     }
 
+    public function getTransaksiCount(){
+        $data = $this->db->count_all('tabungan_transaksi'); 
+        return $data;
+    }
+
     public function getArtikelCount(){
         $count = $this->db->count_all('artikel');
         return $count;

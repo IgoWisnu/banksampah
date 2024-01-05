@@ -27,7 +27,7 @@
                 <?php foreach($laporan->result_array() as $key){?>
                 <tr>
                     <td><?=$key['tgl_tabungan_transaksi']?></td>
-                    <td><?=$key['username'] ?></td>
+                    <td><?=$key['nasabah_username'] ?></td>
                     <td><?=$key['debit']?></td>
                     <td><?=$key['kredit']?></td>
                     <td>

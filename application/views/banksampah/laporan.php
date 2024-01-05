@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h2 class="text-center">Data Transaksi Banksampah</h2>
-        <form method="post" action="<?= base_url('generatepdf/pdftransaksi'); ?>">
+        <form method="post" action="<?= base_url('generatepdf/tesview'); ?>">
             <div class="form-group">
                 <label for="date_from">Date From:</label>
                 <input type="date" class="form-control" id="date_from" name="date_from" required>

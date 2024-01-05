@@ -160,12 +160,12 @@
 
         <body>
             <div class="d-flex" id="wrapper">
+                <!-- Sidebar -->
                 <div class="bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
                     <img src="<?= base_url() ?>img/logo green.png" alt="Bank Sampah" class="me-2" style="height: 30px; width: 25px;" />
                     Bank Sampah
                 </div>
-
                     <div class="list-group list-group-flush my-3">
                         <a href="#" id="dashboard-link" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                                 class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
@@ -173,6 +173,8 @@
                                 class="fas fa-user fa-beat me-2"></i>Nasabah</a>
                         <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                 class="fas fa-chart-line me-2"></i>Berita</a>
+                        <a href="#" id="transaksi-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                class="fa fa-credit-card me-2"></i>Transaksi</a>
                         <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadSetorContent()"><i 
                                 class="fas fa-arrow-down me-2"></i>Setor</a>                          
                         <a href="#" id="tarik-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTarikContent()"><i 
@@ -236,7 +238,7 @@
                             <div class="col-md-3">
                                 <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                                     <div>
-                                        <h3 class="fs-2">0</h3>
+                                        <h3 class="fs-2"><?php echo $transaksiCount; ?></h3>
                                         <p class="fs-5">Transaksi</p>
                                     </div>
                                     <i class="fas fa-piggy-bank fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -264,7 +266,7 @@
                         </div>
 
                         
-
+                        <!-- Nasabah -->
                         <div id="nasabah-table-container" style="display: none;">
                             <div class="row my-5">
                                 <h3 class="fs-4 mb-3">Nasabah</h3>
@@ -317,6 +319,46 @@
                                 </div>
                             </div> 
                         </div>
+                        
+                        <!-- Transaksi -->
+                        <div id="transaksi-table-container" style="display: none;">
+                            <div class="row my-5">
+                                <h3 class="fs-4 mb-3">Transaksi</h3>
+                                <div class="col">
+                                    <div class="row my-5">
+                                            <div class="col">
+                                            <table class="table bg-white rounded shadow-sm table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Tanggal Transaksi</th>
+                                                        <th scope="col">User</th>
+                                                        <th scope="col">Admin</th>
+                                                        <th scope="col">Setor</th>
+                                                        <th scope="col">Tarik</th>
+                                                        <th scope="col">Invoice</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($transaksi->result_array() as $key) { ?>
+                                                        <tr>
+                                                            <td><?php echo $key['tgl_tabungan_transaksi'] ?></td>
+                                                            <td><?php echo $key['nasabah_username'] ?></td>
+                                                            <td><?php echo $key['staff_username'] ?></td>
+                                                            <td><?php echo $key['debit'] ?></td>
+                                                            <td><?php echo $key['kredit'] ?></td>
+                                                            <td>
+                                                                <a href="" class="btn btn-primary">Invoice</a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div> 
+                        </div>
+
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -360,7 +402,7 @@
 
 
 
-                                                        
+                        <!-- Berita -->
                         <div id="berita-table-container" style="display: none;">
                             <div class="row my-5">
                                 <h3 class="fs-4 mb-3">Berita</h3>
@@ -538,10 +580,12 @@
                 var nasabahLink = document.getElementById("nasabah-link");
                 var beritaLink = document.getElementById("berita-link");
                 var nasabahdLink = document.getElementById("nasabahd-link");
+                var transaksiLink = document.getElementById("transaksi-link");
                 var setorLink = document.getElementById("setor-link");
                 var tarikLink = document.getElementById("tarik-link");
                 var nasabahTableContainer = document.getElementById("nasabah-table-container");
                 var beritaTableContainer = document.getElementById("berita-table-container");
+                var transaksiTableContainer = document.getElementById("transaksi-table-container");
                 var nasabahmodalcontainer = document.getElementById("nasabah-modal-container");
                 var setor = document.getElementById("setor-content");
                 var tarik = document.getElementById("tarik-content");
@@ -552,25 +596,42 @@
                 };
 
                 dashboardLink.onclick = function () {
+                    console.log('dashboard');
                     nasabahTableContainer.style.display = "none";
                     beritaTableContainer.style.display = "none";
+                    transaksiTableContainer.style.display = "none";
                     setor.style.display = "none";
                     tarik.style.display = "none";
+
                 };
 
                 nasabahLink.onclick = function () {
+                    console.log('nasabah');
                     nasabahTableContainer.style.display = "block";
                     beritaTableContainer.style.display = "none";
+                    transaksiTableContainer.style.display = "none";
                     setor.style.display = "none";
                     tarik.style.display = "none";
                 };
 
                 beritaLink.onclick = function () {
+                    console.log('berita');
                     beritaTableContainer.style.display = "block";
                     nasabahTableContainer.style.display = "none";
+                    transaksiTableContainer.style.display = "none";
                     setor.style.display = "none";
                     tarik.style.display = "none";
                 };
+
+                transaksiLink.onclick = function () {
+                    console.log('transaksi');
+                    transaksiTableContainer.style.display = "block";
+                    nasabahTableContainer.style.display = "none";
+                    beritaTableContainer.style.display = "none";
+                    setor.style.display = "none";
+                    tarik.style.display = "none";
+                };
+
                 
                 nasabahdLink.onclick = function () {
                     var myModal = new bootstrap.Modal(document.getElementById('nasabah-modal-container'));

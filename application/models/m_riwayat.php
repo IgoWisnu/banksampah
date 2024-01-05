@@ -7,7 +7,7 @@
         public function loadRiwayat($id){
             $query = "SELECT * FROM tabungan_transaksi 
                         JOIN tabungan ON tabungan_transaksi.id_tabungan = tabungan.id_tabungan 
-                        WHERE tabungan.id_user_nasabah = $id";
+                        WHERE tabungan.id_user_nasabah = $id ORDER BY id_tabungan_transaksi DESC";
             $result = $this->db->query($query);
             return $result;
         }
@@ -43,7 +43,14 @@
 
             return $result;
         }
-    
+
+        public function getAll(){
+            $this->db->select('*');
+            $this->db->from('tabungan_transaksi');
+            $this->db->limit(10);
+            $this->db->get();
+            
+        }
     }
     
     /* End of file m_riwayat.php */

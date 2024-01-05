@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <?php include(APPPATH . 'views/component/sidebar.php'); ?>
     <h2 class="center">Setor Sampah</h2>
     <br />
     <div class="container">

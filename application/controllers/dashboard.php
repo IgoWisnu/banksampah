@@ -101,6 +101,7 @@
             
 
             public function index(){
+                $this->load->model('m_transaksi');
                 $username = $this->session->userdata('username');
                 $data['username'] = $username;
 
@@ -109,8 +110,10 @@
                 $data['adminCount'] = $this->m_dashboard->getAdminCount();
                 $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
                 $data['berita'] = $this->m_dashboard->getBerita();
+                $data['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
                 $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
-            
+                $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
+
                 // Assuming you want to fetch the first article's ID
                 $firstArticle = $this->m_dashboard->getBerita()->row_array();
                 $data['artikel'] = $this->m_dashboard->getBeritaById($firstArticle['id']);

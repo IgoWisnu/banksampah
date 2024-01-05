@@ -98,13 +98,6 @@
     font-size: 5mm;
 }
 
-.BelumPunyaAkun{
-    font-size: 15px;
-    margin-left: 10px;
-    top: 210px; 
-    position: relative;
-}
-
 .stick{
     left: -2px;
     top: 216px;
@@ -114,13 +107,6 @@
     margin-right: -5px;
     margin-left: -5px;
     background: black;
-}
-
-.InginJadiImigran{
-    font-size: 15px;
-    margin-right: 10px;
-    top: 210px; 
-    position: relative;
 }
 
 .link{
@@ -135,52 +121,19 @@
     <div class="background col justify-content-center">
         <div class="row justify-content-center">
             <div class="SelamatDatangKembali">
-                Selamat Datang <br> Kembali
+                BANKSAMPAH
             </div>
             <div class="SilahkanMasukanUsernameDanPasswordKamu w-75">
-                Silahkan Masukkan Username <br> dan Password Kamu!
+                Maaf kamu harus login <br> untuk dapat mengakses halaman ini
             </div>
-        </div>
-        <form action="<?=base_url('auth/cekLogin') ?>" method="post">
-            <div class="row justify-content-center">
-                <div class="Panel">
-                    <?php
-                        $success = $this->session->flashdata('success');
-                        $failed = $this->session->flashdata('failed');
-                        if(isset($failed)){
-                            echo '<div class="alert alert-danger" role="alert">'.$failed.'</div>';
-                        } else if(isset($success)){
-                            echo '<div class="alert alert-success" role="alert">'.$success.'</div>';
-                        }
-                    ?>
-                    <div class="tLogin">Login</div>
-                    <div class="row">
-                        <div class="Username w-75">Username
-                            <input type="text" class="form-control" name="username" placeholder="Masukkan Username">
-                            <small class="text-danger"><?= form_error('username') ?></small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="Password w-75">Password
-                            <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
-                            <small class="text-danger"><?= form_error('password') ?></small>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <input type="submit" class="tbLogin btn w-50 " value="Login"></input>
-                    </div>
-                    <div class="col d-flex justify-content-between ">
-                        <div class="BelumPunyaAkun row justify-content-center">Belum Punya Akun?<br>
-                            <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
-                        </div>
-                        <div class="stick"></div>
-                        <div class="InginJadiImigran row justify-content-center">Tidak ingin login?<br>
-                            <a href="<?=base_url('auth/guestAccess') ?>" class="link row justify-content-center">Guest</a>
-                        </div>
-                    </div>
+            <div class="Panel">
+                <div class="row justify-content-center">
+                    <a href="<?=base_url() ?>auth/goRegister" class="btn btn-success col-10 mb-2 ">Register Sekarang</a>
+                    <a href="<?=base_url() ?>auth/logout" class="btn btn-success col-10">Login akun banksampah</a>
                 </div>
             </div>
-        </form>
+            
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

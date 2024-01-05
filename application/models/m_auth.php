@@ -92,7 +92,7 @@
             $role = 'user';
             $data = array(
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'nama_lengkap' => $this->input->post('nama_lengkap'),
                 'tempat_lahir' => $this->input->post('tempat_lahir'),
                 'tanggal_lahir' => $this->input->post('tanggal_lahir'),
@@ -229,6 +229,11 @@
                 // Record not found
                 return null;
             }
+        }
+
+        public function checkUser($username){
+            $user = $this->db->get_where('user', array('username' => $username), 1);
+            return $user;
         }
     
     }
