@@ -155,13 +155,13 @@
                     ?>
                     <div class="tLogin">Login</div>
                     <div class="row">
-                        <div class="Username w-75">Username
+                        <div class="Username">Username
                             <input type="text" class="form-control" name="username" placeholder="Masukkan Username">
                             <small class="text-danger"><?= form_error('username') ?></small>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="Password w-75">Password
+                        <div class="Password">Password
                             <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
                             <small class="text-danger"><?= form_error('password') ?></small>
                         </div>
