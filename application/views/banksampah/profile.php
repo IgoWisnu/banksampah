@@ -245,6 +245,7 @@
                                     <div class="saldo"><?=$key['saldo'] ?></div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="layImg">
@@ -268,6 +269,7 @@
             </div>
         </div>
         <div class="gap"></div>
+        <?php include('menu.php'); ?>
     </div>
 </body>
 </html>
