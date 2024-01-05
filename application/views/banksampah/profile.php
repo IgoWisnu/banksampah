@@ -224,7 +224,7 @@
                                 <?=$key['username'] ?>
                             </div>
                             <div class="email">
-                                hahaiyanjir@gmail.com
+                            <?=$key['email'] ?>
                             </div>
                         </div>
                     </div>
