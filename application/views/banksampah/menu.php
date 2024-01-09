@@ -70,7 +70,7 @@
   <a href="<?=base_url()?>home/loadArtikel">
     <img src="<?=base_url()?>img/home.png" alt="" class="home">
   </a>
-  <a href="<?=base_url()?>profile">
+  <a href="<?=base_url()?>Profile">
     <img src="<?=base_url()?>img/profile.png" alt="" class="profile">
   </a>
   </div>
