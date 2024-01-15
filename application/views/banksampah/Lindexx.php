@@ -164,16 +164,18 @@
                     <div class="list-group list-group-flush my-3">
                         <a href="#" id="dashboard-link" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                                 class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                        <a href="#" id="nasabah-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="#" id="nasabah-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadNasabahContent()"><i
                                 class="fas fa-user fa-beat me-2"></i>Nasabah</a>
-                        <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadBeritaContent()"><i
                                 class="fas fa-chart-line me-2"></i>Berita</a>
-                        <a href="#" id="transaksi-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="#" id="transaksi-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTransaksiContent()"><i
                                 class="fa fa-credit-card me-2"></i>Transaksi</a>
                         <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadSetorContent()"><i 
                                 class="fas fa-arrow-down me-2"></i>Setor</a>                          
                         <a href="#" id="tarik-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTarikContent()"><i 
                                 class="fas fa-arrow-up me-2"></i>Tarik</a>
+                        <a href="#" id="pdf-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadLaporanContent()"><i
+                                class="fas fa-file-pdf me-2"></i>PDF</a>
                         <a href="<?php echo base_url('auth/logout/') ?>" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                 class="fas fa-power-off me-2"></i>Logout</a>
                     </div>
@@ -260,304 +262,23 @@
                             
                         </div>
 
-                        
-                        <!-- Nasabah -->
-                        <div id="nasabah-table-container" style="display: none;">
-                            <div class="row my-5">
-                                <h3 class="fs-4 mb-3">Nasabah</h3>
-                                <div class="col">
-                                <div class="row my-5">
-                                            <div class="col">
-                                            <table class="table bg-white rounded shadow-sm table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Nama Lengkap</th>
-                                                        <th scope="col">Tanggal Lahir</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Detail</th> <!-- Tambah kolom untuk tombol/detail -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($user->result_array() as $key) { 
-                                                        if ($key['role'] === 'admin') {
-                                                                
-                                                            continue;
-                                                        }
-                                                        ?>
-                                                        
-                                                        <tr>
-                                                            <td><?php echo $key['nama_lengkap'] ?></td>
-                                                            <td><?php echo $key['tanggal_lahir'] ?></td>
-                                                            <td><?php echo $key['email'] ?></td>
-                                                            <td>
-                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                                data-profile="<?php echo $key['profile'] ?>"
-                                                                data-nama="<?php echo $key['nama_lengkap'] ?>"
-                                                                data-tempat-lahir="<?php echo $key['tempat_lahir'] ?>"
-                                                                data-tanggal-lahir="<?php echo $key['tanggal_lahir'] ?>"
-                                                                data-alamat="<?php echo $key['alamat'] ?>"
-                                                                data-email="<?php echo $key['email'] ?>"
-                                                                data-telepon="<?php echo $key['notelp'] ?>"
-                                                                > 
-                                                                Detail
-                                                            </button>
+                        <div id="pdf-content" class="mt-3">
+                            <!-- Content from Tarik will be loaded here -->
+                            
+                        </div>
 
+                        <div id="nasabah-content" class="mt-3" >
+                            <!-- Content from Nasabah will be loaded here -->
+                            
+                        </div>
 
-                                                            </td>
-
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div> 
+                        <div id="transaksi-content">
+                            <!-- Content from transaksi will be loaded here -->
+                            
                         </div>
                         
-                        <!-- Transaksi -->
-                        <div id="transaksi-table-container" style="display: none;">
-                            <div class="row my-5">
-                                <h3 class="fs-4 mb-3">Transaksi</h3>
-                                <div class="col">
-                                    <div class="row my-5">
-                                            <div class="col">
-                                            <table class="table bg-white rounded shadow-sm table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Tanggal Transaksi</th>
-                                                        <th scope="col">User</th>
-                                                        <th scope="col">Admin</th>
-                                                        <th scope="col">Setor</th>
-                                                        <th scope="col">Tarik</th>
-                                                        <th scope="col">Invoice</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($transaksi->result_array() as $key) { ?>
-                                                        <tr>
-                                                            <td><?php echo $key['tgl_tabungan_transaksi'] ?></td>
-                                                            <td><?php echo $key['nasabah_username'] ?></td>
-                                                            <td><?php echo $key['staff_username'] ?></td>
-                                                            <td><?php echo $key['debit'] ?></td>
-                                                            <td><?php echo $key['kredit'] ?></td>
-                                                            <td>
-                                                                <a href="" class="btn btn-primary">Invoice</a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div> 
-                        </div>
+                        <div id="berita-content">
 
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">User Details</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img id="modal-profile-img" src="" alt="Profile Image" class="img-fluid rounded-circle mx-auto d-block">
-                                    <p id="modal-nama"></p>
-                                    <p id="modal-tempat-lahir"></p>
-                                    <p id="modal-tanggal-lahir"></p>
-                                    <p id="modal-alamat"></p>
-                                    <p id="modal-email"></p>
-                                    <p id="modal-telepon"></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        $('#exampleModal').on('show.bs.modal', function (event) {
-                            var button = $(event.relatedTarget);
-                            var modal = $(this);
-                            var profileImageSrc = '<?= base_url('img/profile/'); ?>' + button.data('profile');
-
-                            modal.find('#modal-profile-img').attr('src', profileImageSrc);
-                            modal.find('#modal-nama').text('Nama Lengkap: ' + button.data('nama'));
-                            modal.find('#modal-tempat-lahir').text('Tempat Lahir: ' + button.data('tempat-lahir'));
-                            modal.find('#modal-tanggal-lahir').text('Tanggal Lahir: ' + button.data('tanggal-lahir'));
-                            modal.find('#modal-alamat').text('Alamat: ' + button.data('alamat'));
-                            modal.find('#modal-email').text('Email: ' + button.data('email'));
-                            modal.find('#modal-telepon').text('Nomor Telepon: ' + button.data('telepon'));
-                        });
-                    </script>
-
-
-
-                        <!-- Berita -->
-                        <div id="berita-table-container" style="display: none;">
-                            <div class="row my-5">
-                                <h3 class="fs-4 mb-3">Berita</h3>
-                                <div class="d-flex justify-content-start mb-3">
-                                    <button type="button" class="btn btn-success mb-3 ms-0 p-2" data-bs-toggle="modal" data-bs-target="#tambahBeritaModal">
-                                        Tambah Berita
-                                    </button>
-                                </div>
-                                
-                                <!-- Modal Tambah -->
-                                <div class="modal fade" id="tambahBeritaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Berita</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="<?= base_url('dashboard/tambahberita') ?>" method="post" enctype="multipart/form-data">
-
-                                        <div class="mb-3">
-                                            <label for="judulBerita" class="form-label">Judul Berita</label>
-                                            <input type="text" class="form-control" id="judulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="gambarBerita" class="form-label">Upload Gambar Berita</label>
-                                            <input type="file" class="form-control" id="gambarBerita" name="gambarBerita" accept="image/*">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="deskripsiBerita" class="form-label">Deskripsi Berita</label>
-                                            <!-- Sembunyikan elemen input teks asli -->
-                                            <input type="text" style="display: none;" id="deskripsiBerita" name="deskripsiBerita">
-                                            <!-- Gantikan dengan elemen textarea untuk Quill -->
-                                            <div id="deskripsiQuilli" style="min-height: 150px;"></div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-
-                                <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-                                <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-                                <script>
-                                var quill = new Quill('#deskripsiQuilli', {
-                                    theme: 'snow'
-                                });
-
-                                // Handle form submission within the modal
-                                var modalForm = document.querySelector('#tambahBeritaModal form');
-                                modalForm.onsubmit = function() {
-                                    document.getElementById('deskripsiBerita').value = quill.root.innerHTML;
-                                    // You may want to add additional validation logic here before allowing the form to be submitted
-                                    return true; // Allow the form to be submitted
-                                };
-                                </script>
-
-                                <!-- Edit Modal -->
-                                <div class="modal fade" id="editBeritaModal" tabindex="-1" aria-labelledby="editBeritaModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="editBeritaModalLabel">Edit Berita</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="editForm" action="<?= base_url('dashboard/updateBerita') ?>" method="post" enctype="multipart/form-data">
-                                                    <input type="hidden" name="id" id="editBeritaId">
-                                                    <input type="hidden" name="gambarBerita_existing" id="editGambarBeritaExisting">
-
-                                                    <div class="mb-3">
-                                                        <label for="editJudulBerita" class="form-label">Judul Berita</label>
-                                                        <input type="text" class="form-control" id="editJudulBerita" name="judulBerita" placeholder="Masukkan Judul Berita">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="editGambarBerita" class="form-label">Upload Gambar Berita</label>
-                                                        <input type="file" class="form-control-file" id="editGambarBerita" name="gambarBerita" accept="image/*">
-                                                        <img id="editGambarPreview" style="max-width: 200px;" alt="Current Image">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="editDeskripsiBerita" class="form-label">Deskripsi Berita</label>
-                                                        <div id="editEditor" style="min-height: 150px;"></div>
-                                                        <input type="hidden" id="editDeskripsiBerita" name="deskripsiBerita">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    var editQuill = new Quill('#editEditor', {
-                                        theme: 'snow'
-                                    });
-
-                                    // Handle form submission within the edit modal
-                                    var editModalForm = document.querySelector('#editForm');
-                                    editModalForm.addEventListener('submit', function () {
-                                        document.getElementById('editDeskripsiBerita').value = editQuill.root.innerHTML;
-                                        // Additional validation logic can be added here before allowing the form to be submitted
-                                        return true; // Allow the form to be submitted
-                                    });
-
-                                    // Open the edit modal with data when the edit button is clicked
-                                    function openEditModal(id, judul, gambar, deskripsi) {
-                                        document.getElementById('editBeritaId').value = id;
-                                        document.getElementById('editJudulBerita').value = judul;
-                                        document.getElementById('editGambarBeritaExisting').value = gambar;
-                                        document.getElementById('editGambarPreview').src = '<?= base_url("img/") ?>' + gambar;
-                                        editQuill.root.innerHTML = deskripsi;
-                                        $('#editBeritaModal').modal('show');
-                                    }
-                                </script>
-
-
-                                <div class="col">
-                                <div class="row my-1">
-                                            <div class="col">
-                                                <table class="table bg-white rounded shadow-sm  table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col" width="50">No</th>
-                                                            <th scope="col">Judul</th>  
-                                                            <th scope="col">Gambar</th>
-                                                            <th scope="col">deskripsi</th>
-                                                            <th scope="col">Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <?php foreach ($berita->result_array() as $key) { ?>
-                                                            <tr>
-                                                                <td><?php echo $key['id'] ?></td>
-                                                                <td><?php echo $key['judul'] ?></td>
-                                                                <td>
-                                                                    <img src="<?php echo base_url('uploads/' . $key['gambar']); ?>" alt="Gambar Berita" width="50">
-                                                                </td>
-                                                                <td><?php echo $key['deskripsi'] ?></td>
-                                                                <td>
-                                                                    <button class="btn btn-warning" onclick="openEditModal('<?php echo $key['id']; ?>', '<?php echo $key['judul']; ?>', '<?php echo $key['gambar']; ?>', '<?php echo htmlspecialchars($key['deskripsi']); ?>')">Edit</button>
-                                                                   <!--<a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>" class="btn btn-info">Edit</a>-->
-                                                                    <a href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>" class="btn btn-danger">Delete</a>
-                                                                </td> 
-                                                            </tr>
-                                                        <?php } ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                            
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -572,19 +293,14 @@
                 var el = document.getElementById("wrapper");
                 var toggleButton = document.getElementById("menu-toggle");
                 var dashboardLink = document.getElementById("dashboard-link");
-                var nasabahLink = document.getElementById("nasabah-link");
-                var beritaLink = document.getElementById("berita-link");
-                var nasabahdLink = document.getElementById("nasabahd-link");
-                var transaksiLink = document.getElementById("transaksi-link");
-                var setorLink = document.getElementById("setor-link");
-                var tarikLink = document.getElementById("tarik-link");
-                var nasabahTableContainer = document.getElementById("nasabah-table-container");
-                var beritaTableContainer = document.getElementById("berita-table-container");
-                var transaksiTableContainer = document.getElementById("transaksi-table-container");
+            
                 var nasabahmodalcontainer = document.getElementById("nasabah-modal-container");
                 var setor = document.getElementById("setor-content");
                 var tarik = document.getElementById("tarik-content");
-                
+                var pdf = document.getElementById("pdf-content");
+                var nasabah = document.getElementById("nasabah-content");
+                var transaksi = document.getElementById("transaksi-content");
+                var berita = document.getElementById("berita-content");
 
                 toggleButton.onclick = function () {
                     el.classList.toggle("toggled");
@@ -592,55 +308,79 @@
 
                 dashboardLink.onclick = function () {
                     console.log('dashboard');
-                    nasabahTableContainer.style.display = "none";
-                    beritaTableContainer.style.display = "none";
-                    transaksiTableContainer.style.display = "none";
+                  
                     setor.style.display = "none";
                     tarik.style.display = "none";
+                    pdf.style.display = "none";
 
-                };
-
-                nasabahLink.onclick = function () {
-                    console.log('nasabah');
-                    nasabahTableContainer.style.display = "block";
-                    beritaTableContainer.style.display = "none";
-                    transaksiTableContainer.style.display = "none";
-                    setor.style.display = "none";
-                    tarik.style.display = "none";
-                };
-
-                beritaLink.onclick = function () {
-                    console.log('berita');
-                    beritaTableContainer.style.display = "block";
-                    nasabahTableContainer.style.display = "none";
-                    transaksiTableContainer.style.display = "none";
-                    setor.style.display = "none";
-                    tarik.style.display = "none";
-                };
-
-                transaksiLink.onclick = function () {
-                    console.log('transaksi');
-                    transaksiTableContainer.style.display = "block";
-                    nasabahTableContainer.style.display = "none";
-                    beritaTableContainer.style.display = "none";
-                    setor.style.display = "none";
-                    tarik.style.display = "none";
-                };
-
-                
-                nasabahdLink.onclick = function () {
-                    var myModal = new bootstrap.Modal(document.getElementById('nasabah-modal-container'));
-                    myModal.show();
                 };
 
                 function loadSetorContent() {
                      // Fetch content from the setorSampah controller's index function and update #setor-content
-                    $("#setor-content").load("setorSampah/index");
+                    $("#setor-content").load("setorSampah");
+                    setor.style.display = "block";
+                    tarik.style.display = "none";
+                    pdf.style.display = "none";
+                    transaksi.style.display = "none";
+                    nasabah.style.display = "none";
+                    berita.style.display = "none";
                 }
                 function loadTarikContent() {
                      // Fetch content from the tarikSampah controller's index function and update #tarik-content
-                    $("#tarik-content").load("tarik/index");
+                    $("#tarik-content").load("tarik");
+                    tarik.style.display = "block";
+                    setor.style.display = "none";
+                    pdf.style.display = "none";
+                    transaksi.style.display = "none";
+                    nasabah.style.display = "none";
+                    berita.style.display = "none";
                 }
+
+                function loadLaporanContent() {
+                    console.log('loadLaporan');
+                    $("#pdf-content").load("generatepdf");
+                    pdf.style.display = "block";
+                    tarik.style.display = "none";
+                    setor.style.display = "none";
+                    transaksi.style.display = "none";
+                    nasabah.style.display = "none";
+                    berita.style.display = "none";
+                } 
+
+                function loadNasabahContent(){
+                    console.log('loadLaporan');
+                    $("#nasabah-content").load("dashboard/loadNasabah");
+                    nasabah.style.display = "block";
+                    pdf.style.display = "none";
+                    tarik.style.display = "none";
+                    setor.style.display = "none";
+                    transaksi.style.display = "none";
+                    berita.style.display = "none";
+                }
+
+                function loadTransaksiContent(){
+                    console.log('loadTransaksi');
+                    $("#transaksi-content").load("dashboard/loadTransaksi");
+                    transaksi.style.display = "block";
+                    nasabah.style.display = "none";
+                    pdf.style.display = "none";
+                    tarik.style.display = "none";
+                    setor.style.display = "none";
+                    berita.style.display = "none";
+                }
+
+                function loadBeritaContent(){
+                    console.log('loadBerita');
+                    $("#berita-content").load("dashboard/loadBerita");
+                    berita.style.display = "block";
+                    nasabah.style.display = "none";
+                    pdf.style.display = "none";
+                    tarik.style.display = "none";
+                    setor.style.display = "none";
+                    transaksi.style.display = "none";
+                }
+
+
 
                 function tampilkanFormTambahBerita() {
                     var formTambahBerita = document.getElementById("form-tambah-berita");

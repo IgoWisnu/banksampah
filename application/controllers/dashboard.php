@@ -104,22 +104,39 @@
                 $data['username'] = $username;
 
                 $this->load->model('m_dashboard');  // Load the model
-                $data['user'] = $this->m_dashboard->getData();  // Fetch data from the model
                 $data['adminCount'] = $this->m_dashboard->getAdminCount();
                 $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
-                $data['berita'] = $this->m_dashboard->getBerita();
                 $data['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
                 $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
-                $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
 
                 // Assuming you want to fetch the first article's ID
                 $firstArticle = $this->m_dashboard->getBerita()->row_array();
-                $data['artikel'] = $this->m_dashboard->getBeritaById($firstArticle['id']);
+             
                 
                 
                 $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
                 $this->load->view('banksampah/v_footer');
                 
+            }
+
+
+            public function loadNasabah(){
+                $data['user'] = $this->m_dashboard->getData();
+
+                $this->load->view('banksampah/tabelnasabah', $data);
+            }
+
+            public function loadTransaksi(){
+                $this->load->model('m_transaksi');
+                $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
+
+                $this->load->view('banksampah/tabeltransaksi', $data);
+            }
+
+            public function loadBerita(){
+                $data['berita'] = $this->m_dashboard->getBerita();
+
+                $this->load->view('banksampah/tabelberita', $data);
             }
             
 

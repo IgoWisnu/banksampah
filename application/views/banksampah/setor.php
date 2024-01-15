@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
+<html>
+<body>
+<style>
         .center {
             text-align: center;
             font-weight: bold;
             font-size: 50px;
         }
         .container {
-      background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.9); 
+        padding: 25px; 
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
         }
         .input {
         background-color: #fff;
@@ -21,10 +19,6 @@
         border: 1px solid #000;
     }
     </style>
-</head>
-
-<body>
-    <?php include(APPPATH . 'views/component/sidebar.php'); ?>
     <h2 class="center">Setor Sampah</h2>
     <br />
     <div class="container">

@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="form">
-                    <div class=">Verify Password:
+                    <div class=" pb-2">Verify Password:
                         <input type="password" id="verify_password" class="form-control row justify-content-center" name="verify_password" placeholder="Re-enter your password" >
                         <small class="text-danger"><?= form_error('verify_password') ?></small>
                     </div>

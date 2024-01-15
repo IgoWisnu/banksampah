@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>tarik</title>
-</head>
+
 <style>
     body {
         height: 1000px;
@@ -21,25 +14,15 @@
         margin-top: 20px;
     }
 
-    h3 {
-        font-weight: bold; 
-        font-size: 2em;
-        color: #fff; 
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-    }
-
     input:focus {
         color: #000;
     }
     
 </style>
-
 <body>
     <div class="text-center py-4">
         <h3 style="font-weight: bold; font-size: 2em;">Tarik Sampah</h3>
     </div>
-    <h1 class="text-center">Tarik Sampah</h1>
-    <br>
     <div class="container">
         <div class="row">
             <div class="input-group col-6">

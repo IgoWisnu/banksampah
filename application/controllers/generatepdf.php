@@ -7,7 +7,7 @@
         
     }
 
-    public function laporan(){
+    public function index(){
         $this->load->view('banksampah/laporan');
     }
 
