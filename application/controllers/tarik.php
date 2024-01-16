@@ -40,9 +40,17 @@
             if($jumlahTarik <= $saldo){
                 $setor = $this->m_tarik->insertTrTarik();
                 $this->m_tarik->updateSaldo();
-                redirect('dashboard');
+
+                if($setor){
+                    $this->session->set_flashdata('success', 'Tarik saldo berhasil');
+                    redirect('dashboard');
+                } else{
+                    $this->session->set_flashdata('failed', 'Tarik saldo gagal');
+                    redirect('dashboard');
+                }
             } else{
-                redirect('tarik');
+                $this->session->set_flashdata('failed', 'Saldo tidak mencukupi');
+                redirect('dashboard');
             }
         }
         

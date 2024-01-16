@@ -253,6 +253,19 @@
                             </div>
                         </div>
 
+                        <!-- flashdata alert handle -->
+                        <?php 
+                            $success = $this->session->flashdata('success');
+                            $failed = $this->session->flashdata('failed');
+
+                            if($success){
+                                echo '<div class="alert alert-success">'.$success.'</div>';
+                            }
+                            elseif($failed){
+                                echo '<div class="alert alert-failed">'.$failed.'</div>';
+                            }
+                        ?>
+
                         <div id="setor-content" class="mt-3">
                             <!-- Content from Setor will be loaded here -->
                         </div>
@@ -278,7 +291,7 @@
                         </div>
                         
                         <div id="berita-content">
-
+                            <!-- Content from berita will be loaded here -->
                         </div>
                     </div>
                 </div>

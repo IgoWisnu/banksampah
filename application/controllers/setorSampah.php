@@ -86,6 +86,8 @@
             //update data in table saldo
             $this->m_setor->updateDebitSaldo($id_tbUser, $total);
 
+            //set flashdata
+            $this->session->set_flashdata('success', 'Setor Sampah Berhasil');
             redirect('dashboard');
         }
 
