@@ -19,7 +19,7 @@
     }
     
     .wrap{
-        min-height: 650px;
+        min-height: 620px;
         margin-top: 255px;
         padding-bottom: 70px;
         position: absolute; 
@@ -92,14 +92,6 @@
         width: 254px;
     }
 
-    .tdetail{
-        font-size: 20px;
-        color: white;
-        font-weight: 700;
-        margin-top: 15px;
-        margin-right: 30px;
-    }
-
     .layout2{
         bottom: 35px;
         position: absolute;
@@ -146,13 +138,18 @@
     }
 
     .link{
-        color: black;
         text-decoration: none;
     }
 
     .linklogout{
         color: red;
         text-decoration: none; 
+    }
+
+    .text{
+        margin-top: 40px;
+        text-align: center;
+        font-size: 20px;
     }
 
     @media screen and (min-width: 422px) {
@@ -171,6 +168,7 @@
             background-attachment: fixed;
         }
         .wrap{
+            width: 700px;
             border-bottom-right-radius: 30px; 
             border-bottom-left-radius: 30px;
             margin-top: 205px;
@@ -182,7 +180,8 @@
     }
 </style>
 <body>
-    <img class="topImg" src="<?=base_url()?>img/Waste_recycling_Vectors___Illustrations_for_Free_Download___Freepik_1-svaecW6Z_-transformed.png" alt="">
+    <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    <?php include('logo.php'); ?>
     <div class="row justify-content-center">
         <div class="wrap">
             <?php 
@@ -196,17 +195,17 @@
                 }
             ?>
             <?php if($this->session->userdata('role') == 'admin'): ?>
-                <div class="btn">
-                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
-                </div>
+                <a href="" class="btn">
+                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow" hral="">Kembali
+                </a>
             <?php else: ?>
-                <div class="btn">
-                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
-                </div>
+                <a href="" class="btn">
+                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow" hral="">Kembali
+                </a>
             <?php endif; ?>
 
             <div class="laybox">
-                <div class="box">
+                <div class="box row">
                     <div class="layout">
                         <div class="layUsernameEmail">
                             <?php foreach($profile->result_arraY() as $key){ ?>
@@ -243,23 +242,11 @@
                     </div>
                 </div>    
             </div>
-
-            <div class="editProfile">
-                <a href="<?=base_url()?>profile/editprofile?id=<?=$key['id_user']?>" class="link"><img src="<?=base_url()?>img/mode_edit_24px.png" alt="" class="editImg">Edit Profile</a>
-            </div>
-            <div class="gantiPassword">
-                <a href="" class="link"><img src="<?=base_url()?>img/lock.png" alt="" class="passImg">Ganti Password</a>
-            </div>
-            <div class="kontak">
-                <a href="" class="link"><img src="<?=base_url()?>img/phone.png" alt="" class="kontakImg">Kontak kami</a>
-            </div>
-            <div class="logout">
-                <a href="<?=base_url()?>auth/logout" class="linklogout"><img src="<?=base_url()?>img/Mask group.png" alt="" class="logoutImg">Keluar</a>
-            </div>
+            <div class="text">
+                Penarikan dapat dilakukan <br> 6 bulan sekali pada <br> tanggal 06/06/2024 di <br> Politeknik Negeri Bali
             </div>
         </div>
-        <div class="gap"></div>
-        <?php include('menu.php'); ?>
     </div>
+    <div class="gap"></div>
 </body>
 </html>
