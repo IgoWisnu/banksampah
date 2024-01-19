@@ -256,10 +256,10 @@
         
         <div class="t1 row justify-content-center text-center">Tukarkan Sampah Kamu Menjadi Uang</div>
         <div class="LayBtn1 d-flex justify-content-center">
-          <a class="btn1 btn ms-2 me-1" href="">Setor
+          <a class="btn1 btn ms-2 me-1" href="<?=base_url()?>home/loadSetor">Setor
             <img class="imgSetor" src="<?=base_url()?>img/Setor.png" alt="">
           </a>
-          <a class="btn2 btn me-2" href="">Tarik
+          <a class="btn2 btn me-2" href="<?=base_url()?>home/loadTarik">Tarik
             <img class="imgTarik" src="<?=base_url()?>img/Tarik.png" alt="">
           </a>
         </div>

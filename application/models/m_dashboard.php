@@ -38,12 +38,15 @@ class m_dashboard extends CI_Model {
 
     public function insertBerita($data) {
         // Masukkan data ke dalam tabel artikel
-        $this->db->insert('artikel', $data);
+        $result = $this->db->insert('artikel', $data);
+        return $result;
     }
 
     public function deleteData($id){
         $this->db->where('id', $id);
-        $this->db->delete('artikel');
+        $result = $this->db->delete('artikel');
+
+        return $result;
     }
     
     public function getBeritaById($id) {
@@ -55,7 +58,9 @@ class m_dashboard extends CI_Model {
     public function updateBerita($id, $data) {
         // Fungsi untuk mengupdate berita berdasarkan ID
         $this->db->where('id', $id);
-        $this->db->update('artikel', $data);
+        $result = $this->db->update('artikel', $data);
+
+        return $result;
     }
     
     

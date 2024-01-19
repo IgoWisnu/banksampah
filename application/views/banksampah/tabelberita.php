@@ -134,7 +134,35 @@
             </div>
         </div>
     
+       <!-- Modal delete -->
+        <div
+            class="modal fade"
+            id="deleteModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Artikel</h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin ingin menghapus artikel ini?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Table -->
         <div class="col">
             <div class="row my-1">
                 <div class="col">
@@ -166,9 +194,9 @@
                                         onclick="openEditModal('<?php echo $key['id']; ?>', '<?php echo $key['judul']; ?>', '<?php echo $key['gambar']; ?>', '<?php echo htmlspecialchars($key['deskripsi']); ?>')">Edit</button>
                                     <!--<a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>"
                                     class="btn btn-info">Edit</a>-->
-                                    <a
-                                        href="<?php echo base_url('dashboard/deleteb/' . $key['id']) ?>"
-                                        class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?= $key['id']; ?>">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -225,4 +253,30 @@
         editQuill.root.innerHTML = deskripsi;
         $('#editBeritaModal').modal('show');
     }
+
+    // Use jQuery to handle the deletion action
+    $(document).ready(function () {
+        // Attach a click event to the delete button
+        $('#confirmDeleteBtn').on('click', function () {
+            // Get the delete ID from the data attribute
+            var deleteId = $('#deleteModal').data('id');
+
+            // Build the delete URL
+            var deleteUrl = "<?php echo base_url('dashboard/deleteb/'); ?>" + deleteId;
+
+            // Perform the delete action (e.g., using AJAX)
+            $.ajax({
+                url: deleteUrl,
+                type: 'GET', // or 'POST' depending on your server-side implementation
+                success: function (response) {
+                    // Handle success, e.g., refresh the page or update UI
+                    console.log('Delete successful');
+                },
+                error: function (error) {
+                    // Handle error, e.g., display an error message
+                    console.error('Delete failed', error);
+                }
+            });
+        });
+    });
 </script>

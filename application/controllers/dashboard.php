@@ -38,9 +38,14 @@
                         'gambar' => $gambarBerita,
                         'deskripsi' => $deskripsiBerita
                     );
-                    $this->m_dashboard->insertBerita($data);
+                    $insert = $this->m_dashboard->insertBerita($data);
             
                     // Redirect atau tampilkan pesan sukses
+                    if($insert){
+                        $this->session->set_flashdata('success', 'Artikel berhasil ditambahkan');
+                    } else{
+                        $this->session->set_flashdata('failed', 'Artikel gagal ditambahkan');
+                    }
                     redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
                 }
             }
@@ -83,8 +88,13 @@
                     'deskripsi' => $deskripsiBerita
                 );
         
-                $this->m_dashboard->updateBerita($id, $data);
-        
+                $update = $this->m_dashboard->updateBerita($id, $data);
+                
+                if($update){
+                    $this->session->set_flashdata('success', 'Artikel berhasil diupdate');
+                } else{
+                    $this->session->set_flashdata('failed', 'Artikel gagal diupdate');
+                }
                 // Redirect atau tampilkan pesan sukses
                 redirect('dashboard');
             }
@@ -141,7 +151,12 @@
             
 
         public function deleteb($id){
-            $this->m_dashboard->deleteData($id); 
+            $delete = $this->m_dashboard->deleteData($id);
+            if($delete){
+                $this->session->set_flashdata('success', 'Artikel berhasil dihapus');
+            } else{
+                $this->session->set_flashdata('failed', 'Artikel gagal dihapus');
+            }
             redirect('dashboard');
         }
  
@@ -151,6 +166,8 @@
             $this->load->view('banksampah/edit_berita', $data);
             
         }
+
+        
         
         
 

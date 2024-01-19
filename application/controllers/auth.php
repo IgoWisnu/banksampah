@@ -107,8 +107,7 @@
             if ($verifyCheck == 'verif'){
                 $userId = $this->m_auth->getUser($token);
                 $bukaTabungan = $this->m_auth->registerTabungan($userId);
-                $bukaSaldo = $this->m_auth->registerSaldo($userId);
-                if($bukaTabungan AND $bukaSaldo){
+                if($bukaTabungan){
                     $this->session->set_flashdata('success','Verifikasi berhasil'); 
                     redirect('auth/login');
                 } else{

@@ -207,19 +207,6 @@
             return $result;
         }
 
-        public function registerSaldo($id){
-            $query = $this->db->get_where('tabungan', array('id_user_nasabah' => $id));
-            if($query->num_rows() == 0){
-                $data = array(
-                    'saldo' => 0
-                );
-                $result = $this->db->update('tabungan', $data);
-                return $result;
-            } else {
-                return null;
-            }
-        }
-
         public function getUser($token){
             $query = $this->db->get_where('user', array('kode_verif' => $token));
             if ($query->num_rows() > 0) {
