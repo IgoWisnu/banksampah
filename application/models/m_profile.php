@@ -7,11 +7,7 @@
         public function loadProfile(){
             $iduser = $this->session->userdata('id');
 
-            $query = "SELECT * FROM user 
-            JOIN tabungan ON user.id_user = tabungan.id_user_nasabah
-            WHERE user.id_user = $iduser
-            ";
-
+            $query = "CALL sp_get_profile($iduser)";
             $result = $this->db->query($query);
             return $result;
         }

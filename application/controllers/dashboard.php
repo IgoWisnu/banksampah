@@ -106,7 +106,7 @@
                 $this->load->view('banksampah/tnasabah', $data);
             }
 
-            public function loadTabelNasabah($rowno = 0){
+        public function loadTabelNasabah($rowno = 0){
                 // Row per page
                 $rowperpage = 2;
 
@@ -134,11 +134,11 @@
                 $data['row'] = $rowno;
 
                 echo json_encode($data);
-            }
+        }
             
             
 
-            public function index(){
+        public function index(){
                 $this->load->model('m_transaksi');
                 $username = $this->session->userdata('username');
                 $data['username'] = $username;
@@ -152,30 +152,12 @@
                 // Assuming you want to fetch the first article's ID
                 $firstArticle = $this->m_dashboard->getBerita()->row_array();
              
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar', $data);
+                $this->load->view('template/footer');
                 
-                
-                $this->load->view('banksampah/Lindexx', $data);  // Pass data to the view
-                $this->load->view('banksampah/v_footer');
-                
-            }
-
-
-            public function loadNasabah(){
-                $this->load->view('banksampah/tabelnasabah');
-            }
-
-            public function loadTransaksi(){
-                $this->load->model('m_transaksi');
-                $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
-
-                $this->load->view('banksampah/tabeltransaksi', $data);
-            }
-
-            public function loadBerita(){
-                $data['berita'] = $this->m_dashboard->getBerita();
-
-                $this->load->view('banksampah/tabelberita', $data);
-            }
+         }
             
 
         public function deleteb($id){
@@ -195,11 +177,52 @@
             
         }
 
-        
-        
-        
+        public function loadNasabah(){
+            $top['adminCount'] = $this->m_dashboard->getAdminCount();
+            $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+            $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
+            $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
+            $data['user'] = $this->m_dashboard->getData();
 
+            $this->load->view('template/header');
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar', $top);
+            $this->load->view('banksampah/tabelnasabah', $data);
+            $this->load->view('template/footer');
+            
+        }
 
+        public function loadBerita(){
+            $top['adminCount'] = $this->m_dashboard->getAdminCount();
+            $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+            $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
+            $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
+            $data['berita'] = $this->m_dashboard->getBerita();
+
+            $this->load->view('template/header');
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar', $top);
+            $this->load->view('banksampah/tabelberita', $data);
+            $this->load->view('template/footer');
+            
+        }
+
+        public function loadTransaksi(){
+            $this->load->model('m_transaksi');
+            $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
+
+            $top['adminCount'] = $this->m_dashboard->getAdminCount();
+            $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+            $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
+            $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
+
+            $this->load->view('template/header');
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar', $top);
+            $this->load->view('banksampah/tabeltransaksi', $data);
+            $this->load->view('template/footer');
+            
+        }
     
     }
     

@@ -18,9 +18,20 @@
         
     
         public function index()
-        {
+        {   
+            $this->load->model('m_dashboard');
+            
             $data['option'] = $this->m_setor->loadSelect();
+            $top['adminCount'] = $this->m_dashboard->getAdminCount();
+            $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
+            $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
+            $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
+
+            $this->load->view('template/header');
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar', $top);
             $this->load->view('banksampah/setor', $data);
+            $this->load->view('template/footer');
         }
 
         public function setor(){

@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class m_dashboard extends CI_Model {
 
     public function getData(){
+        $this->db->where('role', 'user');
         $data = $this->db->get('user'); 
         return $data;
     }

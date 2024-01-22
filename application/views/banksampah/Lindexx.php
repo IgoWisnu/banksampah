@@ -153,108 +153,160 @@
         }
         </style>
 
-        <body>
-            <div class="d-flex" id="wrapper">
-                <!-- Sidebar -->
-                <div class="bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-                    <img src="<?= base_url() ?>img/logo green.png" alt="Bank Sampah" class="me-2" style="height: 30px; width: 25px;" />
-                    Bank Sampah
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+            <div
+                class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+                <img
+                    src="<?= base_url() ?>img/logo green.png"
+                    alt="Bank Sampah"
+                    class="me-2"
+                    style="height: 30px; width: 25px;"/>
+                Bank Sampah
+            </div>
+            <div class="list-group list-group-flush my-3">
+                <a
+                    href="#"
+                    id="dashboard-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text active">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a
+                    href="#"
+                    id="nasabah-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadNasabahContent()">
+                    <i class="fas fa-user fa-beat me-2"></i>Nasabah</a>
+                <a
+                    href="#"
+                    id="berita-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadBeritaContent()">
+                    <i class="fas fa-chart-line me-2"></i>Berita</a>
+                <a
+                    href="#"
+                    id="transaksi-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadTransaksiContent()">
+                    <i class="fa fa-credit-card me-2"></i>Transaksi</a>
+                <a
+                    href="#"
+                    id="setor-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadSetorContent()">
+                    <i class="fas fa-arrow-down me-2"></i>Setor</a>
+                <a
+                    href="#"
+                    id="tarik-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadTarikContent()">
+                    <i class="fas fa-arrow-up me-2"></i>Tarik</a>
+                <a
+                    href="#"
+                    id="pdf-link"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    onclick="loadLaporanContent()">
+                    <i class="fas fa-file-pdf me-2"></i>PDF</a>
+                <a
+                    href="<?php echo base_url('auth/logout/') ?>"
+                    class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                    <i class="fas fa-power-off me-2"></i>Logout</a>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Dashboard Admin</h2>
                 </div>
-                    <div class="list-group list-group-flush my-3">
-                        <a href="#" id="dashboard-link" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                                class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                        <a href="#" id="nasabah-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadNasabahContent()"><i
-                                class="fas fa-user fa-beat me-2"></i>Nasabah</a>
-                        <a href="#" id="berita-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadBeritaContent()"><i
-                                class="fas fa-chart-line me-2"></i>Berita</a>
-                        <a href="#" id="transaksi-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTransaksiContent()"><i
-                                class="fa fa-credit-card me-2"></i>Transaksi</a>
-                        <a href="#" id="setor-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadSetorContent()"><i 
-                                class="fas fa-arrow-down me-2"></i>Setor</a>                          
-                        <a href="#" id="tarik-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadTarikContent()"><i 
-                                class="fas fa-arrow-up me-2"></i>Tarik</a>
-                        <a href="#" id="pdf-link" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="loadLaporanContent()"><i
-                                class="fas fa-file-pdf me-2"></i>PDF</a>
-                        <a href="<?php echo base_url('auth/logout/') ?>" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                                class="fas fa-power-off me-2"></i>Logout</a>
-                    </div>
-                </div>  
 
-                <div id="page-content-wrapper">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                            <h2 class="fs-2 m-0">Dashboard Admin</h2>
-                        </div>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-user me-2"></i><?=$username?>
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="<?php echo base_url('profile/index/') ?>">Profile</a></li>
-                                    </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle second-text fw-bold"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-user me-2"></i><?=$username?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="<?php echo base_url('profile/index/') ?>">Profile</a>
                                 </li>
                             </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid px-4">
+                <div class="row g-3 my-2">
+                    <div class="col-md-3">
+                        <div
+                            class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2"><?php echo $adminCount; ?></h3>
+                                <p class="fs-5">Admin</p>
+                            </div>
+                            <i
+                                class="fas fa-user-tie fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
-                    </nav>
+                    </div>
 
-                    <div class="container-fluid px-4">
-                        <div class="row g-3 my-2">
-                            <div class="col-md-3">
-                                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                    <div>
-                                        <h3 class="fs-2"><?php echo $adminCount; ?></h3>
-                                        <p class="fs-5">Admin</p>
-                                    </div>
-                                    <i class="fas fa-user-tie fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                                </div>
+                    <div class="col-md-3">
+                        <div
+                            class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2"><?php echo $nasabahCount; ?></h3>
+                                <p class="fs-5">Nasabah</p>
                             </div>
-
-                            <div class="col-md-3">
-                                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                    <div>
-                                    <h3 class="fs-2"><?php echo $nasabahCount; ?></h3>
-                                        <p class="fs-5">Nasabah</p>
-                                    </div>
-                                    <i
-                                        class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                    <div>
-                                        <h3 class="fs-2"><?php echo $transaksiCount; ?></h3>
-                                        <p class="fs-5">Transaksi</p>
-                                    </div>
-                                    <i class="fas fa-piggy-bank fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                    <div>
-                                        <h3 class="fs-2"><?php echo $artikelCount; ?></h3>
-                                        <p class="fs-5">Berita</p>
-                                    </div>
-                                    <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                                </div>
-                            </div>
+                            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
+                    </div>
 
-                        <!-- flashdata alert handle -->
-                        <?php 
+                    <div class="col-md-3">
+                        <div
+                            class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2"><?php echo $transaksiCount; ?></h3>
+                                <p class="fs-5">Transaksi</p>
+                            </div>
+                            <i
+                                class="fas fa-piggy-bank fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div
+                            class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2"><?php echo $artikelCount; ?></h3>
+                                <p class="fs-5">Berita</p>
+                            </div>
+                            <i
+                                class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- flashdata alert handle -->
+            <?php 
                             $success = $this->session->flashdata('success');
                             $failed = $this->session->flashdata('failed');
 
@@ -264,41 +316,38 @@
                             elseif($failed){
                                 echo '<div class="alert alert-failed">'.$failed.'</div>';
                             }
-                        ?>
+            ?>
 
-                        <div id="setor-content" class="mt-3">
-                            <!-- Content from Setor will be loaded here -->
-                        </div>
+                <div id="setor-content" class="mt-3">
+                    <!-- Content from Setor will be loaded here -->
+                </div>
 
-                        <div id="tarik-content" class="mt-3">
-                            <!-- Content from Tarik will be loaded here -->
-                            
-                        </div>
+                <div id="tarik-content" class="mt-3">
+                    <!-- Content from Tarik will be loaded here -->
 
-                        <div id="pdf-content" class="mt-3">
-                            <!-- Content from Tarik will be loaded here -->
-                            
-                        </div>
+                </div>
 
-                        <div id="nasabah-content" class="mt-3" >
-                            <!-- Content from Nasabah will be loaded here -->
-                            
-                        </div>
+                <div id="pdf-content" class="mt-3">
+                    <!-- Content from Tarik will be loaded here -->
 
-                        <div id="transaksi-content">
-                            <!-- Content from transaksi will be loaded here -->
-                            
-                        </div>
-                        
-                        <div id="berita-content">
-                            <!-- Content from berita will be loaded here -->
-                        </div>
-                    </div>
+                </div>
+
+                <div id="nasabah-content" class="mt-3">
+                    <!-- Content from Nasabah will be loaded here -->
+
+                </div>
+
+                <div id="transaksi-content">
+                    <!-- Content from transaksi will be loaded here -->
+
+                </div>
+
+                <div id="berita-content">
+                    <!-- Content from berita will be loaded here -->
                 </div>
             </div>
-            </div>
-
-            
+        </div>
+    </div>
             
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
