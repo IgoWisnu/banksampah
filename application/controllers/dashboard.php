@@ -8,7 +8,7 @@
                 // Load model BeritaModel
                 $this->load->model('m_dashboard');
 
-                
+                $this->load->library('pagination');
             }
         
             public function tambahBerita() {
@@ -105,6 +105,36 @@
                 // Load view yang menampilkan tabel nasabah
                 $this->load->view('banksampah/tnasabah', $data);
             }
+
+            public function loadTabelNasabah($rowno = 0){
+                // Row per page
+                $rowperpage = 2;
+
+                // Row position
+                if($rowno != 0){
+                    $rowno = ($rowno-1) * $rowperpage;
+                }
+
+                $nasabahCount = $this->m_dashboard->getNasabahCount();
+
+                $nasabah_record = $this->m_dashboard->getUserData($rowno,$rowperpage);
+
+                // Pagination Configuration
+                $config['base_url'] = base_url().'dashboard/loadTabelNasabah';
+                $config['use_page_numbers'] = TRUE;
+                $config['total_rows'] = $nasabahCount;
+                $config['per_page'] = $rowperpage;
+
+                 // Initialize
+                $this->pagination->initialize($config);
+
+                // Initialize $data Array
+                $data['pagination'] = $this->pagination->create_links();
+                $data['user'] = $nasabah_record;
+                $data['row'] = $rowno;
+
+                echo json_encode($data);
+            }
             
             
 
@@ -131,9 +161,7 @@
 
 
             public function loadNasabah(){
-                $data['user'] = $this->m_dashboard->getData();
-
-                $this->load->view('banksampah/tabelnasabah', $data);
+                $this->load->view('banksampah/tabelnasabah');
             }
 
             public function loadTransaksi(){

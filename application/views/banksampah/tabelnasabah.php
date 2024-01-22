@@ -16,7 +16,7 @@
                                     <!-- Tambah kolom untuk tombol/detail -->
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 <?php foreach ($user->result_array() as $key) { 
                                     if ($key['role'] === 'admin') {
                                         continue;
@@ -48,6 +48,11 @@
                                 <?php } ?>
                             </tbody>
                         </table>
+                        <!-- Paginate -->
+                        <div style='margin-top: 10px;' id='pagination'>
+                            ppp
+                            <?=$this->pagination->create_links(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,7 +95,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -121,6 +126,58 @@
                 .find('#modal-telepon')
                 .text('Nomor Telepon: ' + button.data('telepon'));
         });
+
+        $(document).ready(function(){
+
+            // Detect pagination click
+            $('#pagination').on('click','a',function(e){
+            e.preventDefault(); 
+            var pageno = $(this).attr('data-ci-pagination-page');
+            console.log(pageno);
+            loadPagination(pageno);
+            });
+
+            loadPagination(0);
+
+            // Load pagination
+            function loadPagination(pagno){
+                console.log('load pagination');
+                $.ajax({
+                    url: '<?=base_url()?>dashboard/loadTabelNasabah/'+pagno,
+                    type: 'get',
+                    dataType: 'json', 
+                    success: function(response){
+                        console.log('Response:', response);
+                        $('#pagination').html(response.pagination);
+                        createTable(response.result,response.row);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('AJAX request error:', error);
+                    }
+                });
+            }
+
+        // Create table list
+        function createTable(result,sno){
+            console.log('create table');
+            sno = Number(sno);
+            $('#postsList tbody').empty();
+            for(index in result){
+                var id = result[index].nama_langkap;
+                var title = result[index].tanggal_lahir;
+                var email = result[index].email;
+                sno+=1;
+
+                var tr = "<tr>";
+                tr += "<td>"+ nama_langkap +"</td>";
+                tr += "<td>"+ tanggal_lahir +"</td>";
+                tr += "<td>"+ emai; +"</td>";
+                tr += "</tr>";
+                $('#postsList tbody').append(tr);
+        
+            }
+        }
+    });
     </script>
 </body>
 </html>

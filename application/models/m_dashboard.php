@@ -10,6 +10,16 @@ class m_dashboard extends CI_Model {
         return $data;
     }
 
+    public function getUserData($rowno, $rowperpage){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('role', 'user');
+        $this->db->limit($rowperpage, $rowno);  
+        $query = $this->db->get();
+
+        return $query;
+    }
+
     public function getAdminCount(){
         $this->db->where('role', 'admin');
         $count = $this->db->count_all_results('user');
@@ -17,8 +27,10 @@ class m_dashboard extends CI_Model {
     }
 
     public function getNasabahCount(){
-        $count = $this->db->count_all('user');
-        return $count;
+        $this->db->where('role', 'user');
+        $query = $this->db->get('user');
+
+        return $query->num_rows();
     }
 
     public function getBerita(){

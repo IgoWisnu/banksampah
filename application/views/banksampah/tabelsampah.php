@@ -78,6 +78,7 @@
       border-bottom-right-radius: 30px; 
       border-bottom-left-radius: 30px;
       transition: all 1s ease;
+      width: 722px;
     }
     .gap{
       margin-top: 10% ;
@@ -112,14 +113,21 @@
           <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
         </a>
         <div class="table-responsive">
-          <table class="table mt-4">
+          <table class="table mt-4" id='postsList'>
+            <tr>
+              <td>No</td>
+              <td>Jenis Sampah</td>
+              <td>Kategori</td>
+              <td>Sub Kategori</td>
+              <td>Harga/kg</td>
+            </tr>
             <?php foreach($sampah->result_array() as $key){ ?>
             <tr>
               <td><?=$key['id'] ?></td>
               <td><?=$key['jenis_sampah'] ?></td>
               <td><?=$key['kategori_sampah'] ?></td>
               <td><?=$key['sub_kategori_sampah'] ?></td>
-              <td><?=$key['harga_sampah'] ?></td>
+              <td>Rp <?=$key['harga_sampah'] ?></td>
             </tr>
             <?php } ?>
           </table>
