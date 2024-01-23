@@ -72,15 +72,13 @@
         }
 
         public function loadSetor(){
-            $this->load->model('m_profile');
-            $data['profile'] = $this->m_profile->loadProfile();
+            $data['profile'] = $this->m_home->loadProfile();
 
             $this->load->view('banksampah/v_setor', $data);               
         }
 
         public function loadTarik(){
-            $this->load->model('m_profile');
-            $data['profile'] = $this->m_profile->loadProfile();
+            $data['profile'] = $this->m_home->loadProfile();
 
             $this->load->view('banksampah/v_tarik', $data);               
         }

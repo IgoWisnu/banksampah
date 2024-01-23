@@ -178,6 +178,8 @@
         }
 
         public function loadNasabah(){
+            $username = $this->session->userdata('username');
+            $top['username'] = $username;
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
             $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
@@ -193,6 +195,8 @@
         }
 
         public function loadBerita(){
+            $username = $this->session->userdata('username');
+            $top['username'] = $username;
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
             $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
@@ -208,6 +212,9 @@
         }
 
         public function loadTransaksi(){
+            $username = $this->session->userdata('username');
+            $top['username'] = $username;
+            
             $this->load->model('m_transaksi');
             $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
 

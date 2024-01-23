@@ -9,6 +9,13 @@
             $user = $this->db->query($query, array($id));
             return $user->row()->saldo;
         }
+
+        public function loadProfile(){
+            $iduser = $this->session->userdata('id');
+
+            $query = $this->db->query("CALL sp_get_profile($iduser)");
+            return $query;
+        }
         
     
     }

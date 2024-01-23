@@ -86,7 +86,7 @@
                         }
                     }
                     else{
-                        echo 'gk ada';
+                        redirect('auth');
                     }
                 }
             }else{

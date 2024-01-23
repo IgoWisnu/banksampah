@@ -219,7 +219,11 @@
         }
 
         public function checkUser($username){
-            $user = $this->db->get_where('user', array('username' => $username), 1);
+            $this->db->select('*');
+            $this->db->from('user');
+            $this->db->where('username', $username);
+            $this->db->where('isVerif', 1);
+            $user = $this->db->get();
             return $user;
         }
     
