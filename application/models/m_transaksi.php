@@ -4,13 +4,14 @@
     
     class m_transaksi extends CI_Model {
         
-        public function loadTransaksiAll(){
+        public function loadTransaksiAll($limit, $offset){
             $this->db->select('tabungan_transaksi.*, n.username AS nasabah_username, s.username AS staff_username'); // Add more fields as needed
             $this->db->from('tabungan_transaksi');
             $this->db->join('tabungan', 'tabungan_transaksi.id_tabungan = tabungan.id_tabungan');
             $this->db->join('user n', 'tabungan.id_user_nasabah = n.id_user');
             $this->db->join('user s', 'tabungan_transaksi.id_user_staff = s.id_user');
-            $this->db->limit(20);
+            $this->db->order_by('id_tabungan_transaksi', 'desc');
+            $this->db->limit($limit, $offset);
             
 
             $query = $this->db->get();

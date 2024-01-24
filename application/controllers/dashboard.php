@@ -7,8 +7,11 @@
                 parent::__construct();
                 // Load model BeritaModel
                 $this->load->model('m_dashboard');
-
                 $this->load->library('pagination');
+
+                if(!$this->session->userdata('role') == 'admin'){
+                    redirect('auth');
+                }
             }
         
             public function tambahBerita() {
@@ -105,36 +108,6 @@
                 // Load view yang menampilkan tabel nasabah
                 $this->load->view('banksampah/tnasabah', $data);
             }
-
-        public function loadTabelNasabah($rowno = 0){
-                // Row per page
-                $rowperpage = 2;
-
-                // Row position
-                if($rowno != 0){
-                    $rowno = ($rowno-1) * $rowperpage;
-                }
-
-                $nasabahCount = $this->m_dashboard->getNasabahCount();
-
-                $nasabah_record = $this->m_dashboard->getUserData($rowno,$rowperpage);
-
-                // Pagination Configuration
-                $config['base_url'] = base_url().'dashboard/loadTabelNasabah';
-                $config['use_page_numbers'] = TRUE;
-                $config['total_rows'] = $nasabahCount;
-                $config['per_page'] = $rowperpage;
-
-                 // Initialize
-                $this->pagination->initialize($config);
-
-                // Initialize $data Array
-                $data['pagination'] = $this->pagination->create_links();
-                $data['user'] = $nasabah_record;
-                $data['row'] = $rowno;
-
-                echo json_encode($data);
-        }
             
             
 
@@ -148,9 +121,6 @@
                 $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
                 $data['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
                 $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
-
-                // Assuming you want to fetch the first article's ID
-                $firstArticle = $this->m_dashboard->getBerita()->row_array();
              
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
@@ -178,13 +148,49 @@
         }
 
         public function loadNasabah(){
+            //search handle
+            if($this->input->post('keyword') == ''){
+                $data['keyword'] =  null;
+                $this->session->unset_userdata('keyword_nasabah');
+            }elseif($this->input->post('keyword')){
+                $data['keyword'] =  $this->input->post('keyword');
+                $this->session->set_userdata('keyword_nasabah', $data['keyword'] );
+            }elseif($this->session->userdata('keyword_nasabah')){
+                $data['keyword'] = $this->session->userdata('keyword_nasabah');   
+            }
+            //get data count
+            $this->db->where('role', 'user');
+            $this->db->where('isVerif', '1');
+            if($data['keyword']){
+                $this->db->like('username', $data['keyword']);
+            }
+            $this->db->from('user');
+
+            // Pagination Configuration
+            $config['base_url'] = base_url().'dashboard/loadNasabah';
+            $config['use_page_numbers'] = TRUE;
+            $config['total_rows'] = $this->db->count_all_results();
+            $config['per_page'] = 2;
+
+             // Customize pagination settings for Bootstrap
+            $file_path = APPPATH . 'views/template/pagination.php';
+            include ($file_path);
+             
+             // Initialize
+            $this->pagination->initialize($config);
+
+            // Initialize data Array and pagination
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['user'] = $this->m_dashboard->getUserData($config['per_page'],$page, $data['keyword']);
+            $data['pagination'] = $this->pagination->create_links();
+
+            //include the top bar
             $username = $this->session->userdata('username');
             $top['username'] = $username;
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
             $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
             $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
-            $data['user'] = $this->m_dashboard->getData();
 
             $this->load->view('template/header');
             $this->load->view('template/sidebar');
@@ -195,13 +201,34 @@
         }
 
         public function loadBerita(){
+             //get data count
+             $beritaCount = $this->m_dashboard->getArtikelCount();
+
+             // Pagination Configuration
+             $config['base_url'] = base_url().'dashboard/loadBerita';
+             $config['use_page_numbers'] = TRUE;
+             $config['total_rows'] = $beritaCount;
+             $config['per_page'] = 2;
+ 
+            // Customize pagination settings for Bootstrap
+            $file_path = APPPATH . 'views/template/pagination.php';
+            include ($file_path);
+              
+              // Initialize
+             $this->pagination->initialize($config);
+ 
+             // Initialize data Array and pagination
+             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+             $data['berita'] = $this->m_dashboard->getBerita($config['per_page'],$page);
+             $data['pagination'] = $this->pagination->create_links();
+ 
+
             $username = $this->session->userdata('username');
             $top['username'] = $username;
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();
             $top['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
             $top['artikelCount'] = $this->m_dashboard->getArtikelCount();
-            $data['berita'] = $this->m_dashboard->getBerita();
 
             $this->load->view('template/header');
             $this->load->view('template/sidebar');
@@ -212,11 +239,32 @@
         }
 
         public function loadTransaksi(){
+            //in this case use m_transaksi model
+            $this->load->model('m_transaksi');
+
+            //get data count
+            $transaksiCount = $this->m_dashboard->getTransaksiCount();
+
+            // Pagination Configuration
+            $config['base_url'] = base_url().'dashboard/loadTransaksi';
+            $config['use_page_numbers'] = TRUE;
+            $config['total_rows'] = $transaksiCount;
+            $config['per_page'] = 5;
+
+            // Customize pagination settings for Bootstrap
+            $file_path = APPPATH . 'views/template/pagination.php';
+            include ($file_path);
+             
+             // Initialize
+            $this->pagination->initialize($config);
+
+            // Initialize data Array and pagination
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['transaksi'] = $this->m_transaksi->loadTransaksiAll($config['per_page'],$page);
+            $data['pagination'] = $this->pagination->create_links();
+
             $username = $this->session->userdata('username');
             $top['username'] = $username;
-            
-            $this->load->model('m_transaksi');
-            $data['transaksi'] = $this->m_transaksi->loadTransaksiAll();
 
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();

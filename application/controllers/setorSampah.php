@@ -21,6 +21,8 @@
         {   
             $this->load->model('m_dashboard');
             
+            $username = $this->session->userdata('username');
+            $top['username'] = $username;
             $data['option'] = $this->m_setor->loadSelect();
             $top['adminCount'] = $this->m_dashboard->getAdminCount();
             $top['nasabahCount'] = $this->m_dashboard->getNasabahCount();

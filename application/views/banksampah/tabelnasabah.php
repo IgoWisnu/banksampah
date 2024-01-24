@@ -5,10 +5,20 @@
             <h3 class="fs-4 mb-3">Nasabah</h3>
             <div class="col">
                 <div class="row my-5">
+                    <div class="col-5">
+                        <form action="<?=base_url()?>dashboard/loadNasabah" method="post">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Enter username/email" id="keyword" name="keyword">
+                                <input type="submit" class="btn btn-primary" id="submit" name="submit" value="search"></input>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">username</th>
                                     <th scope="col">Nama Lengkap</th>
                                     <th scope="col">Tanggal Lahir</th>
                                     <th scope="col">Email</th>
@@ -24,6 +34,8 @@
                                 ?>
 
                                 <tr>
+                                    <td><?php echo $key['id_user'] ?></td>
+                                    <td><?php echo $key['username'] ?></td>
                                     <td><?php echo $key['nama_lengkap'] ?></td>
                                     <td><?php echo $key['tanggal_lahir'] ?></td>
                                     <td><?php echo $key['email'] ?></td>
@@ -48,12 +60,11 @@
                                 <?php } ?>
                             </tbody>
                         </table>
+                    </div>
                         <!-- Paginate -->
                         <div style='margin-top: 10px;' id='pagination'>
-                            ppp
-                            <?=$this->pagination->create_links(); ?>
+                            <?=$pagination ?>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -126,58 +137,6 @@
                 .find('#modal-telepon')
                 .text('Nomor Telepon: ' + button.data('telepon'));
         });
-
-        $(document).ready(function(){
-
-            // Detect pagination click
-            $('#pagination').on('click','a',function(e){
-            e.preventDefault(); 
-            var pageno = $(this).attr('data-ci-pagination-page');
-            console.log(pageno);
-            loadPagination(pageno);
-            });
-
-            loadPagination(0);
-
-            // Load pagination
-            function loadPagination(pagno){
-                console.log('load pagination');
-                $.ajax({
-                    url: '<?=base_url()?>dashboard/loadTabelNasabah/'+pagno,
-                    type: 'get',
-                    dataType: 'json', 
-                    success: function(response){
-                        console.log('Response:', response);
-                        $('#pagination').html(response.pagination);
-                        createTable(response.result,response.row);
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('AJAX request error:', error);
-                    }
-                });
-            }
-
-        // Create table list
-        function createTable(result,sno){
-            console.log('create table');
-            sno = Number(sno);
-            $('#postsList tbody').empty();
-            for(index in result){
-                var id = result[index].nama_langkap;
-                var title = result[index].tanggal_lahir;
-                var email = result[index].email;
-                sno+=1;
-
-                var tr = "<tr>";
-                tr += "<td>"+ nama_langkap +"</td>";
-                tr += "<td>"+ tanggal_lahir +"</td>";
-                tr += "<td>"+ emai; +"</td>";
-                tr += "</tr>";
-                $('#postsList tbody').append(tr);
-        
-            }
-        }
-    });
     </script>
 </body>
 </html>

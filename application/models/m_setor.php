@@ -34,7 +34,8 @@
         }
 
         public function insertSampah(){
-            
+            //set local timezone
+            date_default_timezone_set('Asia/Makassar');
 
             $data = array(
                 'id_user_staff' => $this->session->userdata('id'),
@@ -86,6 +87,9 @@
         }
 
         public function insertTabungan($id, $id_tabungan, $total){
+            //set local timezone
+            date_default_timezone_set('Asia/Makassar');
+            
             $data = array(
                 'id_transaksi_sampah' => $id,
                 'id_tabungan' => $id_tabungan,

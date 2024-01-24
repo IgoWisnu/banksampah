@@ -32,6 +32,9 @@
                                 <?php } ?>
                             </tbody>
                         </table>
+                        <div class="pagination">
+                            <?=$pagination ?>
+                        </div>
                     </div>
                 </div>
             </div>

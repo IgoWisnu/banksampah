@@ -204,7 +204,9 @@
                     </table>
                 </div>
             </div>
-
+            <div class="pagination">
+                <?=$pagination ?>
+            </div>
         </div>
     </div>
 </div>

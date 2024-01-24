@@ -11,11 +11,16 @@ class m_dashboard extends CI_Model {
         return $data;
     }
 
-    public function getUserData($rowno, $rowperpage){
+    public function getUserData($limit, $offset, $keyword){
+        if($keyword){
+            $this->db->like('username', $keyword);
+        }
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('role', 'user');
-        $this->db->limit($rowperpage, $rowno);  
+        $this->db->where('isVerif', '1');
+        $this->db->order_by('id_user', 'desc');
+        $this->db->limit($limit, $offset);  
         $query = $this->db->get();
 
         return $query;
@@ -34,9 +39,18 @@ class m_dashboard extends CI_Model {
         return $query->num_rows();
     }
 
-    public function getBerita(){
+    public function getBerita($limit, $offset){
+        $this->db->order_by('id', 'desc');
+        $this->db->limit($limit, $offset);
         $data = $this->db->get('artikel'); 
         return $data;
+    }
+
+    public function getTransaksi($limit, $offset){
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('tabungan_transaksi');
+        
+        return $query;
     }
 
     public function getTransaksiCount(){

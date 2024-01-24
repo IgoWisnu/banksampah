@@ -16,6 +16,9 @@
         }
         
         public function insertTrTarik(){
+            //set local timezone
+            date_default_timezone_set('Asia/Makassar');
+
             $data = array(
                 'id_tabungan' => $this->input->post('id_tabungan'),
                 'id_user_staff' => $this->session->userdata('id'),
