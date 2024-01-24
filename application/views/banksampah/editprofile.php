@@ -8,7 +8,7 @@
 </head>
 <style>
   .background{
-    height: 1100px; 
+    min-height: 100%; 
     background: #00926E;
   }
 
@@ -17,53 +17,19 @@
     position: absolute;
     transition: opacity 1000ms ease-in-out;
   }
-
+  
   .wrap{
-    height: 800px; 
-    top: 255px; 
+    min-height: 650px;
+    margin-top: 255px;
+    padding-bottom: 70px;
     position: absolute; 
     background: white; 
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); 
+    transition: all 1s ease;
   }
 
-  .t1{
-    top: 55px;
-    font-size: 30px;
-    font-weight: 700;
-    position: relative;
-  }
-
-  .lCheck{
-    top: 40px;
-    width: 20%;
-    position: relative;
-  }
-
-  .date{
-    
-  }
-
-  .tTotalBayar{
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .tDetailTransaksi{
-    font-weight: 600;
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  
-  .c1{
-    top: 60px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0px;
-    position: relative;
-  }
 
   .btn1{
     font-weight: 500;
@@ -90,8 +56,17 @@
   }
 
   .img-profile{
-    width: 70px;
-    height: 70px;
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+  }
+  
+  .layform{
+    margin-top: 50px;
+  }
+
+  .form-control{
+
   }
 
   @media screen and (min-width: 422px) {
@@ -99,26 +74,23 @@
       width: 422px;
     }
   }
-
-
-  @media screen and (max-width: 422px){
-    .topImg{
-      height: 281px;
-      width: 100%;
-    }
-  }
-  @media screen and (max-width: 300px){
-    .LayBtn1{
-      top: 50px;
-    }
-    
-  }
   @media screen and (min-width: 700px) {
     .topImg{
-        opacity: 0;
+      opacity: 0;
     }
     .background{
-        background: linear-gradient(white,#00926E,#00926E );
+      height: 100%;
+      background: rgb(0,146,110);
+      background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+      background-attachment: fixed;
+    }
+    .wrap{
+      margin-top: 105px;
+      border-bottom-left-radius: 30px ;
+      border-bottom-right-radius: 30px ;
+    }
+    .gap{
+      margin-top: 10% ;
     }
   }
 </style>
@@ -128,60 +100,61 @@
     <div class="col">
       <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     </div>
-      <div class="col1">
-        <div class="row justify-content-center">
-          <div class="wrap">
-            <div class="layBtn">
-              <a class="btn1" type="button" href="<?=base_url()?>profile">
-                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-              </a>
-              <br>
-              <br>
-              <?php echo form_open_multipart('profile/updateProfile');?>
-                <?php foreach($user->result_array() as $key){ ?>
-                    <div class="mb-3">
-                        <a href="" class="">
-                            <img id="blah" src="#" alt="" class="img-profile blah">
-                        </a>
-                        <!-- old img -->
-                        <input type="hidden" name="oldimg" value="<?=$key['profile']?>">
-                        <!-- new img -->
-                        <input type="file" name="userfile" size="5000" onchange="readURL(this);">
-                    </div>
-                    <div class="mb-3">
-                        <input type="hidden" class="form-control" id="usrename" name="id_user" value="<?=$key['id_user']?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="usrename" name="username" value="<?=$key['username']?>" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="nama_lengkap" value="<?=$key['nama_lengkap']?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Tempat Lahir</label>
-                        <input type="text" class="form-control" name="tempat_lahir" value="<?=$key['tempat_lahir']?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tanggal_lahir" value="<?=$key['tanggal_lahir']?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="<?=$key['alamat']?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" value="<?=$key['email']?>" disabled>
-                    </div>
-                    <div class="">
-                        <input type="submit" class="btn btn-success">
-                    </div>
-                <?php  } ?>
-            </form>
+    <div class="col1">
+      <div class="row justify-content-center">
+      <?php include('logo.php') ?>
+        <div class="wrap">
+          <div class="layBtn">
+            <a class="btn1" type="button" href="<?=base_url()?>profile">
+              <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+            </a>
+            <?php echo form_open_multipart('profile/updateProfile');?>
+            <?php foreach($user->result_array() as $key){ ?>
+              <div class="layform">
+                <div class="layimg mb-3">
+                  <a  class="">
+                    <img id="blah" src="#" alt="" class="img-profile blah">
+                  </a>
+                  <!-- old img -->
+                  <input type="hidden" name="oldimg" value="<?=$key['profile']?>">
+                  <!-- new img -->
+                  <input type="file" name="userfile" size="5000" onchange="readURL(this);">
+                </div>
+                <div class="mb-3">
+                  <input type="hidden" class="form-control" id="usrename" name="id_user" value="<?=$key['id_user']?>">
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="usrename" name="username" value="<?=$key['username']?>" disabled>
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Nama Lengkap</label>
+                  <input type="text" class="form-control" name="nama_lengkap" value="<?=$key['nama_lengkap']?>">
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Tempat Lahir</label>
+                  <input type="text" class="form-control" name="tempat_lahir" value="<?=$key['tempat_lahir']?>">
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Tanggal Lahir</label>
+                  <input type="date" class="form-control" name="tanggal_lahir" value="<?=$key['tanggal_lahir']?>">
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Alamat</label>
+                  <input type="text" class="form-control" name="alamat" value="<?=$key['alamat']?>">
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Email</label>
+                  <input type="text" class="form-control" name="email" value="<?=$key['email']?>" disabled>
+                </div>
+                <div class="">
+                  <input type="submit" class="btn btn-success">
+                </div>
+              </div>
+            <?php  } ?>
           </div>
         </div>
+        <div class="gap"></div>
       </div>
     </div>
   </div>

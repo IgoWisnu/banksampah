@@ -142,7 +142,6 @@
         width: 25%;
         top: -1px;
         position: relative;
-      
     }
 
     .link{
@@ -173,7 +172,7 @@
         .wrap{
             border-bottom-right-radius: 30px; 
             border-bottom-left-radius: 30px;
-            margin-top: 205px;
+            margin-top: 105px;
             transition: all 1s ease;
         }
         .gap{
@@ -182,8 +181,9 @@
     }
 </style>
 <body>
-    <img class="topImg" src="<?=base_url()?>img/Waste_recycling_Vectors___Illustrations_for_Free_Download___Freepik_1-svaecW6Z_-transformed.png" alt="">
+    <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     <div class="row justify-content-center">
+        <?php include('logo.php') ?>
         <div class="wrap">
             <?php 
                 $success = $this->session->flashdata('success');
