@@ -143,6 +143,11 @@
     max-height: 120px;
 
   }
+
+  .card-img-top{
+    object-fit: contain;
+  }
+
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;

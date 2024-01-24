@@ -170,7 +170,7 @@
         .wrap{
             border-bottom-right-radius: 30px; 
             border-bottom-left-radius: 30px;
-            margin-top: 205px;
+            margin-top: 105px;
             
         }
         .gap{
