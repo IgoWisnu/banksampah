@@ -1,71 +1,70 @@
 <body>
     <!-- Nasabah -->
-    <div id="nasabah-table-container">
-        <div class="row my-5">
-            <h3 class="fs-4 mb-3">Nasabah</h3>
-            <div class="col">
-                <div class="row my-5">
-                    <div class="col-5">
-                        <form action="<?=base_url()?>dashboard/loadNasabah" method="post">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter username/email" id="keyword" name="keyword">
-                                <input type="submit" class="btn btn-primary" id="submit" name="submit" value="search"></input>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <table class="table bg-white rounded shadow-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">username</th>
-                                    <th scope="col">Nama Lengkap</th>
-                                    <th scope="col">Tanggal Lahir</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Detail</th>
-                                    <!-- Tambah kolom untuk tombol/detail -->
-                                </tr>
-                            </thead>
-                            <tbody >
-                                <?php foreach ($user->result_array() as $key) { 
-                                    if ($key['role'] === 'admin') {
-                                        continue;
-                                    }
-                                ?>
-
-                                <tr>
-                                    <td><?php echo $key['username'] ?></td>
-                                    <td><?php echo $key['nama_lengkap'] ?></td>
-                                    <td><?php echo $key['tanggal_lahir'] ?></td>
-                                    <td><?php echo $key['email'] ?></td>
-                                    <td>
-                                        <button
-                                            type="button"
-                                            class="btn btn-primary"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                            data-profile="<?php echo $key['profile'] ?>"
-                                            data-nama="<?php echo $key['nama_lengkap'] ?>"
-                                            data-tempat-lahir="<?php echo $key['tempat_lahir'] ?>"
-                                            data-tanggal-lahir="<?php echo $key['tanggal_lahir'] ?>"
-                                            data-alamat="<?php echo $key['alamat'] ?>"
-                                            data-email="<?php echo $key['email'] ?>"
-                                            data-telepon="<?php echo $key['notelp'] ?>">
-                                            Detail
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                        <!-- Paginate -->
-                        <div style='margin-top: 10px;' id='pagination'>
-                            <?=$pagination ?>
+    <div id="nasabah-table-container" class="containered pt-3">
+        <div class="row mx-2">
+                <h3 class="fs-4 mb-3">Tabel Nasabah</h3>
+                <div class="col-lg-6">
+                    <form action="<?=base_url()?>dashboard/loadNasabah" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Enter username/email" id="keyword" name="keyword">
+                            <input type="submit" class="btn btn-primary" id="submit" name="submit" value="search"></input>
                         </div>
+                    </form>
                 </div>
             </div>
-        </div>
+            <div class="row mx-2">
+                <div class="">
+
+                    <table class="table bg-light rounded shadow-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">username</th>
+                                        <th scope="col">Nama Lengkap</th>
+                                        <th scope="col">Tanggal Lahir</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Detail</th>
+                                        <!-- Tambah kolom untuk tombol/detail -->
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <?php foreach ($user->result_array() as $key) { 
+                                        if ($key['role'] === 'admin') {
+                                            continue;
+                                        }
+                                    ?>
+    
+                                    <tr>
+                                        <td><?php echo $key['username'] ?></td>
+                                        <td><?php echo $key['nama_lengkap'] ?></td>
+                                        <td><?php echo $key['tanggal_lahir'] ?></td>
+                                        <td><?php echo $key['email'] ?></td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                class="btn btn-primary"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"
+                                                data-profile="<?php echo $key['profile'] ?>"
+                                                data-nama="<?php echo $key['nama_lengkap'] ?>"
+                                                data-tempat-lahir="<?php echo $key['tempat_lahir'] ?>"
+                                                data-tanggal-lahir="<?php echo $key['tanggal_lahir'] ?>"
+                                                data-alamat="<?php echo $key['alamat'] ?>"
+                                                data-email="<?php echo $key['email'] ?>"
+                                                data-telepon="<?php echo $key['notelp'] ?>">
+                                                Detail
+                                            </button>
+                                        </td>
+    
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            <!-- Paginate -->
+                            <div style='margin-top: 10px;' id='pagination' class="">
+                                <?=$pagination ?>
+                            </div>
+                </div>
+            </div>
     </div>
 
     <!-- Modal -->

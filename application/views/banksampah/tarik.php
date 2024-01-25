@@ -1,18 +1,5 @@
 
 <style>
-    body {
-        height: 1000px;
-        background: rgb(0, 146, 110);
-        background: linear-gradient(0deg, rgba(0, 146, 110, 1) 0%, rgba(0, 146, 110, 1) 20%, rgba(0, 146, 110, 1) 36%, rgba(29, 157, 131, 1) 52%, rgba(75, 176, 164, 1) 78%, rgba(147, 205, 217, 1) 100%);
-    }
-
-    .container {
-        background-color: rgba(255, 255, 255, 0.9); 
-        padding: 25px; 
-        border-radius: 10px; 
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-    }
 
     input:focus {
         color: #000;
@@ -20,11 +7,9 @@
     
 </style>
 <body>
-    <div class="text-center py-4">
-        <h3 style="font-weight: bold; font-size: 2em;">Tarik Sampah</h3>
-    </div>
-    <div class="container">
+    <div class="containered py-3 px-3">
         <div class="row">
+        <h3 class="mb-5">Tarik Sampah</h3>
             <div class="input-group col-6">
                 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
             </div>

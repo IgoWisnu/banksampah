@@ -6,32 +6,19 @@
             font-weight: bold;
             font-size: 50px;
         }
-        .container {
-        background-color: rgba(255, 255, 255, 0.9); 
-        padding: 25px; 
-        border-radius: 10px; 
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-        }
-        .input {
-        background-color: #fff;
-        color: #000;
-        border: 1px solid #000;
-    }
     </style>
-    <h2 class="center">Setor Sampah</h2>
-    <br />
-    <div class="container">
+    <div class="containered px-3 pt-3">
+        <h3>Setor Sampah</h3>
+        <br>
         <div class="row">
             <div class="input-group col-6">
                 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
             </div>
             <div class="result" id="result"></div>
             <br>
+            <h3>Input Sampah</h3>
         </div>
-        <br>
-        <h3>Input Sampah</h3>
-        <div class="input py-3 px-3 rounded">
+        <div class="input py-3 rounded">
             <form action="<?= base_url() ?>setorSampah/kalkulasi" method="post" id="add_form">
                 <div class="row g-3 align-items-center mb-3">
                     <!-- Data User -->

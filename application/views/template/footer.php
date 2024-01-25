@@ -18,10 +18,6 @@
                 var transaksi = document.getElementById("transaksi-content");
                 var berita = document.getElementById("berita-content");
 
-                toggleButton.onclick = function () {
-                    el.classList.toggle("toggled");
-                };
-
                 dashboardLink.onclick = function () {
                     console.log('dashboard');
                   
@@ -56,6 +52,11 @@
                         }
                 }
                 
+                */
+
+                toggleButton.onclick = function () {
+                    el.classList.toggle("toggled");
+                };
                 
                 // Fungsi untuk menampilkan/menyembunyikan sidebar
                 function toggleSidebar() {
@@ -64,11 +65,7 @@
                     // Simpan status sidebar ke localStorage
                     localStorage.setItem("sidebarToggled", el.classList.contains("toggled"));
                 }   
-
-                */
-
-                
-                
+          
         </script>
 
     </body>

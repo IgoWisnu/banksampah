@@ -1,12 +1,12 @@
 <body>
     <!-- Transaksi -->
-    <div id="transaksi-table-container">
-        <div class="row my-5">
+    <div id="transaksi-table-container" class="containered px-3">
+        <div class="row my-2">
             <h3 class="fs-4 mb-3">Transaksi</h3>
             <div class="col">
-                <div class="row my-5">
+                <div class="row my-2">
                     <div class="col">
-                        <table class="table bg-white rounded shadow-sm table-hover">
+                        <table class="table bg-light rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">Tanggal Transaksi</th>

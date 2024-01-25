@@ -24,6 +24,14 @@
             --second-bg-color: #c1efde;
             }
 
+            .containered {
+                background-color: rgba(255, 255, 255, 0.9);
+                width: 100%;
+                border-radius: 10px; 
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+            }
+
             .primary-text {
             color: var(--main-text-color);
             }
@@ -54,7 +62,6 @@
             #wrapper {
             overflow-x: hidden;
             background-color: rgb(0,146,110);
-            background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
             }
         
 
