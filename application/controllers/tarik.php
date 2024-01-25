@@ -30,7 +30,7 @@
             $this->load->model('m_tarik');
             
             if(!$this->session->userdata('role') == 'admin'){
-                redirect('auth/login');
+                redirect('auth');
             }
         }
 

@@ -8,7 +8,7 @@
         {
             parent::__construct();
             if($this->session->userdata('role') == ''){
-                redirect('auth/login');
+                redirect('auth');
             }
         }
         

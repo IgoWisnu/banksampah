@@ -5,6 +5,9 @@
         parent::__construct();
         $this->load->model('m_transaksi');
         
+        if(!$this->session->userdata('role') == 'admin'){
+            redirect('auth');
+        }
     }
 
     public function index(){

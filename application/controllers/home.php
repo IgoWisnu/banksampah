@@ -11,7 +11,7 @@
             $this->load->model('m_home');
             
             if($this->session->userdata('role') == ''){
-                redirect('auth/login');
+                redirect('auth');
             }
         }
         
@@ -72,12 +72,18 @@
         }
 
         public function loadSetor(){
+            if(!$this->session->userdata('role') == 'user'){
+                redirect('auth/regisGuest');
+            }
             $data['profile'] = $this->m_home->loadProfile();
 
             $this->load->view('banksampah/v_setor', $data);               
         }
 
         public function loadTarik(){
+            if(!$this->session->userdata('role') == 'user'){
+                redirect('auth/regisGuest');
+            }
             $data['profile'] = $this->m_home->loadProfile();
 
             $this->load->view('banksampah/v_tarik', $data);               

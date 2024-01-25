@@ -129,9 +129,22 @@
     <div class="row justify-content-center">
       <div class="wrap">
         <div class="layBtn">
-          <a class="btn1" type="button" href="<?=base_url()?>riwayat">
-            <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
-          </a>
+          <?php
+          if($this->session->userdata('role') == 'admin'){
+              ?>
+              <a class="btn1" type="button" href="<?=base_url()?>dashboard/loadTransaksi">
+                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+              </a>
+              <?php
+            }
+            else{
+              ?>
+              <a class="btn1" type="button" href="<?=base_url()?>home/loadArtikel">
+                <img class="arrow" src="<?=base_url()?>img/aKembali.png" alt="">Kembali
+              </a>
+              <?php
+            }
+            ?>
         </div>
         <div class="row justify-content-center">
           <img class="lCheck" src="<?=base_url()?>img/check.png" alt="">

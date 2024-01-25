@@ -11,7 +11,7 @@
             $this->load->model('m_riwayat');
 
             if($this->session->userdata('role') == ''){
-                redirect('auth/login');
+                redirect('auth');
             } elseif($this->session->userdata('role') == 'guest'){
                 redirect('auth/regisGuest');
             }

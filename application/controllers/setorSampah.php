@@ -12,7 +12,7 @@
             
 
             if(!$this->session->userdata('role') == 'admin'){
-                redirect('auth/login');
+                redirect('auth');
             }
         }
         

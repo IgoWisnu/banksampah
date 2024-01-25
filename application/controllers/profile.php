@@ -13,7 +13,7 @@
             $this->load->model('m_profile');
             
             if($this->session->userdata('role') == ''){
-                redirect('auth/login');
+                redirect('auth');
             } elseif($this->session->userdata('role') == 'guest'){
                 redirect('auth/regisGuest');
             }

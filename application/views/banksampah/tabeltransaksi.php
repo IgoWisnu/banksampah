@@ -26,7 +26,7 @@
                                     <td><?php echo $key['debit'] ?></td>
                                     <td><?php echo $key['kredit'] ?></td>
                                     <td>
-                                        <a href="" class="btn btn-primary">Invoice</a>
+                                        <a href="<?=base_url()?>riwayat/invoice?id=<?=$key['id_tabungan_transaksi']?>" class="btn btn-primary">Invoice</a>
                                     </td>
                                 </tr>
                                 <?php } ?>
