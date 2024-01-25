@@ -17,7 +17,6 @@
                         <table class="table bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Id</th>
                                     <th scope="col">username</th>
                                     <th scope="col">Nama Lengkap</th>
                                     <th scope="col">Tanggal Lahir</th>
@@ -34,7 +33,6 @@
                                 ?>
 
                                 <tr>
-                                    <td><?php echo $key['id_user'] ?></td>
                                     <td><?php echo $key['username'] ?></td>
                                     <td><?php echo $key['nama_lengkap'] ?></td>
                                     <td><?php echo $key['tanggal_lahir'] ?></td>
