@@ -249,7 +249,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="layImg">
+                    <div class="layImgP">
                         <img src="<?=base_url()?>uploads/profile/<?=$key['profile']?>" alt="" class="img">
                     </div>
                 </div>    
