@@ -1,7 +1,7 @@
 <!-- Berita -->
 <div id="berita-table-container" class="ms-3">
-    <div class="row my-5 containered">
-        <h3 class="fs-4 mb-3">Berita</h3>
+    <div class="row my-3 containered">
+        <h3 class="fs-4 mb-3 mt-2">Berita</h3>
         <div class="d-flex justify-content-start mb-3">
             <button
                 type="button"
@@ -156,7 +156,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete" onclick="deleteAction()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,6 @@
 
         <!-- Table -->
         <div class="">
-
             <div class="col">
                 <div class="row my-1">
                     <div class="col">
@@ -196,7 +195,7 @@
                                             onclick="openEditModal('<?php echo $key['id']; ?>', '<?php echo $key['judul']; ?>', '<?php echo $key['gambar']; ?>', '<?php echo htmlspecialchars($key['deskripsi']); ?>')">Edit</button>
                                         <!--<a href="<?php echo base_url('dashboard/editberita/' . $key['id']) ?>"
                                         class="btn btn-info">Edit</a>-->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?= $key['id']; ?>">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?= $key['id']; ?>" onclick="showConfirmationModal(<?= $key['id']; ?>)">
                                             Delete
                                         </button>
                                     </td>
@@ -259,29 +258,18 @@
         $('#editBeritaModal').modal('show');
     }
 
-    // Use jQuery to handle the deletion action
-    $(document).ready(function () {
-        // Attach a click event to the delete button
-        $('#confirmDeleteBtn').on('click', function () {
-            // Get the delete ID from the data attribute
-            var deleteId = $('#deleteModal').data('id');
+    // Function to show the confirmation modal
+   function showConfirmationModal(id) {
+      $('#deleteModal').modal('show');
+      console.log('confirm : '+id);
+      // Set the 'id' data to the confirm button
+      currentId = id;
+   }
 
-            // Build the delete URL
-            var deleteUrl = "<?php echo base_url('dashboard/deleteb/'); ?>" + deleteId;
-
-            // Perform the delete action (e.g., using AJAX)
-            $.ajax({
-                url: deleteUrl,
-                type: 'GET', // or 'POST' depending on your server-side implementation
-                success: function (response) {
-                    // Handle success, e.g., refresh the page or update UI
-                    console.log('Delete successful');
-                },
-                error: function (error) {
-                    // Handle error, e.g., display an error message
-                    console.error('Delete failed', error);
-                }
-            });
-        });
-    });
+   // Function to handle the confirmed deletion
+   function deleteAction() {
+      console.log('action :' + currentId);
+      // Call your controller method to delete the item
+      window.location.href = "<?php echo site_url('dashboard/deleteb?id='); ?>" + currentId;
+   };
 </script>

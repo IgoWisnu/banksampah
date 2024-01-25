@@ -126,7 +126,7 @@
         width: 10%;
     }
 
-    .btn{
+    .btns{
         font-weight: 500;
         padding: 2%;
         width: 110px;
@@ -196,13 +196,17 @@
                 }
             ?>
             <?php if($this->session->userdata('role') == 'admin'): ?>
-                <div class="btn">
-                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
-                </div>
+                <a href="home/loadArtikel">
+                    <div class="btns">
+                        <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
+                    </div>
+                </a>
             <?php else: ?>
-                <div class="btn">
-                    <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
-                </div>
+                <a href="home/loadArtikel">
+                    <div class="btns">
+                        <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow">Kembali
+                    </div>
+                </a>
             <?php endif; ?>
 
             <div class="laybox">
@@ -254,12 +258,61 @@
                 <a href="" class="link"><img src="<?=base_url()?>img/phone.png" alt="" class="kontakImg">Kontak kami</a>
             </div>
             <div class="logout">
-                <a href="<?=base_url()?>auth/logout" class="linklogout"><img src="<?=base_url()?>img/Mask group.png" alt="" class="logoutImg">Keluar</a>
+                <div type="button" onclick="logoutModal()" class="linklogout"><img src="<?=base_url()?>img/Mask group.png" alt="" class="logoutImg">Keluar</div>
             </div>
             </div>
         </div>
         <div class="gap"></div>
         <?php include('menu.php'); ?>
     </div>
+
+    <!-- Logout Modal -->
+    <div
+        class="modal fade"
+        id="logoutModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Logout Dashboard Admin</h1>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin ingin logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        id="logout"
+                        onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         // Function to handle the confirmed deletion
+         function logout() {
+            console.log('action :');
+            // Call your controller method to delete the item
+            window.location.href = "<?php echo site_url('auth/logout'); ?>"
+        };
+                
+        function logoutModal() {
+            $('#logoutModal').modal('show');
+            console.log('confirm : ');
+            // Set the 'id' data to the confirm button
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>

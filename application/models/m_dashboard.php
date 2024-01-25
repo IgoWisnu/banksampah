@@ -34,6 +34,7 @@ class m_dashboard extends CI_Model {
 
     public function getNasabahCount(){
         $this->db->where('role', 'user');
+        $this->db->where('isVerif', '1');
         $query = $this->db->get('user');
 
         return $query->num_rows();

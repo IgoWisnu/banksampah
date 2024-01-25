@@ -49,7 +49,7 @@
                     } else{
                         $this->session->set_flashdata('failed', 'Artikel gagal ditambahkan');
                     }
-                    redirect('dashboard'); // Ganti 'dashboard' dengan nama controller yang sesuai
+                    redirect('dashboard/loadBerita'); // Ganti 'dashboard' dengan nama controller yang sesuai
                 }
             }
 
@@ -99,7 +99,7 @@
                     $this->session->set_flashdata('failed', 'Artikel gagal diupdate');
                 }
                 // Redirect atau tampilkan pesan sukses
-                redirect('dashboard');
+                redirect('dashboard/loadBerita');
             }
 
             public function tampilkanTabelNasabah() {
@@ -130,14 +130,16 @@
          }
             
 
-        public function deleteb($id){
+        public function deleteb(){
+            $id = $this->input->get('id');
+
             $delete = $this->m_dashboard->deleteData($id);
             if($delete){
                 $this->session->set_flashdata('success', 'Artikel berhasil dihapus');
             } else{
                 $this->session->set_flashdata('failed', 'Artikel gagal dihapus');
             }
-            redirect('dashboard');
+            redirect('dashboard/loadBerita');
         }
  
         public function editberita($id){
@@ -158,7 +160,9 @@
             }elseif($this->session->userdata('keyword_nasabah')){
                 $data['keyword'] = $this->session->userdata('keyword_nasabah');   
             }
-            //get data count
+
+
+            //get data count after the last query
             $this->db->where('role', 'user');
             $this->db->where('isVerif', '1');
             if($data['keyword']){
@@ -170,11 +174,7 @@
             $config['base_url'] = base_url().'dashboard/loadNasabah';
             $config['use_page_numbers'] = TRUE;
             $config['total_rows'] = $this->db->count_all_results();
-            $config['per_page'] = 2;
-
-             // Customize pagination settings for Bootstrap
-            $file_path = APPPATH . 'views/template/pagination.php';
-            include ($file_path);
+            $config['per_page'] = 7;
              
              // Initialize
             $this->pagination->initialize($config);
@@ -208,11 +208,7 @@
              $config['base_url'] = base_url().'dashboard/loadBerita';
              $config['use_page_numbers'] = TRUE;
              $config['total_rows'] = $beritaCount;
-             $config['per_page'] = 2;
- 
-            // Customize pagination settings for Bootstrap
-            $file_path = APPPATH . 'views/template/pagination.php';
-            include ($file_path);
+             $config['per_page'] = 5;
               
               // Initialize
              $this->pagination->initialize($config);
@@ -249,12 +245,8 @@
             $config['base_url'] = base_url().'dashboard/loadTransaksi';
             $config['use_page_numbers'] = TRUE;
             $config['total_rows'] = $transaksiCount;
-            $config['per_page'] = 5;
+            $config['per_page'] = 7;
 
-            // Customize pagination settings for Bootstrap
-            $file_path = APPPATH . 'views/template/pagination.php';
-            include ($file_path);
-             
              // Initialize
             $this->pagination->initialize($config);
 

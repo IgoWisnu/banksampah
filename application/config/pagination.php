@@ -1,6 +1,4 @@
 <?php
-
-     // Customize pagination settings for Bootstrap
      $config['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination">';
      $config['full_tag_close'] = '</ul></nav>';
      $config['num_tag_open'] = '<li class="page-item">';
@@ -14,6 +12,4 @@
      $config['next_tag_open'] = '<li class="page-item">';
      $config['next_tag_close'] = '</li>';
      $config['attributes'] = array('class' => 'page-link');
-
-     echo 'pagination';
 ?>

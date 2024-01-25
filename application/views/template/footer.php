@@ -54,8 +54,17 @@
                 
                 */
 
-                toggleButton.onclick = function () {
-                    el.classList.toggle("toggled");
+                function logoutModal() {
+                    $('#logoutModal').modal('show');
+                    console.log('confirm : ');
+                    // Set the 'id' data to the confirm button
+                };
+
+                // Function to handle the confirmed deletion
+                function logout() {
+                    console.log('action :');
+                    // Call your controller method to delete the item
+                    window.location.href = "<?php echo site_url('auth/logout'); ?>"
                 };
                 
                 // Fungsi untuk menampilkan/menyembunyikan sidebar
@@ -64,7 +73,7 @@
                     el.classList.toggle("toggled");
                     // Simpan status sidebar ke localStorage
                     localStorage.setItem("sidebarToggled", el.classList.contains("toggled"));
-                }   
+                } ;  
           
         </script>
 
