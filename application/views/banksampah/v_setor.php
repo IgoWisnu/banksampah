@@ -8,12 +8,17 @@
   
 <style>
     body{
-        min-height: 100%; 
+        min-height: 50%; 
         background: #00926E;
     }
-    
+
+    .layImg{
+        display: flex;
+        justify-content: center;
+    }
+
     .topImg{
-        width: 100%;
+        width: 430px;
         position: absolute;
         transition: opacity 1000ms ease-in-out;
     }
@@ -179,7 +184,9 @@
     }
 </style>
 <body>
-    <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    <div class="layImg">
+        <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
+    </div>
     <?php include('logo.php'); ?>
     <div class="row justify-content-center">
         <div class="wrap">

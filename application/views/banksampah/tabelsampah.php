@@ -7,18 +7,21 @@
     <title>Jenis Sampah</title>
 </head>
 <style>
-      
   body{
-    height: 100%; 
+    min-height: 50%; 
     background: #00926E;
   }
 
+  .layImg{
+    display: flex;
+    justify-content: center;
+  }
+
   .topImg{
-    width: 100%;
+    width: 430px;
     position: absolute;
     transition: opacity 1000ms ease-in-out;
   }
-
   .wrap{ 
     margin-top: 255px; 
     position: relative; 

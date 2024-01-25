@@ -9,12 +9,17 @@
   
 <style>
   body{
-    height: 100%;
+    min-height: 50%; 
     background: #00926E;
   }
-  
+
+  .layImg{
+    display: flex;
+    justify-content: center;
+  }
+
   .topImg{
-    width: 100%;
+    width: 430px;
     position: absolute;
     transition: opacity 1000ms ease-in-out;
   }
@@ -216,7 +221,7 @@
 </style>
 <body>
   <div class="background">
-    <div class="col">
+    <div class="layImg">
       <img class="topImg" src="<?=base_url()?>img/Waste recycling Vectors & Illustrations for Free Download _ Freepik 1@2x.png" alt="">
     </div>
     <?php include('logo.php'); ?>
@@ -228,7 +233,7 @@
             <a href="<?=base_url()?>jenissampah" class="btn3 btn border-0 col-9 mb-3">List Jenis Sampah <br> <div class="tBtn">
               Sampah apa saja yang bisa ditukar?
             </div></a>
-            <a href="" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
+            <a href="<?=base_url()?>tutorial" class="btn3 btn border-0 col-9">Cara Menggunakan Bank Sampah <br> <div class="tBtn">
               Bagaimana cara penggunaan aplikasi?
             </div></a>
           </div>
