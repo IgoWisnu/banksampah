@@ -121,7 +121,7 @@
                 $data['nasabahCount'] = $this->m_dashboard->getNasabahCount();
                 $data['transaksiCount'] = $this->m_dashboard->getTransaksiCount();
                 $data['artikelCount'] = $this->m_dashboard->getArtikelCount();
-             
+
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar', $data);
@@ -131,8 +131,10 @@
             
 
         public function deleteb(){
+            //get arikel id from url
             $id = $this->input->get('id');
 
+            //execute delete on model
             $delete = $this->m_dashboard->deleteData($id);
             if($delete){
                 $this->session->set_flashdata('success', 'Artikel berhasil dihapus');
