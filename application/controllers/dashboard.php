@@ -15,10 +15,6 @@
             }
         
             public function tambahBerita() {
-                // Ambil data dari form
-                $judulBerita = $this->input->post('judulBerita');
-                $deskripsiBerita = $this->input->post('deskripsiBerita');
-            
                 // Konfigurasi upload
                 $config['upload_path'] = "./uploads"; // Path to the upload folder
                 $config['allowed_types'] = 'gif|jpg|png';  // Allowed file types
@@ -35,13 +31,12 @@
                     $upload_data = $this->upload->data();
                     $gambarBerita = $upload_data['file_name'];  // Get the uploaded file name
             
-                    // Simpan ke database
-                    $data = array(
-                        'judul' => $judulBerita,
-                        'gambar' => $gambarBerita,
-                        'deskripsi' => $deskripsiBerita
+                    // Call insertBerita function
+                    // Call insertBerita function with the necessary data
+                    $insert = $this->m_dashboard->insertBerita(
+                        $gambarBerita
                     );
-                    $insert = $this->m_dashboard->insertBerita($data);
+
             
                     // Redirect atau tampilkan pesan sukses
                     if($insert){
@@ -52,19 +47,19 @@
                     redirect('dashboard/loadBerita'); // Ganti 'dashboard' dengan nama controller yang sesuai
                 }
             }
+            
+            
 
             public function updateBerita() {
                 // Ambil data dari form
                 $id = $this->input->post('id');
-                $judulBerita = $this->input->post('judulBerita');
-                $deskripsiBerita = $this->input->post('deskripsiBerita');
         
                 // Konfigurasi upload (jika diperlukan)
-                $config['upload_path'] = "./img";
+                $config['upload_path'] = "./uploads";
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size'] = 204800;
         
-                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
         
                 // Cek apakah ada file gambar yang diupload
                 if ($_FILES['gambarBerita']['name']) {
@@ -84,14 +79,10 @@
                     $gambarBerita = $this->input->post('gambarBerita_existing');
                 }
         
-                // Simpan ke database
-                $data = array(
-                    'judul' => $judulBerita,
-                    'gambar' => $gambarBerita,
-                    'deskripsi' => $deskripsiBerita
-                );
+                // Simpan ke Array
+                
         
-                $update = $this->m_dashboard->updateBerita($id, $data);
+                $update = $this->m_dashboard->updateBerita($id, $data, $gambarBerita);
                 
                 if($update){
                     $this->session->set_flashdata('success', 'Artikel berhasil diupdate');
