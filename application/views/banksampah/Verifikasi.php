@@ -7,41 +7,61 @@
     <title>Document</title>
 </head>
 <style>
-    .Container{
-        background: #557C55;
-        height: 1000px;
+    body{
+        height: 100%;
+        background: rgb(0,146,110);
+        background: linear-gradient(0deg, rgba(0,146,110,1) 0%, rgba(0,146,110,1) 20%, rgba(0,146,110,1) 36%, rgba(29,157,131,1) 52%, rgba(75,176,164,1) 78%, rgba(147,205,217,1) 100%);
+        background-attachment: fixed;
     }
 
     .Panel{ 
-        width: 370px;
-        height: 700px;
+        padding-bottom: 60px;
+        width: 372px;
+        min-height: 650px;
         background: white;
-        border-radius: 30px; 
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        transition: 1s ease;
     }
 
-    .img1{
-        top: 120px;
+    .layImg{
+        justify-content: center;
+        display: flex;
+    }
+
+    .img{
+        width: 120px;
+        margin-top: 60px;
         position: relative;
+    }
+
+    .deskripsi{
+        font-weight: 450;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
     }
 
     .resend{
-        top: 400px;
+        font-weight: 450;
+        margin-top: 220px;
         position: relative;
     }
 
-    .t1{
-        top: 180px; 
+    .t1{ 
+        margin-top: 45px;
         text-align: center;
         position: relative;
-        color: #557C55; 
+        color: white; 
         font-size: 55px; 
         font-weight: 700; 
         word-wrap: break-word;
     }
 
     .t2{
-        top: 170px;
-        color: #557C55;
+        margin-bottom: 60px;
+        color: white;
         text-align: center;
         position: relative;
         font-size: 20px; 
@@ -53,31 +73,39 @@
         text-decoration: none;
     }
 
+    @media screen and (min-width: 400px){
+        .Panel{
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            transition: 1s ease;
+        }
+
+    }
+
 </style>
 
 <body>
     <div class="Container col">
-        <div class="row t1 justify-content-center">
-            <div class="Verifikasi">
+        <div class="row justify-content-center">
+            <div class="Verifikasi row t1 justify-content-center">
                 Verifikasi
             </div>
-        </div>
-
-        <div class="row justify-content-center">
+            <div class="t2">
+                Kami telah mengirimkan kode <br> verifikasi pada email anda
+            </div>
+            
             <div class="Panel">                    
-                <div class="img1 row justify-content-center">
-                    <img class="w-50 bg-dark" src="<?=base_url()?>img/email.png" alt="">
+                <div class="layImg">
+                    <img class="img" src="/img/email.png" alt="">
                 </div>
-                <div class="row justify-content-center">
-                    <div class="t2 w-75 mt-3">
-                        <?=$verif ?>
-                    </div>
+                <div class="deskripsi">
+                    Kami sudah mengirimkan link <br> verifikasi ke email <br> ...........................  
                 </div>
-                
                 <div class="resend row justify-content-center">
-                    Belum mendapat link verifikasi?<a href="" class="link row justify-content-center">Re-Send</a>
+                    Terdapat Masalah?<a href="" class="link row justify-content-center">Laporkan!</a>
                 </div>
             </div>
+            <div class="gap"></div>
         </div>
     </div>
 </body>
