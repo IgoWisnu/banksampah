@@ -194,11 +194,11 @@
                 }
             ?>
             <?php if($this->session->userdata('role') == 'admin'): ?>
-                <a href="" class="btn">
+                <a href="<?=base_url()?>home/loadArtikel" class="btn">
                     <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow" hral="">Kembali
                 </a>
             <?php else: ?>
-                <a href="" class="btn">
+                <a href="<?=base_url()?>home/loadArtikel" class="btn">
                     <img src="<?=base_url()?>img/aKembali.png" alt="" class="arrow" hral="">Kembali
                 </a>
             <?php endif; ?>

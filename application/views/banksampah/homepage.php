@@ -148,6 +148,8 @@
     object-fit: contain;
   }
 
+  
+
   @media screen and (max-width: 335px) {
     .box{
       height: 180px;
@@ -273,5 +275,6 @@
     <div class="gap"></div>
     <?php include('menu.php'); ?>
   </div>
+  
 </body>
 </html>
