@@ -11,10 +11,9 @@
                 Bank Sampah
             </div>
             <div class="list-group list-group-flush my-3">
-                <a
-                    href="#"
-                    id="dashboard-link"
-                    class="list-group-item list-group-item-action bg-transparent second-text active">
+                <a 
+                    href="<?= base_url() ?>dashboard/index" 
+                    class="btn list-group-item list-group-item-action bg-transparent second-text active">
                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a
                     href="<?=base_url()?>dashboard/loadNasabah"
