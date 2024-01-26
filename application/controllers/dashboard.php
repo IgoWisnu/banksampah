@@ -82,7 +82,7 @@
                 // Simpan ke Array
                 
         
-                $update = $this->m_dashboard->updateBerita($id, $data, $gambarBerita);
+                $update = $this->m_dashboard->updateBerita($id, $gambarBerita);
                 
                 if($update){
                     $this->session->set_flashdata('success', 'Artikel berhasil diupdate');
@@ -173,8 +173,9 @@
             $this->pagination->initialize($config);
 
             // Initialize data Array and pagination
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $data['user'] = $this->m_dashboard->getUserData($config['per_page'],$page, $data['keyword']);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
+            $start = ($page - 1) * $config['per_page']; 
+            $data['user'] = $this->m_dashboard->getUserData($config['per_page'],$start, $data['keyword']);
             $data['pagination'] = $this->pagination->create_links();
 
             //include the top bar
@@ -207,8 +208,9 @@
              $this->pagination->initialize($config);
  
              // Initialize data Array and pagination
-             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-             $data['berita'] = $this->m_dashboard->getBerita($config['per_page'],$page);
+             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
+             $start = ($page - 1) * $config['per_page']; 
+             $data['berita'] = $this->m_dashboard->getBerita($config['per_page'],$start);
              $data['pagination'] = $this->pagination->create_links();
  
 
@@ -227,7 +229,7 @@
             
         }
 
-        public function loadTransaksi(){
+        public function loadTransaksi($page = 1){
             //in this case use m_transaksi model
             $this->load->model('m_transaksi');
 
@@ -244,8 +246,12 @@
             $this->pagination->initialize($config);
 
             // Initialize data Array and pagination
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $data['transaksi'] = $this->m_transaksi->loadTransaksiAll($config['per_page'],$page);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
+            
+           
+            $start = ($page - 1) * $config['per_page']; 
+
+            $data['transaksi'] = $this->m_transaksi->loadTransaksiAll($config['per_page'],$start);
             $data['pagination'] = $this->pagination->create_links();
 
             $username = $this->session->userdata('username');
