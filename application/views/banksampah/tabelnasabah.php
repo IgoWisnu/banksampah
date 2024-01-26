@@ -108,9 +108,7 @@
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var modal = $(this);
-            var profileImageSrc = '<?= base_url(' img / profile / '); ?>' + button.data(
-                'profile'
-            );
+            var profileImageSrc = '<?= base_url('uploads/profile/'); ?>' + button.data('profile');
 
             modal
                 .find('#modal-profile-img')

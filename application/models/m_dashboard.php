@@ -64,11 +64,19 @@ class m_dashboard extends CI_Model {
         return $count;
     }
 
-    public function insertBerita($data) {
+    public function insertBerita($gambarBerita) {
         // Masukkan data ke dalam tabel artikel
+        
+        $data = array(
+            'judul' => $this->input->post('judulBerita'),
+            'gambar' => $gambarBerita,
+            'deskripsi' => $this->input->post('deskripsiBerita')
+        );
+    
         $result = $this->db->insert('artikel', $data);
         return $result;
     }
+    
 
     public function deleteData($id){
         $this->db->where('id', $id);
@@ -83,9 +91,15 @@ class m_dashboard extends CI_Model {
         return $data;  
     }
 
-    public function updateBerita($id, $data) {
+    public function updateBerita($id, $data, $gambarBerita) {
         // Fungsi untuk mengupdate berita berdasarkan ID
+        
         $this->db->where('id', $id);
+        $data = array(
+            'judul' => $this->input->post('judulBerita'),
+            'gambar' => $gambarBerita,
+            'deskripsi' => $this->input->post('deskripsiBerita')
+        );
         $result = $this->db->update('artikel', $data);
 
         return $result;
