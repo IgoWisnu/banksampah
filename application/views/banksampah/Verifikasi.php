@@ -99,7 +99,7 @@
                     <img class="img" src="/img/email.png" alt="">
                 </div>
                 <div class="deskripsi">
-                    Kami sudah mengirimkan link <br> verifikasi ke email <br> ...........................  
+                    Kami sudah mengirimkan link <br> verifikasi ke email <br> <?php foreach($verif as $key){ echo $key['email']; } ?>  
                 </div>
                 <div class="resend row justify-content-center">
                     Terdapat Masalah?<a href="" class="link row justify-content-center">Laporkan!</a>

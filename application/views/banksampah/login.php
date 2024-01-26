@@ -171,7 +171,7 @@
                     </div>
                     <div class="col d-flex justify-content-between ">
                         <div class="BelumPunyaAkun row justify-content-center">Belum Punya Akun?<br>
-                            <a href="auth/goRegister" class="link row justify-content-center">SignUp</a>
+                            <a href="<?=base_url()?>auth/goRegister" class="link row justify-content-center">SignUp</a>
                         </div>
                         <div class="stick"></div>
                         <div class="InginJadiImigran row justify-content-center">Tidak ingin login?<br>
